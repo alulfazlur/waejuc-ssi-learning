@@ -44,7 +44,7 @@ export default function MarketingLayout({ children }) {
 
 
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <LayoutContext.Provider value={{ scrollToId, isScrolled }}>
                 <nav
                     className={`

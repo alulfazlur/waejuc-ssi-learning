@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@lib/supabase/client";
+import { useAuth } from "@context/AuthContext";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "@components/Button";
 
 export default function SignIn() {
     const [studentId, setStudentId] = useState("");
     const supabase = createClient();
+    const { login, isSyncing } = useAuth();
     const router = useRouter();
 
     const handleSignIn = async (e) => {
@@ -21,6 +24,7 @@ export default function SignIn() {
         if (error) {
             alert("ID Peneliti tidak terdaftar!");
         } else {
+            await login(user);
             const { data } = await supabase
                 .from('student_responses')
                 .select('level_slug')
@@ -38,6 +42,21 @@ export default function SignIn() {
 
     return (
         <div className="max-w-md mx-auto mt-20 p-8 border border-primary rounded-xl">
+            <AnimatePresence>
+                {isSyncing && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/60 backdrop-blur-md"
+                    >
+                        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+                        <p className="text-primary font-mono text-sm animate-pulse">
+                            Menyiapkan Lab & Progres Peneliti...
+                        </p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <h2 className="text-2xl font-bold mb-4">Verifikasi Peneliti</h2>
             <form onSubmit={handleSignIn} className="space-y-4">
                 <input
@@ -46,7 +65,7 @@ export default function SignIn() {
                     className="w-full p-3 bg-transparent border border-primary rounded-lg"
                     onChange={(e) => setStudentId(e.target.value)}
                 />
-                <Button>Verifikasi & Masuk</Button>
+                <Button>{isSyncing ? "Memverifikasi..." : "Verifikasi & Masuk"}</Button>
             </form>
         </div>
     );
