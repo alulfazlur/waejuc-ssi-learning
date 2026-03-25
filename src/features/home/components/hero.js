@@ -15,7 +15,7 @@ export const Hero = () => {
                     loop
                     playsInline
                     className="w-full h-full object-cover"
-                    poster="/images/hero-poster.jpg"
+                    poster="/images/hero-poster.webp"
                 >
                     <source src="/videos/hero-bg.webm" type="video/webm" />
                     <source src="/videos/hero-bg.mp4" type="video/mp4" />
