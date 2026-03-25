@@ -9,22 +9,33 @@ export const AuthProvider = ({ children }) => {
     const [maxStep, setMaxStep] = useState(1);
     const [responses, setResponses] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isSyncing, setIsSyncing] = useState(false);
     const supabase = createClient();
 
     const refreshProgress = async (currentUser) => {
-        const { data } = await supabase
-            .from("student_responses")
-            .select("level_slug, content")
-            .eq("student_id", currentUser.id);
+        setIsSyncing(true);
+        try {
+            const { data } = await supabase
+                .from("student_responses")
+                .select("level_slug, content")
+                .eq("student_id", currentUser.id);
 
-        if (data) {
-            const responsesMap = {};
-            data.forEach(item => {
-                responsesMap[item.level_slug] = item.content;
-            });
-            setResponses(responsesMap);
-            setMaxStep(data.length + 1);
+            if (data) {
+                const responsesMap = {};
+                data.forEach(item => {
+                    responsesMap[item.level_slug] = item.content;
+                });
+                setResponses(responsesMap);
+                setMaxStep(data.length + 1);
+            }
+        } finally {
+            setIsSyncing(false);
         }
+    };
+
+    const login = async (currentUser) => {
+        setUser(currentUser);
+        await refreshProgress(currentUser);
     };
 
     useEffect(() => {
@@ -37,11 +48,10 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         };
         initAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [refreshProgress]);
+    }, []);
 
     return (
-        <AuthContext.Provider value={{ user, maxStep, responses, loading, refreshProgress }}>
+        <AuthContext.Provider value={{ user, maxStep, responses, loading, refreshProgress, login, isSyncing }}>
             {children}
         </AuthContext.Provider>
     );

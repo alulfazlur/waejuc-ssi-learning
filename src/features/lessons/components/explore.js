@@ -19,7 +19,7 @@ export const Explore = (props) => {
                 <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl border border-primary/20 bg-black">
                     <iframe
                         className="absolute inset-0 w-full h-full"
-                        src="https://www.youtube.com/embed/VIDEO_ID_360?rel=0&showinfo=0"
+                        src="https://www.youtube.com/embed/i6j5pPD2jnY?rel=0&showinfo=0"
                         title="YouTube 360 Video Player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen

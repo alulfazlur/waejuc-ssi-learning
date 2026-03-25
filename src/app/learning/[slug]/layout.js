@@ -62,7 +62,7 @@ export default function LearningLayout({ params: paramsPromise, children }) {
     const colorClass = theme === "dark" ? "text-primary" : "text-background";
 
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <div className="flex min-h-screen bg-background text-foreground">
                 <AnimatePresence>
                     {loading && (
