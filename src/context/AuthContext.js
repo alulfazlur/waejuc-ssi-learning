@@ -1,0 +1,50 @@
+"use client";
+import { createContext, useContext, useEffect, useState } from "react";
+import { createClient } from "@lib/supabase/client";
+
+const AuthContext = createContext({});
+
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [maxStep, setMaxStep] = useState(1);
+    const [responses, setResponses] = useState({});
+    const [loading, setLoading] = useState(true);
+    const supabase = createClient();
+
+    const refreshProgress = async (currentUser) => {
+        const { data } = await supabase
+            .from("student_responses")
+            .select("level_slug, content")
+            .eq("student_id", currentUser.id);
+
+        if (data) {
+            const responsesMap = {};
+            data.forEach(item => {
+                responsesMap[item.level_slug] = item.content;
+            });
+            setResponses(responsesMap);
+            setMaxStep(data.length + 1);
+        }
+    };
+
+    useEffect(() => {
+        const initAuth = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                setUser(user);
+                await refreshProgress(user);
+            }
+            setLoading(false);
+        };
+        initAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refreshProgress]);
+
+    return (
+        <AuthContext.Provider value={{ user, maxStep, responses, loading, refreshProgress }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export const useAuth = () => useContext(AuthContext);
