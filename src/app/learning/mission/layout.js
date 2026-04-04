@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 
 import ThemeToggle from '@components/ThemeToggle'
-
+import LanguageToggle from '@components/LanguageToggle'
 
 export default function MarketingLayout({ children }) {
     const router = useRouter();
@@ -32,34 +32,36 @@ export default function MarketingLayout({ children }) {
 
     return (
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-                <nav
-                    className={`
+            <nav
+                className={`
                         fixed top-0 left-0 right-0 z-60 px-6 py-4 flex justify-between lg:justify-normal items-center duration-200
                         bg-primary${isScrolled ? '/75' : ''} dark:bg-primary${isScrolled ? '/90' : ''} backdrop-blur-md border-b border-white/10 shadow-lg text-background
             `}
-                >
-                    <div className="lg:w-1/4">
-                        <button className="font-bold text-xl tracking-tight cursor-pointer" onClick={() => router.push('/')}>
-                            Waejuc-SSI
-                        </button>
-                    </div>
+            >
+                <div className="lg:w-1/4">
+                    <button className="font-bold text-xl tracking-tight cursor-pointer" onClick={() => router.push('/')}>
+                        Waejuc-SSI
+                    </button>
+                </div>
 
-                    <div className="hidden lg:flex flex-1 " />
+                <div className="hidden lg:flex flex-1 " />
 
-                    <div className="flex lg:hidden">
-                        <ThemeToggle colorClass={colorClass} backgroundClass={backgroundClass} />
-                    </div>
+                <div className="flex lg:hidden gap-3">
+                    <ThemeToggle colorClass={colorClass} backgroundClass={backgroundClass} />
+                    <LanguageToggle />
+                </div>
 
-                    <div className="hidden lg:flex w-1/4 justify-end">
-                        <ThemeToggle colorClass={colorClass} backgroundClass={backgroundClass} />
-                    </div>
-                </nav>
+                <div className="hidden lg:flex w-1/4 justify-end gap-3">
+                    <ThemeToggle colorClass={colorClass} backgroundClass={backgroundClass} />
+                    <LanguageToggle />
+                </div>
+            </nav>
 
-                <main>{children}</main>
+            <main>{children}</main>
 
-                <footer className="text-background dark:text-primary font-bold bg-quaternary dark:bg-secondary py-10 border-t border-white/10 text-center text-sm">
-                    &copy; 2026 E-Learning Platform.
-                </footer>
+            <footer className="text-background dark:text-primary font-bold bg-quaternary dark:bg-secondary py-10 border-t border-white/10 text-center text-sm">
+                &copy; 2026 FazaTech.
+            </footer>
         </ThemeProvider>
     );
 }

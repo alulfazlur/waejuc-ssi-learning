@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from 'react'
-import { useRouter } from "next/navigation";
+import { useRouter, notFound } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -8,20 +8,17 @@ import { createClient } from "@lib/supabase/client";
 import { useAuth } from "@context/AuthContext";
 
 import { FORM_SCHEMAS } from "@features/lessons/logic/form-configs";
-import { PerspectiveGallery, Explore, MicroLabAR } from "@features/lessons/components";
+import { InitialComponent, QualitativeComponent, QuantitativeComponent, ExplanationComponent, DecisionComponent } from "@features/lessons/components";
+import { SYLLABUS } from "@constants/syllabus";
 
-const LEVEL_ORDER = [
-    "perspective-gallery", // Level 1
-    "360-explore",         // Level 2
-    "ar-lab",              // Level 3
-    "system-map",          // Level 4
-    "final-report"         // Level 5
-];
+const LEVEL_ORDER = SYLLABUS.map(s => s.id);
 
 const COMPONENT_MAP = {
-    "perspective-gallery": PerspectiveGallery,
-    "360-explore": Explore,
-    "ar-lab": MicroLabAR,
+    "initial": InitialComponent,
+    "qualitative": QualitativeComponent,
+    "quantitative": QuantitativeComponent,
+    "explanation": ExplanationComponent,
+    "decision": DecisionComponent
 };
 
 export default function LessonController({ slug }) {
@@ -39,7 +36,6 @@ export default function LessonController({ slug }) {
     const { handleSubmit, formState: { errors } } = methods;
 
     const onSubmit = async (formData) => {
-        console.log({ formData })
         try {
             const { error: dbError } = await supabase
                 .from('student_responses')
@@ -74,14 +70,18 @@ export default function LessonController({ slug }) {
         }
     };
 
-    const ActiveComponent = COMPONENT_MAP[slug];
-
     useEffect(() => {
         const savedContent = responses[slug];
         if (savedContent) {
             methods.reset(savedContent);
         }
     }, [slug, responses, methods]);
+
+    const ActiveComponent = COMPONENT_MAP[slug];
+
+    if (!ActiveComponent) {
+        return notFound();
+    }
 
     return (
         <FormProvider {...methods}>

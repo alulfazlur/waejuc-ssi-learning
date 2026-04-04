@@ -2,18 +2,13 @@
 import { createClient } from "@lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Anchor, ArrowRight, Users, Fish } from "lucide-react";
+import { Anchor, ArrowRight, Fish } from "lucide-react";
 import Button from "@components/Button";
+import { SYLLABUS } from "@constants/syllabus";
 
 export default function MissionPage() {
     const supabase = createClient();
     const router = useRouter();
-
-    const characters = [
-        { name: "Pak Anton", role: "Nelayan Kecil", issue: "Es batu plastik karena keterbatasan ruang kapal." },
-        { name: "Bu Sutini", role: "Pedagang Ikan", issue: "Dilema plastik vs higienitas ikan yang basah & amis." },
-        { name: "Pak Imam", role: "Pengelola TPI", issue: "Kebuntuan manajemen iuran kebersihan." }
-    ];
 
     const startInvestigation = async () => {
         const { data: { user } } = await supabase.auth.getUser();
@@ -33,7 +28,7 @@ export default function MissionPage() {
         if (data && data.length > 0) {
             router.push(`/learning/${data[0].level_slug}`);
         } else {
-            router.push("/learning/perspective-gallery");
+            router.push(`/learning/${SYLLABUS[0].id}`);
         }
     };
 
@@ -58,7 +53,7 @@ export default function MissionPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
-                    className="space-y-6"
+                    className="space-y-6 mb-6"
                 >
                     <h1 className="text-3xl md:text-5xl font-bold leading-tight">
                         Misi Anda: <span className="text-primary italic">Microplastic Investigation</span>
@@ -72,23 +67,6 @@ export default function MissionPage() {
                         Namun, saat Anda turun ke lapangan, Anda menemukan rantai masalah yang kompleks. Masalah ini bukan sekadar sampah, melainkan jeratan sistem ekonomi dan sosial:
                     </p>
                 </motion.div>
-
-                <div className="grid md:grid-cols-3 gap-4 my-12">
-                    {characters.map((char, i) => (
-                        <motion.div
-                            key={char.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1 + (i * 0.2) }}
-                            className="bg-primary border-2 p-5 rounded-2xl hover:border-secondary transition-colors"
-                        >
-                            <Users className="text-background mb-3" size={20} />
-                            <h4 className="font-bold text-background">{char.name}</h4>
-                            <p className="text-xs text-background mb-2">{char.role}</p>
-                            <p className="text-sm text-background/90 leading-snug">{char.issue}</p>
-                        </motion.div>
-                    ))}
-                </div>
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
