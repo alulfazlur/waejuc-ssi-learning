@@ -1,9 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { useLayout } from "@app/(marketing)/layout"
+import { useTranslation } from "react-i18next";
 
 export const Hero = () => {
     const { scrollToId } = useLayout();
+    const { t } = useTranslation();
 
     return (
         <section id="hero" className="relative flex flex-col items-center justify-center py-20 px-6 text-center h-screen">
@@ -19,7 +21,7 @@ export const Hero = () => {
                 >
                     <source src="/videos/hero-bg.webm" type="video/webm" />
                     <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                    {t('error.video_not_supported')}
                 </video>
             </div>
             <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-[1px]" />
@@ -30,7 +32,7 @@ export const Hero = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-background dark:text-primary"
             >
-                Dilema Kesegaran & Kelestarian di Puger
+                {t('hero.title')}
             </motion.h1>
 
             <motion.p
@@ -39,7 +41,7 @@ export const Hero = () => {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-background dark:text-primary"
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {t('hero.description')}
             </motion.p>
 
             <motion.div
