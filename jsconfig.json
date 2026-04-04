@@ -8,6 +8,8 @@
       "@features/*": ["./src/features/*"],
       "@lib/*": ["./src/lib/*"],
       "@context/*": ["./src/context/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@i18n/*": ["./src/i18n/*"],
     }
   }
 }

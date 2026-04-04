@@ -1,5 +1,6 @@
 import "./globals.css";
 import { AuthProvider } from '@context/AuthContext';
+import { I18nProvider } from '@context/I18nProvider';
 
 export const metadata = {
   title: "Waejuc SSI",
@@ -10,9 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <I18nProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </I18nProvider>
       </body>
     </html>
   );
