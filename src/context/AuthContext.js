@@ -38,6 +38,20 @@ export const AuthProvider = ({ children }) => {
         await refreshProgress(currentUser);
     };
 
+    const logout = async () => {
+        setLoading(true);
+        try {
+            await supabase.auth.signOut();
+            setUser(null);
+            setMaxStep(1);
+            setResponses({});
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error("Error logging out:", error);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
         const initAuth = async () => {
             const { data: { user } } = await supabase.auth.getUser();
@@ -48,10 +62,11 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         };
         initAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, maxStep, responses, loading, refreshProgress, login, isSyncing }}>
+        <AuthContext.Provider value={{ user, maxStep, responses, loading, setLoading, refreshProgress, login, logout, isSyncing }}>
             {children}
         </AuthContext.Provider>
     );

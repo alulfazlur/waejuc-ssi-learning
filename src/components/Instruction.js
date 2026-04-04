@@ -8,10 +8,10 @@ export default function Instruction({
     return (
         <div className="mb-6">
             <div className="flex items-center gap-4 mb-4">
-                <Icon className="text-primary shrink-0" size={32} />
+                <Icon className="text-primary shrink-0" size={24} />
                 <h3 className="text-xl text-primary font-bold">{title}</h3>
             </div>
-            <p className="text-secondary">
+            <p className="text-secondary dark:text-primary/80">
                 {description}
             </p>
         </div>

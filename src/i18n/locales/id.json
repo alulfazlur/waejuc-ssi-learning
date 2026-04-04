@@ -1,0 +1,156 @@
+{
+    "common": {
+        "next": "Selanjutnya",
+        "back": "Kembali",
+        "submit": "Kirim",
+        "task": "Tugas",
+        "instruction": "Instruksi",
+        "activity": "Aktifitas",
+        "load_init": "Menginisialisasi Lingkungan Penelitian..."
+    },
+    "error": {
+        "video_not_supported": "Browser Anda tidak mendukung tag video.",
+        "phase_not_found": "Fase Tidak Ditemukan",
+        "phase_not_found_desc": "Fase yang diminta tidak ditemukan. Silakan hubungi customer support."
+    },
+    "hero": {
+        "title": "Dilema Kesegaran & Kelestarian di Puger",
+        "description": "Jelajahi ekosistem Puger melalui kacamata sains."
+    },
+    "sidebar": {
+        "progress_title": "Fase Misi",
+        "logout": "Keluar"
+    },
+    "signin": {
+        "description": "Masukkan ID Peneliti Anda untuk mengakses basis data Proyek Puger.",
+        "placeholder": "Masukkan ID Peneliti...",
+        "label": "Pengidentifikasi Peneliti (ID)",
+        "button": "Otorisasi Akses"
+    },
+    "syllabus": {
+        "initial": "Pemicu Ide Awal",
+        "qualitative": "Analisis Data Kualitatif",
+        "quantitative": "Analisis Data Kuantitatif",
+        "explanation": "Membangun Penjelasan Potensial",
+        "explanation_subtitle": "Mekanisme AR",
+        "decision": "Pengambilan Keputusan",
+        "decision_subtitle": "Berpikir Refleksif"
+    },
+    "initial": {
+        "instruction": "Saksikan video 360° pelabuhan dan wawancara dengan tiga pemangku kepentingan (Pelaut, Penjual Makanan Laut, dan Pejabat Pemerintah).",
+        "tips": {
+            "prefix": "Buka di",
+            "suffix": "untuk pengalaman 360° penuh. Klik dan tarik layar video untuk melihat sekeliling TPI dan perhatikan perspektif para pemangku kepentingan yang berbeda."
+        },
+        "stakeholders": {
+            "listen_btn": "Dengarkan Rekaman",
+            "list": {
+                "sailor": {
+                    "label": "Nelayan",
+                    "summary": "Mengeluhkan tumpukan sampah yang menyangkut di jaring dan mesin kapal."
+                },
+                "seller": {
+                    "label": "Pedagang Seafood",
+                    "summary": "Khawatir akan kualitas ikan yang terkontaminasi sampah plastik di pelabuhan."
+                },
+                "official": {
+                    "label": "Pejabat Pemerintah",
+                    "summary": "Menjelaskan sulitnya regulasi pengelolaan limbah di kawasan pesisir."
+                }
+            }
+        },
+        "component_id": {
+            "title": "1. Identifikasi Komponen",
+            "description": "Sebutkan setidaknya lima komponen fisik atau biologis yang Anda amati dalam sistem tersebut (misalnya, organisme tertentu, jenis puing, atau faktor lingkungan).",
+            "placeholder": "Contoh: Ikan Tongkol, Kantong Plastik, Jaring Nilon..."
+        },
+        "properties": {
+            "title": "2. Properti",
+            "description": "Pilih 2 komponen dari daftar di atas dan jelaskan karakteristiknya (Apakah mengapung? Apakah sulit terurai? Bagaimana interaksinya dengan jaringan makhluk hidup?).",
+            "label_a": "Komponen Pertama",
+            "label_b": "Komponen Kedua",
+            "placeholder_name": "Nama Komponen (misal: Plastik)",
+            "placeholder_desc": "Deskripsikan propertinya di sini..."
+        },
+        "footer": "Pastikan semua observasi komponen dan properti telah terisi sebelum lanjut ke tahap analisis."
+    },
+    "qualitative": {
+        "instruction": "Bandingkan botol plastik besar (yang terlihat di pelabuhan) dengan serat mikroplastik (yang disebutkan oleh Penjual).",
+        "analysis": {
+            "q1_title": "Perubahan Bentuk & Ukuran",
+            "q1_desc": "Jika sampah plastik tersebut berada dalam lingkungan perairan dalam jangka waktu lama, apa yang kemungkinan akan terjadi terhadap bentuk dan ukurannya?",
+            "q2_title": "Faktor Lingkungan",
+            "q2_desc": "Faktor apa saja yang dapat menyebabkan perubahan tersebut, dan bagaimana faktor tersebut bekerja terhadap material plastik?",
+            "q3_title": "Proses Pembentukan Mikroplastik",
+            "q3_desc": "Bagaimana prosesnya hingga menjadi mikroplastik dan apa perbedaan karakteristiknya dengan makroplastik?",
+            "placeholders": {
+                "q1": "Analisis perubahan fisik...",
+                "q2": "Contoh: Sinar UV, abrasi gelombang...",
+                "q3": "Analisis perbedaan karakteristik..."
+            }
+        },
+        "footer": "Analisis kualitatif ini akan menjadi dasar untuk perhitungan kuantitatif di fase berikutnya."
+    },
+    "quantitative": {
+        "instruction": "Perhatikan tabel data kelimpahan mikroplastik pada berbagai wilayah di Jember dari sungai ke pantai.",
+        "sections": {
+            "abundance": "Analisis Kelimpahan Mikroplastik",
+            "biomagnification": "Tingkat Trofik & Biomagnifikasi"
+        },
+        "questions": {
+            "q1_title": "Muara vs Konsentrasi Laut",
+            "q1_desc": "Mengapa konsentrasi menurun di Stasiun 4 tetapi meningkat tajam di Stasiun 3? Hubungkan ini dengan aliran sungai versus arus laut.",
+            "q2_title": "Estimasi Paparan Manusia",
+            "q2_desc": "Berdasarkan Stasiun 2, perkirakan partikel yang tertelan jika manusia minum 2 liter air per hari.",
+            "q3_title": "Faktor Biomagnifikasi (BMF)",
+            "q3_desc": "Hitung BMF (Body Mass Factor) antara kerang dan tuna. Jika seseorang mengonsumsi 250g kerang/minggu, berapa mg plastik yang tertelan?",
+            "placeholders": {
+                "q1": "Jelaskan interaksi antara aliran permukaan dan arus...",
+                "q2": "Perhitungan: (Konsentrasi / 1000) * 2...",
+                "q3": "BMF = Tuna / Kerang. Mingguan = Muatan * 0,25..."
+            }
+        },
+        "columns": {
+            "station": "Stasiun",
+            "location": "Deskripsi Lokasi",
+            "distance": "Jarak (km)",
+            "concentration": "Konsentrasi Mikroplastik (partikel/m³)",
+            "level": "Tingkat Trofik",
+            "species": "Spesies Representatif",
+            "load": "Rata-rata Beban Plastik (mg/kg)"
+        }
+    },
+    "explanation": {
+        "ar_setup_title": "Laboratorium Virtual AR",
+        "ar_setup_desc": "Gunakan modul 'Cellular Impact' untuk mensimulasikan bagaimana polimer plastik berinteraksi dengan membran sel dan sistem organ.",
+        "qualitative_title": "Mekanisme Transformasi Fisik-Kimia",
+        "qualitative_desc": "Jelaskan bagaimana botol plastik (makro) dari pelabuhan berubah menjadi risiko seluler. Pertimbangkan peran radiasi UV, abrasi gelombang, dan penetrasi membran sel.",
+        "quantitative_title": "Estimasi Risiko Bioakumulasi",
+        "quantitative_desc": "Jika nelayan menggunakan es kiloan yang terkontaminasi setiap hari, hitunglah potensi beban plastik tahunan pada penduduk lokal yang mengonsumsi ikan secara rutin.",
+        "placeholders": {
+            "qualitative": "Analisis interaksi atmosfer, dalam air, hingga level seluler...",
+            "quantitative": "Gunakan data beban plastik (mg/kg) untuk menghitung akumulasi tahunan..."
+        }
+    },
+    "decision": {
+        "instruction": "Anda adalah seorang konsultan bagi pejabat pemerintah. Anda harus mengusulkan satu strategi untuk mengurangi tingkat mikroplastik (misalnya, “Undang-Undang Mikrofilter” untuk mesin cuci atau “Pajak Plastik”).",
+        "labels": {
+            "strategy_name": "Nama Strategi / Kebijakan",
+            "env_benefit": "Manfaat Lingkungan",
+            "env_benefit_desc": "Dampak Ekologis",
+            "eco_cost": "Biaya Ekonomi",
+            "eco_cost_desc": "Beban Ekonomi bagi Penjual",
+            "social_impact": "Dampak Sosial",
+            "social_impact_desc": "Dampak Sosial Komunitas Pelaut",
+            "conclusion": "Kesimpulan Profesional"
+        },
+        "questions": {
+            "conclusion_desc": "Mengapa solusi sistemik ini lebih efektif dibandingkan sekadar aksi 'Beach Cleanup' dalam skala profesional?",
+            "placeholders": {
+                "strategy": "Contoh: Regulasi Filter Mikroplastik Industri...",
+                "general": "Analisis dampak dari sudut pandang konsultan...",
+                "final": "Sintesis mengapa pencegahan di hulu lebih baik daripada pembersihan di hilir..."
+            }
+        }
+    }
+}

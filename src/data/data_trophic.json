@@ -1,0 +1,26 @@
+[
+    {
+      "level_id": "Predator Puncak",
+      "level_en": "Apex Predator",
+      "species": "Yellowfin Tuna (Thunnus albacares)",
+      "avg_load_mg_kg": 48.50
+    },
+    {
+      "level_id": "Konsumen Sekunder",
+      "level_en": "Secondary Consumer",
+      "species": "Indian Mackerel (Rastrelliger kanagurta)",
+      "avg_load_mg_kg": 12.20
+    },
+    {
+      "level_id": "Konsumen Primer",
+      "level_en": "Primary Consumer",
+      "species": "Blood Cockles (Anadara granosa)",
+      "avg_load_mg_kg": 4.10
+    },
+    {
+      "level_id": "Produsen Primer",
+      "level_en": "Primary Producer",
+      "species": "Marine Phytoplankton",
+      "avg_load_mg_kg": 0.05
+    }
+  ]

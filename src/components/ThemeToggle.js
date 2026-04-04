@@ -29,7 +29,7 @@ export default function ThemeToggle({ colorClass = "text-foreground", background
     return (
         <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className={`relative p-2 rounded-xl ${backgroundClass} transition-colors cursor-pointer overflow-hidden flex items-center justify-center`}
+            className={`w-9.5 h-9.5 relative p-2 rounded-xl ${backgroundClass} transition-colors cursor-pointer overflow-hidden flex items-center justify-center`}
             aria-label="Toggle Theme"
         >
             <AnimatePresence mode="wait" initial={false}>

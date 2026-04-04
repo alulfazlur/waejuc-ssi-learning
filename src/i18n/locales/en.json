@@ -1,0 +1,156 @@
+{
+    "common": {
+        "next": "Next",
+        "back": "Back",
+        "submit": "Submit",
+        "task": "Task",
+        "instruction": "Instruction",
+        "activity": "Activity",
+        "load_init": "Initializing Research Environment..."
+    },
+    "error": {
+        "video_not_supported": "Your browser does not support the video tag.",
+        "phase_not_found": "Phase Not Found",
+        "phase_not_found_desc": "The requested phase was not found. Please contact customer support."
+    },
+    "hero": {
+        "title": "The Dilemma of Freshness & Sustainability in Puger",
+        "description": "Explore the Puger ecosystem through the lens of science."
+    },
+    "sidebar": {
+        "progress_title": "Mission Phase",
+        "logout": "Logout"
+    },
+    "signin": {
+        "description": "Input your Researcher ID to access the Puger Project database.",
+        "placeholder": "Enter Researcher ID...",
+        "label": "Researcher Identifier (ID)",
+        "button": "Authorize Access"
+    },
+    "syllabus": {
+        "initial": "Triggering Initial Ideas",
+        "qualitative": "Qualitative Data Analysis",
+        "quantitative": "Quantitative Data Analysis",
+        "explanation": "Building a Potential Explanation",
+        "explanation_subtitle": "The AR Mechanism",
+        "decision": "Making Decisions",
+        "decision_subtitle": "Reflexive Thinking"
+    },
+    "initial": {
+        "instruction": "Watch the 360° video of the harbor and the interviews with the three stakeholders (Sailor, Seafood Seller, and Government Official).",
+        "tips": {
+            "prefix": "Open in",
+            "suffix": "for a full 360° experience. Click and drag the video screen to look around the TPI and observe the different stakeholder perspectives."
+        },
+        "stakeholders": {
+            "listen_btn": "Listen to Recordings",
+            "list": {
+                "sailor": {
+                    "label": "Sailor",
+                    "summary": "Complains about the piles of trash getting caught in the nets and boat engines."
+                },
+                "seller": {
+                    "label": "Seafood Seller",
+                    "summary": "Worries about the quality of fish being contaminated by plastic debris in the harbor."
+                },
+                "official": {
+                    "label": "Government Official",
+                    "summary": "Explains the challenges of regulating waste management in coastal areas."
+                }
+            }
+        },
+        "component_id": {
+            "title": "1. Component Identification",
+            "description": "List at least five physical or biological components you observed in the system (e.g., specific organisms, types of debris, or environmental factors).",
+            "placeholder": "Example: Tuna Fish, Plastic Bags, Nylon Nets..."
+        },
+        "properties": {
+            "title": "2. Properties",
+            "description": "Choose two components and describe their properties (e.g., Is it buoyant? Is it persistent? Does it interact with living tissue?).",
+            "comp_a": "Component A",
+            "comp_b": "Component B",
+            "placeholder_name": "Component Name...",
+            "placeholder_prop": "Describe properties here..."
+        },
+        "footer": "Make sure all component and property observations are filled in before proceeding to the analysis phase."
+    },
+    "qualitative": {
+        "instruction": "Compare a large plastic bottle (seen in the harbor) with a microplastic fiber (mentioned by the Seller).",
+        "analysis": {
+            "q1_title": "Changes in Shape & Size",
+            "q1_desc": "What changes in shape and size do you observe as the plastic breaks down from a bottle to microplastic fibers?",
+            "q2_title": "Factors Driving the Changes",
+            "q2_desc": "What environmental factors (e.g., UV exposure, wave abrasion) might contribute to the breakdown of macroplastics into microplastics?",
+            "q3_title": "Differences in Characteristics",
+            "q3_desc": "How do the characteristics of microplastics differ from those of macroplastics in terms of their interactions with marine life and their persistence in the environment?",
+            "placeholders": {
+                "q1": "Analysis of physical changes...",
+                "q2": "Examples: UV rays, wave abrasion...",
+                "q3": "Analysis of differences in characteristics..."
+            }
+        },
+        "footer": "This qualitative analysis will be the basis for quantitative calculations in the next phase."
+    },
+    "quantitative": {
+        "instruction": "Pay attention to the data table on the abundance of microplastics in various areas in Jember from rivers to beaches.",
+        "sections": {
+            "abundance": "Microplastic Abundance Analysis",
+            "biomagnification": "Trophic Level & Biomagnification"
+        },
+        "questions": {
+            "q1_title": "Estuary vs Marine Concentration",
+            "q1_desc": "Why does concentration drop at Station 4 but spike at Station 3? Link this to river runoff vs ocean currents.",
+            "q2_title": "Human Exposure Estimation",
+            "q2_desc": "Based on Station 2, estimate particles ingested if a human drinks 2L of water/day.",
+            "q3_title": "Biomagnification Factor (BMF)",
+            "q3_desc": "Calculate BMF between Cockles and Tuna. If a person eats 250g of cockles/week, how many mg of plastic is ingested?",
+            "placeholders": {
+                "q1": "Explain the interaction between runoff and currents...",
+                "q2": "Calculation: (Conc / 1000) * 2...",
+                "q3": "BMF = Tuna / Cockle. Weekly = Load * 0.25..."
+            }
+        },
+        "columns": {
+            "station": "Station",
+            "location": "Location Description",
+            "distance": "Distance (km)",
+            "concentration": "MP Concentration (particles/m³)",
+            "level": "Trophic Level",
+            "species": "Representative Species",
+            "load": "Avg. Plastic Load (mg/kg)"
+        }
+    },
+    "explanation": {
+        "ar_setup_title": "Virtual AR Lab",
+        "ar_setup_desc": "Use the 'Cellular Impact' module for desktop how plastic polymers interact with cell membranes and organ systems.",
+        "qualitative_title": "Physico-Chemical Transformation Mechanism",
+        "qualitative_desc": "Explain how plastic bottles (macro) from ports become cellular hazards. Consider the roles of UV radiation, wave abrasion, and cell membrane penetration.",
+        "quantitative_title": "Bioaccumulation Risk Estimation",
+        "quantitative_desc": "If fishermen use contaminated ice by the kilo every day, calculate the potential annual plastic burden on local residents who consume fish regularly.",
+        "placeholders": {
+            "qualitative": "Analysis of atmospheric, aquatic, and cellular interactions...",
+            "quantitative": "Use plastic load data (mg/kg) to calculate annual accumulation..."
+        }
+    },
+    "decision": {
+        "instruction": "You are a consultant to a government official. You must propose a strategy to reduce microplastic levels (e.g., a “Microfilter Act” for washing machines or a “Plastic Tax”).",
+        "labels": {
+            "strategy_name": "Strategy / Policy Name",
+            "env_benefit": "Environmental Benefits",
+            "env_benefit_desc": "Ecological Impact",
+            "eco_cost": "Economic Costs",
+            "eco_cost_desc": "Economic Burden for Sellers",
+            "social_impact": "Social Impact",
+            "social_impact_desc": "Social Impact of the Seafaring Community",
+            "conclusion": "Professional Conclusion"
+        },
+        "questions": {
+            "conclusion_desc": "Why is this systemic solution more effective than just a professional-scale 'Beach Cleanup'?",
+            "placeholders": {
+                "strategy": "Example: Industrial Microplastic Filter Regulation...",
+                "general": "Impact analysis from a consultant's perspective...",
+                "final": "Synthesis of why upstream prevention is better than downstream cleanup..."
+            }
+        }
+    }
+}

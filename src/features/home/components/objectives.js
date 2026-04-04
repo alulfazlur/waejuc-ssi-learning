@@ -43,12 +43,11 @@ export const Objectives = () => {
         <section id="objectives" className="pt-20 mb-20 items-center relative overflow-hidden ">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100vw/2)] h-[calc(100vh/2)] bg-background/20 dark:bg-background/20 blur-[100px] rounded-full z-5" />
 
-            <div className="mx-4 md:mx-8 lg:mx-16 py-12 md:py-16 px-6 bg-secondary dark:bg-primary rounded-2xl">
                 <motion.h2
                     initial={{ opacity: 0, y: -10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl font-bold text-center mb-16 text-background tracking-tight z-10"
+                    className="text-4xl font-bold text-center mb-16 text-primary tracking-tight z-10"
                 >
                     Tujuan Pembelajaran
                 </motion.h2>
@@ -65,17 +64,17 @@ export const Objectives = () => {
                                 ease: "easeOut"
                             }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-3xl border border-tertiary/30 bg-primary/80 dark:bg-background/90 hover:dark:bg-background backdrop-blur-xl hover:bg-primary transition-colors group shadow-2xl"
+                            className="p-8 rounded-3xl border border-tertiary/30 bg-primary/80 dark:bg-primary/90 hover:dark:bg-primary backdrop-blur-xl hover:bg-primary transition-colors group shadow-2xl"
                         >
                             <div className="text-5xl mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 inline-block">
                                 {item.icon}
                             </div>
 
-                            <h3 className="font-bold text-2xl text-background dark:text-primary mb-3">
+                            <h3 className="font-bold text-2xl text-background dark:text-background mb-3">
                                 {item.title}
                             </h3>
 
-                            <p className="text-tertiary dark:text-primary leading-relaxed text-sm font-medium">
+                            <p className="text-tertiary dark:text-background leading-relaxed text-sm font-medium">
                                 {item.desc}
                             </p>
                         </motion.div>
@@ -92,7 +91,6 @@ export const Objectives = () => {
                         Mulai Sekarang
                     </Button>
                 </motion.div>
-            </div>
         </section>
     )
 };
