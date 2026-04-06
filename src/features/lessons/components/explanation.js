@@ -92,17 +92,16 @@ export const ExplanationComponent = (props) => {
                 >
                     <Instruction
                         title={t('explanation.q_title')}
-                        description={(
-                            <div>
-                                <ul className="list-disc list-inside space-y-1">
-                                    <li>{t('explanation.q1')}</li>
-                                    <li>{t('explanation.q2')}</li>
-                                    <li>{t('explanation.q3')}</li>
-                                </ul>
-                            </div>
-                        )}
                         icon={Dna}
                     />
+                    <div className="text-secondary text-[15px] dark:text-primary/80">
+                        <ul className="list-disc list-inside space-y-1">
+                            <li>{t('explanation.q1')}</li>
+                            <li>{t('explanation.q2')}</li>
+                            <li>{t('explanation.q3')}</li>
+                        </ul>
+                    </div>
+
                     <RichTextEditor
                         {...register("qualitative_explanation")}
                         name="qualitative_explanation"

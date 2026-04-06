@@ -113,7 +113,7 @@
                     "summary": "Complaining about piles of trash caught in their nets and boat engines."
                 },
                 "seller": {
-                    "label": "Seafood Vendors",
+                    "label": "Seafood Seller",
                     "summary": "Concerned about the quality of fish contaminated by plastic waste at the port."
                 },
                 "official": {
@@ -128,6 +128,18 @@
             "title": "Identifying Ecosystem Components",
             "description": "Identify at least 5 components (biotic and abiotic). Use the table feature to group them: Components, Types, and Roles.",
             "placeholder": "Use the table button above. Example: | Nets | Abiotic | Sources of microplastics |"
+        },
+        "table_component": {
+            "headers": [
+                "Component",
+                "Type (Biotic/Abiotic)",
+                "Role in the System"
+            ],
+            "row": [
+                "Example: Nets",
+                "Abiotic",
+                "Sources of fiber microplastics"
+            ]
         },
         "properties": {
             "title": "Component Interaction Analysis",
@@ -231,5 +243,9 @@
         "survey_link": "Fill Out Questionnaire Now",
         "or": "Or",
         "logout": "Log out of your account"
+    },
+    "toast": {
+        "error": "An error occurred. Please try again.",
+        "success": "Data saved successfully!"
     }
 }

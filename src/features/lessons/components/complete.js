@@ -11,7 +11,6 @@ const fadeUp = (delay = 0) => ({
     transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
-// Ganti URL ini dengan link kuesioner yang sebenarnya
 const SURVEY_URL = "https://forms.google.com/your-survey-link";
 
 export const CompletionPage = () => {
