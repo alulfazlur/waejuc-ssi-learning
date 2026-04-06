@@ -6,7 +6,8 @@
         "task": "Tugas",
         "instruction": "Instruksi",
         "activity": "Aktifitas",
-        "load_init": "Menginisialisasi Lingkungan Penelitian..."
+        "load_init": "Menginisialisasi Lingkungan Penelitian...",
+        "start_mission": "Mulai Misi"
     },
     "error": {
         "video_not_supported": "Browser Anda tidak mendukung tag video.",
@@ -14,8 +15,70 @@
         "phase_not_found_desc": "Fase yang diminta tidak ditemukan. Silakan hubungi customer support."
     },
     "hero": {
-        "title": "Dilema Kesegaran & Kelestarian di Puger",
-        "description": "Jelajahi ekosistem Puger melalui kacamata sains."
+        "title": "Penjelajah Ekologi Virtual: Menjelajahi Batas-Batas Ekosistem Puger",
+        "description": "Di balik deburan ombak dan pesona sunset Pantai Puger, tersimpan rahasia kecil yang mengancam masa depan kita. Melalui eksplorasi video 360° dan teknologi Augmented Reality, mari kita menembus batas penglihatan untuk mengungkap bagaimana polusi mikroplastik menyusup ke dalam rantai makanan dan mempengaruhi kesehatan manusia. Keindahan ini adalah milik kita, begitupun tanggung jawab untuk menjaganya"
+    },
+    "objectives": {
+        "title": "Tujuan Pembelajaran",
+        "goal_1": "Mahasiswa mampu menganalisis isu sosiosaintifik terkait kontaminasi mikroplastik di wilayah Jember serta dampaknya yang bersifat sistemik terhadap kesehatan masyarakat dan ekosistem",
+        "goal_2": "Mahasiswa mampu mengevaluasi kompleksitas permasalahan di TPI Puger dengan mengintegrasikan aspek ekologi (pencemaran), ekonomi (kesejahteraan nelayan dan pedagang), dan sosial (perilaku masyarakat)",
+        "goal_3": "Mahasiswa mampu mengusulkan solusi strategis dan inovatif untuk mitigasi mikroplastik yang mempertimbangkan keseimbangan aspek ekologi, ekonomi, dan sosial secara berkelanjutan di wilayah Jember",
+        "goal_4": "Mahasiswa mampu menunjukkan pola pikir sistem (systems thinking) dan kesadaran berkelanjutan (sustainable awareness) dalam mengambil keputusan logis pada kehidupan sehari-hari"
+    },
+    "mission": {
+        "report_tag": "Laporan Penyelidikan · TPI Puger",
+        "title": "Krisis Tak Kasat Mata:",
+        "subtitle": "Mikroplastik di Ekosistem Jember",
+        "description": "Sebuah investigasi multidisiplin tentang bagaimana pola konsumsi plastik di perkotaan menciptakan ancaman sistemik sejauh 45 km hingga ke muara Puger.",
+        "stats": {
+            "distance": {
+                "label": "Jarak Aliran",
+                "value": "45 km",
+                "sub": "Bedadung → Puger"
+            },
+            "scale": {
+                "label": "Skala Masalah",
+                "value": "Sistemik",
+                "sub": "Ekonomi & ekosistem"
+            },
+            "subject": {
+                "label": "Subjek Utama",
+                "value": "Ikan & Kerang",
+                "sub": "Kontaminasi jaringan"
+            }
+        },
+        "context": {
+            "p1": "Masalah dimulai ketika pola konsumsi masyarakat berubah drastis ke penggunaan plastik sekali pakai, sementara sistem pengelolaan limbah belum mampu mengimbangi beban tersebut. Sampah plastik yang dibuang ke <0>Sungai Bedadung</0> di wilayah perkotaan tidak menetap di sana.",
+            "p1_bold": "Sungai Bedadung",
+            "p2": "Aliran sungai membawanya sejauh 45 km menuju muara Puger — di sana, partikel tak kasat mata menyusup ke dalam <0>jaringan tubuh ikan dan kerang</0>, menjadi ancaman sistemik bagi kesehatan masyarakat dan keseimbangan ekosistem Jember yang saling terhubung.",
+            "p2_bold": "jaringan tubuh ikan dan kerang"
+        },
+        "chain_title": "Rantai Masalah",
+        "chain_items": [
+            {
+                "title": "Perubahan perilaku konsumsi",
+                "sub": "Masyarakat beralih ke plastik sekali pakai"
+            },
+            {
+                "title": "Sistem pengelolaan limbah kewalahan",
+                "sub": "Kapasitas tidak mengimbangi volume sampah"
+            },
+            {
+                "title": "Plastik masuk ke Sungai Bedadung",
+                "sub": "Terbawa arus sejauh 45 km"
+            },
+            {
+                "title": "Mikroplastik menyusup ke ikan & kerang",
+                "sub": "Ancaman kesehatan masyarakat TPI Puger"
+            }
+        ],
+        "goal": {
+            "title": "Tujuan Modul",
+            "desc": "Membedah sistem ini dari level <0>perilaku manusia</0> hingga ke level <1>seluler ikan</1>. Apakah Anda siap memulai penyelidikan?",
+            "desc_bold1": "perilaku manusia",
+            "desc_bold2": "seluler ikan"
+        },
+        "cta": "Mulai Penyelidikan"
     },
     "sidebar": {
         "progress_title": "Fase Misi",
@@ -59,35 +122,45 @@
                 }
             }
         },
+        "issue_title": "Analisis Isu Utama",
+        "issue_description": "Setelah melihat video dan mendengar wawancara, isu utama apa yang paling mendesak? Mengapa isu tersebut saling berkaitan antara nelayan, penjual ikan, dan pemerintah?",
         "component_id": {
-            "title": "1. Identifikasi Komponen",
-            "description": "Sebutkan setidaknya lima komponen fisik atau biologis yang Anda amati dalam sistem tersebut (misalnya, organisme tertentu, jenis puing, atau faktor lingkungan).",
-            "placeholder": "Contoh: Ikan Tongkol, Kantong Plastik, Jaring Nilon..."
+            "title": "Identifikasi Komponen Ekosistem",
+            "description": "Identifikasi minimal 5 komponen (biotik dan abiotik). Gunakan fitur tabel untuk mengelompokkan: Komponen, Jenis, dan Perannya.",
+            "placeholder": "Gunakan tombol tabel di atas. Contoh: | Jaring | Abiotik | Sumber mikroplastik |"
         },
         "properties": {
-            "title": "2. Properti",
-            "description": "Pilih 2 komponen dari daftar di atas dan jelaskan karakteristiknya (Apakah mengapung? Apakah sulit terurai? Bagaimana interaksinya dengan jaringan makhluk hidup?).",
-            "label_a": "Komponen Pertama",
-            "label_b": "Komponen Kedua",
-            "placeholder_name": "Nama Komponen (misal: Plastik)",
-            "placeholder_desc": "Deskripsikan propertinya di sini..."
+            "title": "Analisis Interaksi Komponen",
+            "description": "Pilih satu plastik dan satu organisme, lalu analisis sifat dan prediksi interaksinya.",
+            "name_label": "Nama Komponen"
+        },
+        "plastic_form": {
+            "title": "Komponen Plastik",
+            "name_placeholder": "Contoh: Fragmen botol",
+            "props_label": "Sifat Fisik",
+            "props_placeholder": "Apakah mengapung? Berapa ukurannya? Apakah sulit terurai?",
+            "behave_label": "Prediksi Perilaku",
+            "behave_placeholder": "Bagaimana sifat ini memudahkannya masuk ke dalam rantai makanan?"
+        },
+        "organism_form": {
+            "title": "Komponen Organisme",
+            "name_placeholder": "Contoh: Ikan, Kerang Darah, dll",
+            "props_label": "Sifat Biologi",
+            "props_placeholder": "Bagaimana cara makannya? Di mana habitatnya?",
+            "behave_label": "Prediksi Dampak",
+            "behave_placeholder": "Mengapa sifat biologi organisme ini membuatnya rentan terhadap Komponen A?"
         },
         "footer": "Pastikan semua observasi komponen dan properti telah terisi sebelum lanjut ke tahap analisis."
     },
     "qualitative": {
         "instruction": "Bandingkan botol plastik besar (yang terlihat di pelabuhan) dengan serat mikroplastik (yang disebutkan oleh Penjual).",
         "analysis": {
-            "q1_title": "Perubahan Bentuk & Ukuran",
-            "q1_desc": "Jika sampah plastik tersebut berada dalam lingkungan perairan dalam jangka waktu lama, apa yang kemungkinan akan terjadi terhadap bentuk dan ukurannya?",
-            "q2_title": "Faktor Lingkungan",
-            "q2_desc": "Faktor apa saja yang dapat menyebabkan perubahan tersebut, dan bagaimana faktor tersebut bekerja terhadap material plastik?",
-            "q3_title": "Proses Pembentukan Mikroplastik",
-            "q3_desc": "Bagaimana prosesnya hingga menjadi mikroplastik dan apa perbedaan karakteristiknya dengan makroplastik?",
-            "placeholders": {
-                "q1": "Analisis perubahan fisik...",
-                "q2": "Contoh: Sinar UV, abrasi gelombang...",
-                "q3": "Analisis perbedaan karakteristik..."
-            }
+            "q1_title": "Fragmentasi & Perubahan Fisik",
+            "q1_desc": "Jika sampah plastik (seperti botol minum atau jaring nelayan) berada di perairan Puger dalam jangka waktu yang sangat lama, apa yang kemungkinan besar akan terjadi terhadap bentuk dan ukuran plastik tersebut? Jelaskan faktor-faktor yang mempengaruhi perubahannya!",
+            "q2_title": "Klasifikasi Mikroplastik",
+            "q2_desc": "Berdasarkan bentuknya, mikroplastik dibedakan menjadi beberapa macam. Jelaskan perbedaan bentuk dan sebutkan asal sumber plastik utamanya!",
+            "q3_title": "Analisis Filter Feeder vs Predator",
+            "q3_desc": "Perhatikan dua organisme berikut yang hidup di perairan Jember: Kerang Darah (Anadara granosa) yang merupakan filter feeder (menyaring air) di dasar perairan, dan Ikan Tuna yang merupakan predator aktif di perairan. Mengapa Kerang Darah memiliki risiko terpapar mikroplastik jenis fragmen yang mengendap di dasar laut lebih tinggi daripada Ikan Tuna? Bagaimana perbedaan \"cara makan\" antara keduanya menentukan jenis mikroplastik yang masuk ke dalam tubuh mereka?"
         },
         "footer": "Analisis kualitatif ini akan menjadi dasar untuk perhitungan kuantitatif di fase berikutnya."
     },
@@ -121,16 +194,12 @@
         }
     },
     "explanation": {
+        "instruction": "Buka aplikasi Augmented Reality (AR) di perangkat Anda. Fokuskan pada modul \"Dampak Seluler\" dan \"Fragmentasi\".",
         "ar_setup_title": "Laboratorium Virtual AR",
-        "ar_setup_desc": "Gunakan modul 'Cellular Impact' untuk mensimulasikan bagaimana polimer plastik berinteraksi dengan membran sel dan sistem organ.",
-        "qualitative_title": "Mekanisme Transformasi Fisik-Kimia",
-        "qualitative_desc": "Jelaskan bagaimana botol plastik (makro) dari pelabuhan berubah menjadi risiko seluler. Pertimbangkan peran radiasi UV, abrasi gelombang, dan penetrasi membran sel.",
-        "quantitative_title": "Estimasi Risiko Bioakumulasi",
-        "quantitative_desc": "Jika nelayan menggunakan es kiloan yang terkontaminasi setiap hari, hitunglah potensi beban plastik tahunan pada penduduk lokal yang mengonsumsi ikan secara rutin.",
-        "placeholders": {
-            "qualitative": "Analisis interaksi atmosfer, dalam air, hingga level seluler...",
-            "quantitative": "Gunakan data beban plastik (mg/kg) untuk menghitung akumulasi tahunan..."
-        }
+        "q_title": "Mekanisme Transformasi Fisik-Kimia",
+        "q1": "Gunakan hasil pengamatan Saudara dari alat AR untuk menjelaskan mekanisme permasalahan tersebut.",
+        "q2": "Bagaimana sebuah botol plastik dari pelabuhan (domain pelaut) dapat berubah secara fisik menjadi risiko kesehatan bagi konsumen (domain penjual)?",
+        "q3": "Buatlah bagan mekanisme dengan menggunakan anak panah dan penjelasan Anda harus mempertimbangkan interaksi kimia pada berbagai subsistem, seperti atmosfer, kolom air, dan sel biologis."
     },
     "decision": {
         "instruction": "Anda adalah seorang konsultan bagi pejabat pemerintah. Anda harus mengusulkan satu strategi untuk mengurangi tingkat mikroplastik (misalnya, “Undang-Undang Mikrofilter” untuk mesin cuci atau “Pajak Plastik”).",
@@ -152,5 +221,15 @@
                 "final": "Sintesis mengapa pencegahan di hulu lebih baik daripada pembersihan di hilir..."
             }
         }
+    },
+    "complete": {
+        "title": "Penyelidikan Selesai!",
+        "thank_you": "Terima kasih.",
+        "description": "Anda telah berhasil menyelesaikan seluruh modul investigasi mikroplastik di TPI Puger. Kontribusi Anda sangat berarti untuk penelitian ini.",
+        "one_more_step": "Satu Langkah Lagi",
+        "fill_survey": "Mohon luangkan beberapa menit untuk mengisi kuesioner akhir. Masukan Anda membantu kami meningkatkan kualitas program pembelajaran ini.",
+        "survey_link": "Isi Kuesioner Sekarang",
+        "or": "Atau",
+        "logout": "Keluar dari akun"
     }
 }

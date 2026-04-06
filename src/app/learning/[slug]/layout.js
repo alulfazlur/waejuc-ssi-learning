@@ -129,8 +129,8 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                             onClick={handleLogout}
                             className="flex cursor-pointer items-center justify-center gap-2 p-3 rounded-xl dark:hover:bg-red-500/10 transition-all font-bold text-sm tracking-wider"
                         >
-                            {t('sidebar.logout')}
                             <LogOut size={18} />
+                            {t('sidebar.logout')}
                         </button>
                     </div>
                 </aside>

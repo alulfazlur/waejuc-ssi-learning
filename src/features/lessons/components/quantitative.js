@@ -1,7 +1,6 @@
 "use client";
 import { Calculator, Pipette, Fish, Waves, ClipboardList } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import FooterLesson from "@components/FooterLesson";
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
 
@@ -16,13 +15,14 @@ export const QuantitativeComponent = (props) => {
 
     return (
         <div className="space-y-12">
-            <div className="flex gap-2 text-secondary dark:text-primary">
+            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
                 <ClipboardList className="min-w-6" />
-                <p>
-                    {t('quantitative.instruction')}
+                <p className="text-sm leading-relaxed">
+                    <b>{`${t('common.activity')}: `}</b>
+                    {t('qualitative.instruction')}
                 </p>
             </div>
-            {/* SECTION 1: SAMPLING STATIONS TABLE */}
+          
             <section className="space-y-6">
                 <Instruction
                     title={t('quantitative.sections.abundance')}
@@ -62,7 +62,6 @@ export const QuantitativeComponent = (props) => {
                     />
                     <RichEditor
                         {...register("calc_runoff_vs_currents")}
-                        placeholder={t('quantitative.questions.placeholders.q1')}
                         control={control}
                         errors={errors}
                     />
@@ -76,14 +75,12 @@ export const QuantitativeComponent = (props) => {
                     />
                     <RichEditor
                         {...register("calc_human_exposure")}
-                        placeholder={t('quantitative.questions.placeholders.q2')}
                         control={control}
                         errors={errors}
                     />
                 </div>
             </section>
 
-            {/* SECTION 2: TROPHIC LEVEL TABLE */}
             <section className="space-y-6">
                 <Instruction
                     title={t('quantitative.sections.biomagnification')}
@@ -112,22 +109,19 @@ export const QuantitativeComponent = (props) => {
                 </div>
 
                 <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4">
-                   <Instruction
+                    <Instruction
                         title={t('quantitative.questions.q3_title')}
                         description={t('quantitative.questions.q3_desc')}
                         icon={Calculator}
                     />
                     <RichEditor
                         {...register("calc_biomagnification")}
-                        placeholder={t('quantitative.questions.placeholders.q3')}
                         control={control}
                         errors={errors}
                         rows={4}
                     />
                 </div>
             </section>
-
-            <FooterLesson description={t('quantitative.footer')} />
         </div>
     );
 };

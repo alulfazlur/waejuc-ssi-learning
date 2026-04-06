@@ -29,8 +29,8 @@ export default function LanguageToggle({
                                 cursor-pointer relative px-4 py-1.5 rounded-lg text-[11px] font-black tracking-widest
                                 transition-colors duration-300 flex items-center justify-center min-w-11.25
                                 ${isActive 
-                                    ? "text-background" // Warna teks saat aktif (kontras dengan slider)
-                                    : colorClass + " opacity-40 hover:opacity-100" // Warna teks saat tidak aktif
+                                    ? "text-background" 
+                                    : colorClass + " opacity-40 hover:opacity-100"
                                 }
                             `}
                         >

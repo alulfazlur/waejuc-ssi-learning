@@ -4,16 +4,15 @@ import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import {
     Download,
-    Calculator,
     X,
     ZoomIn,
     Dna,
+    ClipboardList
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import FooterLesson from "@components/FooterLesson";
 import Instruction from "@components/Instruction";
-import RichTextEditor from "@components/RichTextEditor"; // Gunakan Tiptap yang baru
+import RichTextEditor from "@components/RichTextEditor";
 import Button from "@components/Button";
 
 export const ExplanationComponent = (props) => {
@@ -29,12 +28,19 @@ export const ExplanationComponent = (props) => {
 
     return (
         <div className="space-y-8">
-            {/* AR SETUP CARD */}
+            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
+                <ClipboardList className="min-w-6" />
+                <p className="text-sm leading-relaxed">
+                    <b>{`${t('common.task')}: `}</b>
+                    {t('explanation.instruction')}
+                </p>
+            </div>
+
             <div
                 className="mb-12 overflow-hidden rounded-3xl bg-linear-to-br from-primary to-primary/90 dark:from-secondary dark:to-secondary/80 text-background shadow-2xl"
             >
                 <div className="flex flex-col md:flex-row">
-                    <div className="p-8 flex-1 space-y-6">
+                    <div className="p-8 flex-1 space-y-6 flex flex-col justify-between">
                         <div className="flex items-center gap-3">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white ring-1 ring-white/30">
                                 <Download size={24} />
@@ -45,10 +51,6 @@ export const ExplanationComponent = (props) => {
                             </div>
                         </div>
 
-                        <p className="text-white/80 leading-relaxed text-sm md:text-md antialiased">
-                            &quot;{t('explanation.ar_setup_desc')}&quot;
-                        </p>
-
                         <div className="flex gap-3 pt-2">
                             <Button href="https://drive.google.com/file/d/1Uujq_DYbMH8Fy75iLCqDQZPa3T4wK-D9/view?usp=sharing" target="_blank" className="rounded-xl px-8 shadow-lg" color="white" size="sm">
                                 Download APK
@@ -56,7 +58,6 @@ export const ExplanationComponent = (props) => {
                         </div>
                     </div>
 
-                    {/* MARKER PREVIEW AREA */}
                     <div className="bg-white/10 backdrop-blur-sm p-6 flex gap-4 md:w-fit items-center justify-center border-l border-white/10">
                         {markers.map((marker, idx) => (
                             <div
@@ -84,16 +85,22 @@ export const ExplanationComponent = (props) => {
                 </div>
             </div>
 
-            {/* ANALYSIS FORM SECTION */}
             <section className="space-y-6">
 
-                {/* QUALITATIVE ANALYSIS */}
                 <div
                     className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4"
                 >
                     <Instruction
-                        title={t('explanation.qualitative_title')}
-                        description={t('explanation.qualitative_desc')}
+                        title={t('explanation.q_title')}
+                        description={(
+                            <div>
+                                <ul className="list-disc list-inside space-y-1">
+                                    <li>{t('explanation.q1')}</li>
+                                    <li>{t('explanation.q2')}</li>
+                                    <li>{t('explanation.q3')}</li>
+                                </ul>
+                            </div>
+                        )}
                         icon={Dna}
                     />
                     <RichTextEditor
@@ -101,32 +108,10 @@ export const ExplanationComponent = (props) => {
                         name="qualitative_explanation"
                         control={control}
                         errors={errors}
-                        placeholder={t('explanation.placeholders.qualitative')}
-                    />
-                </div>
-
-                {/* QUANTITATIVE ANALYSIS */}
-                <div
-                    className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4"
-                >
-                   <Instruction
-                        title={t('explanation.quantitative_title')}
-                        description={t('explanation.quantitative_desc')}
-                        icon={Calculator}
-                    />
-                    <RichTextEditor
-                        {...register("quantitative_calculation")}
-                        name="quantitative_calculation"
-                        control={control}
-                        errors={errors}
-                        placeholder={t('explanation.placeholders.quantitative')}
                     />
                 </div>
             </section>
 
-            <FooterLesson description="Pastikan kaitan antara domain pelaut dan penjual seafood terjawab secara komprehensif." />
-
-            {/* FULLSCREEN MODAL (MARKER) */}
             <AnimatePresence>
                 {selectedImage && (
                     <div

@@ -141,10 +141,8 @@ export default function SignIn() {
 
                     <form onSubmit={handleSignIn} className="space-y-6">
                         <div className="space-y-2">
-                            <label className="text-sm font-blacktext-primary/40 dark:text-primary ml-1">
-                                {t('signin.label')}
-                            </label>
-                            <div className="relative group">
+                            <label className="text-[13px] font-bold">{t('signin.label')}</label>
+                            <div className="relative group mt-1">
                                 <div className="absolute inset-y-0 left-4 flex items-center text-primary/30 group-focus-within:text-primary transition-colors dark:text-background/50 dark:group-focus-within:text-background">
                                     <ShieldCheck size={20} />
                                 </div>
