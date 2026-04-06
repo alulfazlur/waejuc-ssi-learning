@@ -8,8 +8,9 @@ import { createClient } from "@lib/supabase/client";
 import { useAuth } from "@context/AuthContext";
 
 import { FORM_SCHEMAS } from "@features/lessons/logic/form-configs";
-import { InitialComponent, QualitativeComponent, QuantitativeComponent, ExplanationComponent, DecisionComponent } from "@features/lessons/components";
+import { InitialComponent, QualitativeComponent, QuantitativeComponent, ExplanationComponent, DecisionComponent, CompletionPage } from "@features/lessons/components";
 import { SYLLABUS } from "@constants/syllabus";
+import Button from "@components/Button";
 
 const LEVEL_ORDER = SYLLABUS.map(s => s.id);
 
@@ -18,7 +19,8 @@ const COMPONENT_MAP = {
     "qualitative": QualitativeComponent,
     "quantitative": QuantitativeComponent,
     "explanation": ExplanationComponent,
-    "decision": DecisionComponent
+    "decision": DecisionComponent,
+    "complete": CompletionPage,
 };
 
 export default function LessonController({ slug }) {
@@ -27,6 +29,7 @@ export default function LessonController({ slug }) {
     const { refreshProgress, user, responses } = useAuth();
 
     const schema = FORM_SCHEMAS[slug];
+    const isCompletePage = slug === "complete";
 
     const methods = useForm({
         resolver: schema ? yupResolver(schema) : undefined,
@@ -60,7 +63,7 @@ export default function LessonController({ slug }) {
                 router.push(`/learning/${nextSlug}`);
             } else {
                 alert("Selamat! Anda telah menyelesaikan semua level praktikum.");
-                router.push("/learning/mission-complete");
+                router.push("/learning/complete");
             }
 
         } catch (err) {
@@ -77,6 +80,16 @@ export default function LessonController({ slug }) {
         }
     }, [slug, responses, methods]);
 
+    if (isCompletePage && !responses["decision"]) {
+        alert("Anda harus menyelesaikan level sebelumnya terlebih dahulu.");
+        router.push("/learning/decision");
+        return null;
+    }
+
+    if (isCompletePage) {
+        return <CompletionPage />;
+    }
+    
     const ActiveComponent = COMPONENT_MAP[slug];
 
     if (!ActiveComponent) {
@@ -90,6 +103,11 @@ export default function LessonController({ slug }) {
                     methods={methods}
                     errors={errors}
                 />
+                <div className="my-8 flex justify-end">
+                    <Button type="submit">
+                        Simpan & Lanjut
+                    </Button>
+                </div>
             </form>
         </FormProvider>
     );

@@ -8,7 +8,7 @@ export const Hero = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="hero" className="relative flex flex-col items-center justify-center py-20 px-6 text-center h-screen">
+        <section id="hero" className="relative flex flex-col items-center justify-center py-20 px-6 text-center h-screen gap-12">
 
             <div className="absolute inset-0 -z-20 w-full h-full">
                 <video
@@ -30,7 +30,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-background dark:text-primary"
+                className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-background dark:text-primary"
             >
                 {t('hero.title')}
             </motion.h1>
@@ -39,7 +39,7 @@ export const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-background dark:text-primary"
+                className="text-lg md:text-xl max-w-7xl mx-auto leading-relaxed text-background dark:text-primary"
             >
                 {t('hero.description')}
             </motion.p>

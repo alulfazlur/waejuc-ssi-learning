@@ -1,9 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { Play, Microscope, ClipboardList } from "lucide-react";
+import { Play, Microscope, ClipboardList, MessageSquare } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import FooterLesson from "@components/FooterLesson";
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
 import Input from "@components/Input";
@@ -21,11 +20,10 @@ export const InitialComponent = (props) => {
 
     return (
         <div className="space-y-8">
-            {/* SECTION 1: STAKEHOLDER INTERVIEWS */}
             <section className="space-y-6 border-b border-b-tertiary pb-8">
-                <div className="flex gap-2 text-secondary dark:text-primary">
+                <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
                     <ClipboardList className="min-w-6" />
-                    <p>
+                    <p className="text-sm leading-relaxed">
                         <b>{`${t('common.activity')}: `}</b>
                         {t('initial.instruction')}
                     </p>
@@ -37,7 +35,7 @@ export const InitialComponent = (props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
-                        whileHover={{ y: -5 }}
+                        whileHover={{ y: -3, scale: 1.02 }}
                     >
                         Video 1
                     </motion.a>
@@ -46,115 +44,142 @@ export const InitialComponent = (props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
-                        whileHover={{ y: -5 }}
+                        whileHover={{ y: -3, scale: 1.02 }}
                     >
                         Video 2
                     </motion.a>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-4">
                     {stakeholders.map((s) => (
-                        <div
-                            key={s.id}
-                            className="p-6 rounded-2xl bg-tertiary dark:bg-secondary border border-border dark:border-primary/20 flex flex-col justify-between"
-                        >
+                        <div key={s.id} className="p-5 rounded-2xl bg-tertiary dark:bg-secondary border border-border flex flex-col justify-between">
                             <div>
                                 <h3 className="font-bold text-lg mb-2 text-primary">
                                     {t(`initial.stakeholders.list.${s.id}.label`)}
                                 </h3>
-                                <p className="text-sm italic opacity-80 leading-relaxed text-foreground">
+                                <p className="text-sm italic opacity-80">
                                     &quot;{t(`initial.stakeholders.list.${s.id}.summary`)}&quot;
                                 </p>
                             </div>
-
                             <button
                                 type="button"
-                                className="mt-6 flex items-center gap-2 text-primary font-bold hover:underline cursor-pointer group"
-                            >
-                                <div className="p-2 bg-primary text-tertiary dark:text-secondary rounded-full group-hover:scale-110 transition-transform">
+                                className="mt-4 flex items-center gap-2 text-primary font-bold hover:opacity-80 cursor-pointer transition-opacity">
+                                <div className="p-1.5 bg-primary text-tertiary dark:text-secondary rounded-full group-hover:scale-110 transition-transform">
                                     <Play size={10} fill="currentColor" />
                                 </div>
-                                <span className="text-sm">{t('initial.stakeholders.listen_btn')}</span>
+                                <span className="text-xs">{t('initial.stakeholders.listen_btn')}</span>
                             </button>
                         </div>
                     ))}
                 </div>
             </section>
 
-            {/* SECTION 2: COMPONENT IDENTIFICATION */}
-            <section className="space-y-6">
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4">
-                    <Instruction
-                        title={t('initial.component_id.title')}
-                        description={t('initial.component_id.description')}
-                    />
-                    <RichEditor
-                        {...register("components_list")}
-                        placeholder={t('initial.component_id.placeholder')}
-                        errors={errors}
-                        control={control}
-                    />
+            <section className="space-y-4">
+                <Instruction
+                    title={t('initial.issue_title')}
+                    description={t('initial.issue_description')}
+                    icon={MessageSquare}
+                />
+                <RichEditor
+                    {...register("main_issue_analysis")}
+                    errors={errors}
+                    control={control}
+                />
+            </section>
+
+            <section className="space-y-4 bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
+                <Instruction
+                    title={t('initial.component_id.title')}
+                    description={t('initial.component_id.description')}
+                />
+                <RichEditor
+                    {...register("components_table_analysis")}
+                    errors={errors}
+                    control={control}
+                />
+            </section>
+
+            <section className="bg-tertiary dark:bg-secondary p-8 rounded-3xl border border-border dark:border-primary/20">
+                <div className="flex items-center gap-3 mb-6">
+                    <Microscope className="text-primary" size={28} />
+                    <div>
+                        <h2 className="text-2xl font-bold">{t('initial.properties.title')}</h2>
+                        <p className="text-sm opacity-70">{t('initial.properties.description')}</p>
+                    </div>
                 </div>
 
-                {/* SECTION 3: PROPERTIES */}
-                <div className="bg-tertiary dark:bg-secondary p-8 rounded-3xl border border-border dark:border-primary/20">
-                    <div className="flex items-center gap-3 mb-6">
-                        <Microscope className="text-primary" size={28} />
-                        <h2 className="text-2xl font-bold">{t('initial.properties.title')}</h2>
-                    </div>
-                    <p className="text-sm mb-8 opacity-80">
-                        {t('initial.properties.description')}
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {/* Component A */}
-                        <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
-                            <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
-                                <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">A</span>
-                                {t('initial.properties.label_a')}
-                            </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
+                        <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
+                            <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">A</span>
+                            {t('initial.plastic_form.title')}
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-[12px] font-bold">{t('initial.properties.name_label')}</label>
                             <Input
-                                {...register("comp_a_name")}
-                                placeholder={t('initial.properties.placeholder_name')}
+                                {...register("plastic_name")}
                                 errors={errors}
                                 control={control}
-                            />
-                            <RichEditor
-                                {...register("comp_a_property")}
-                                placeholder={t('initial.properties.placeholder_desc')}
-                                errors={errors}
-                                control={control}
-                                rows={3}
                             />
                         </div>
-
-                        {/* Component B */}
-                        <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
-                            <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
-                                <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">B</span>
-                                {t('initial.properties.label_b')}
-                            </div>
-                            <Input
-                                {...register("comp_b_name")}
-                                placeholder={t('initial.properties.placeholder_name')}
+                        <div className="space-y-1">
+                            <label className="text-sm font-bold">{t('initial.plastic_form.props_label')}</label>
+                            <br />
+                            <span className="text-[12px]">{t('initial.plastic_form.props_placeholder')}</span>
+                            <RichEditor
+                                {...register("plastic_props")}
                                 errors={errors}
                                 control={control}
                             />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-sm font-bold">{t('initial.plastic_form.behave_label')}</label>
+                            <br />
+                            <span className="text-[12px]">{t('initial.plastic_form.behave_placeholder')}</span>
                             <RichEditor
-                                {...register("comp_b_property")}
-                                placeholder={t('initial.properties.placeholder_desc')}
+                                {...register("plastic_behavior_pred")}
                                 errors={errors}
                                 control={control}
-                                rows={3}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
+                        <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
+                            <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">A</span>
+                            {t('initial.organism_form.title')}
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-[12px] font-bold">{t('initial.properties.name_label')}</label>
+                            <Input
+                                {...register("organism_name")}
+                                errors={errors}
+                                control={control}
+                            />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-sm font-bold">{t('initial.organism_form.props_label')}</label>
+                            <br />
+                            <span className="text-[12px]">{t('initial.organism_form.props_placeholder')}</span>
+                            <RichEditor
+                                {...register("organism_props")}
+                                errors={errors}
+                                control={control}
+                            />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-sm font-bold">{t('initial.organism_form.behave_label')}</label>
+                            <br />
+                            <span className="text-[12px]">{t('initial.organism_form.behave_placeholder')}</span>
+                            <RichEditor
+                                {...register("organism_behavior_pred")}
+                                errors={errors}
+                                control={control}
                             />
                         </div>
                     </div>
                 </div>
             </section>
-
-            <FooterLesson
-                description={t('initial.footer')}
-            />
         </div>
     );
 };
