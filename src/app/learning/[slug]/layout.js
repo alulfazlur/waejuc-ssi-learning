@@ -76,8 +76,9 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                     </div>
 
                     <div className="p-6 pt-5 flex-1">
-                        <h3 className="text-sm font-bold uppercase tracking-widest text-secondary dark:text-primary mb-8 flex items-center gap-2">
-                            <BookOpen size={18} /> {t('sidebar.progress_title')}
+                        <h3 className="text-sm font-bold tracking-wide text-secondary dark:text-primary mb-8 flex items-center gap-2">
+                            <BookOpen size={18} />
+                            {t('sidebar.progress_title')}
                         </h3>
 
                         <div className="relative space-y-0">

@@ -36,7 +36,7 @@ export default function LanguageToggle({
                         >
                             <span className="relative z-10 uppercase">{lang.label}</span>
 
-                            {isActive && (
+                            {isActive ? (
                                 <motion.div
                                     layoutId="activeLanguageTab"
                                     className="absolute inset-0 bg-primary shadow-md rounded-xl"
@@ -46,7 +46,7 @@ export default function LanguageToggle({
                                         damping: 35
                                     }}
                                 />
-                            )}
+                            ): <div />}
                         </button>
                     );
                 })}

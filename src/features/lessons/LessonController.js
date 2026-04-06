@@ -3,9 +3,11 @@ import { useEffect } from 'react'
 import { useRouter, notFound } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from 'sonner';
 
 import { createClient } from "@lib/supabase/client";
 import { useAuth } from "@context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 import { FORM_SCHEMAS } from "@features/lessons/logic/form-configs";
 import { InitialComponent, QualitativeComponent, QuantitativeComponent, ExplanationComponent, DecisionComponent, CompletionPage } from "@features/lessons/components";
@@ -26,6 +28,7 @@ const COMPONENT_MAP = {
 export default function LessonController({ slug }) {
     const supabase = createClient()
     const router = useRouter();
+    const { t } = useTranslation();
     const { refreshProgress, user, responses } = useAuth();
 
     const schema = FORM_SCHEMAS[slug];
@@ -59,17 +62,16 @@ export default function LessonController({ slug }) {
 
             if (nextIndex < LEVEL_ORDER.length && nextIndex < 5) {
                 const nextSlug = LEVEL_ORDER[nextIndex];
-                alert("Data tersimpan! Melanjutkan ke level berikutnya...");
+                toast.success(t('toast.success'))
                 router.push(`/learning/${nextSlug}`);
             } else {
-                alert("Selamat! Anda telah menyelesaikan semua level praktikum.");
                 router.push("/learning/complete");
             }
 
         } catch (err) {
             // eslint-disable-next-line no-console
             console.error("Error saving:", err.message);
-            alert("Gagal menyimpan data.");
+            toast.error(err.message || t('toast.error'));
         }
     };
 
@@ -80,16 +82,10 @@ export default function LessonController({ slug }) {
         }
     }, [slug, responses, methods]);
 
-    if (isCompletePage && !responses["decision"]) {
-        alert("Anda harus menyelesaikan level sebelumnya terlebih dahulu.");
-        router.push("/learning/decision");
-        return null;
-    }
-
     if (isCompletePage) {
         return <CompletionPage />;
     }
-    
+
     const ActiveComponent = COMPONENT_MAP[slug];
 
     if (!ActiveComponent) {

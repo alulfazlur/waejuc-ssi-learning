@@ -129,6 +129,18 @@
             "description": "Identifikasi minimal 5 komponen (biotik dan abiotik). Gunakan fitur tabel untuk mengelompokkan: Komponen, Jenis, dan Perannya.",
             "placeholder": "Gunakan tombol tabel di atas. Contoh: | Jaring | Abiotik | Sumber mikroplastik |"
         },
+        "table_component": {
+            "headers": [
+                "Komponen",
+                "Tipe (Biotik/Abiotik)",
+                "Peran dalam Sistem"
+            ],
+            "row": [
+                "Contoh: Jaring",
+                "Abiotik",
+                "Sumber mikroplastik fiber"
+            ]
+        },
         "properties": {
             "title": "Analisis Interaksi Komponen",
             "description": "Pilih satu plastik dan satu organisme, lalu analisis sifat dan prediksi interaksinya.",
@@ -231,5 +243,9 @@
         "survey_link": "Isi Kuesioner Sekarang",
         "or": "Atau",
         "logout": "Keluar dari akun"
+    },
+    "toast": {
+        "error": "Terjadi kesalahan. Silakan coba lagi.",
+        "success": "Data berhasil disimpan!"
     }
 }

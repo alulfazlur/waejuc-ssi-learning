@@ -1,6 +1,7 @@
 import "./globals.css";
 import { AuthProvider } from '@context/AuthContext';
 import { I18nProvider } from '@context/I18nProvider';
+import { Toaster } from 'sonner';
 
 export const metadata = {
   title: "Waejuc SSI",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
         <I18nProvider>
           <AuthProvider>
             {children}
+            <Toaster position="bottom-center" richColors />
           </AuthProvider>
         </I18nProvider>
       </body>
