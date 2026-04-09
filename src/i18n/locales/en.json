@@ -7,7 +7,9 @@
         "instruction": "Instruction",
         "activity": "Activity",
         "load_init": "Initializing Research Environment...",
-        "start_mission": "Start Mission"
+        "start_mission": "Start Mission",
+        "example": "Example",
+        "select_placeholder": "Select an option"
     },
     "error": {
         "video_not_supported": "Your browser does not support the video tag.",
@@ -50,7 +52,7 @@
         "context": {
             "p1": "The problem begins when people's consumption patterns change There has been a drastic shift to single-use plastics, while the waste management system has not been able to keep up with the load. Plastic waste dumped into the <0>Bedadung River</0> in urban areas doesn't stay there.",
             "p1_bold": "Bedadung River",
-            "p2": "The river carries it 45 km to the Puger estuary — there, invisible particles infiltrate <0>the tissues of fish and shellfish</0>, posing a systemic threat to public health and the balance of Jember's interconnected ecosystem.",
+            "p2": "The river carries it 45 km to the Puger estuary. There, invisible particles infiltrate <0>the tissues of fish and shellfish</0>, posing a systemic threat to public health and the balance of Jember's interconnected ecosystem.",
             "p2_bold": "fish and shellfish tissues"
         },
         "chain_title": "Chain of Problems",
@@ -97,7 +99,8 @@
         "explanation": "Building a Potential Explanation",
         "explanation_subtitle": "The AR Mechanism",
         "decision": "Making Decisions",
-        "decision_subtitle": "Reflexive Thinking"
+        "decision_subtitle": "Reflexive Thinking",
+        "reflection": "Learning Reflection"
     },
     "initial": {
         "instruction": "Watch a 360° video of the port and interviews with three stakeholders (Seafarers, Seafood Vendors, and Government Officials).",
@@ -126,8 +129,7 @@
         "issue_description": "After watching the video and listening to the interview, what are the most pressing issues? Why are these issues interconnected between fishermen, fish sellers, and the government?",
         "component_id": {
             "title": "Identifying Ecosystem Components",
-            "description": "Identify at least 5 components (biotic and abiotic). Use the table feature to group them: Components, Types, and Roles.",
-            "placeholder": "Use the table button above. Example: | Nets | Abiotic | Sources of microplastics |"
+            "description": "Identify at least 5 components (biotic and abiotic). Use the table feature to group them: Components, Types, and Roles (Source of Pollutant/Victim/Medium of Transportation)."
         },
         "table_component": {
             "headers": [
@@ -136,10 +138,13 @@
                 "Role in the System"
             ],
             "row": [
-                "Example: Nets",
+                "Nets",
                 "Abiotic",
                 "Sources of fiber microplastics"
-            ]
+            ],
+            "name_placeholder": "Nets, Plastic Bottles, Fish, etc.",
+            "role_placeholder": "Source of Pollutant, Victim, Medium of Transportation",
+            "add_row": "Add Row"
         },
         "properties": {
             "title": "Component Interaction Analysis",
@@ -234,6 +239,17 @@
             }
         }
     },
+    "reflection": {
+        "instruction": "Compose a short reflection that summarizes the following points.",
+        "insight": "New Insight",
+        "insight_desc": "What profound knowledge has stuck with you most (for example: the mechanism of plastic fragmentation or the impact of pesticides on nerves)?",
+        "feel": "Feeling",
+        "feel_desc": "How did you feel (angry, sad, challenged, or inspired) after realizing that Jember's natural beauty harbors a serious health threat?",
+        "teach": "Prospective Teacher's Perspective",
+        "teach_desc": "As a prospective educator, how has this experience of learning using immersive technology (AR & 360°) influenced the way you want to teach your students in the future? Do you feel this method is more capable of building environmental stewardship?",
+        "action": "Action for the Earth",
+        "action_desc": "How has this learning strengthened your desire to contribute to preserving the earth, starting with small steps in the Jember environment?"
+    },
     "complete": {
         "title": "Investigation Completed!",
         "thank_you": "Thank you.",
@@ -247,5 +263,11 @@
     "toast": {
         "error": "An error occurred. Please try again.",
         "success": "Data saved successfully!"
+    },
+    "validation": {
+        "required": "This field is required.",
+        "numeric": "Please enter a valid number.",
+        "positive": "Please enter a positive value.",
+        "recheck_answer": "Please recheck your answer!"
     }
 }

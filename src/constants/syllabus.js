@@ -5,4 +5,5 @@ export const SYLLABUS = [
     { id: "quantitative", step: 3 },
     { id: "explanation", step: 4 },
     { id: "decision", step: 5 },
+    { id: "reflection", step: 6 },
 ];

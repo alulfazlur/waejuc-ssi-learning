@@ -1,17 +1,12 @@
-import { useWatch } from "react-hook-form";
-
 export default function Input({
     placeholder = "",
     name = "",
     errors,
-    control,
+    error: errorProps,
+    value,
     ...other
 }) {
-    const value = useWatch({
-        control,
-        name,
-    }) || '';
-    const error = errors && errors[name]
+    const error = errorProps || (errors && errors[name])
     return (
         <>
             <div className="relative w-full">
@@ -26,7 +21,7 @@ export default function Input({
                 />
             </div>
             {error && (
-                <p className="text-red-500 text-xs italic">{error.message}</p>
+                <p className="text-red-500 text-[11px] mt-1">{error.message}</p>
             )}
         </>
     );

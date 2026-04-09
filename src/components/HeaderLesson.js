@@ -14,7 +14,7 @@ export default function HeaderLesson({
                         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
                             {t(`syllabus.${id}`)}
                         </h1>
-                        {step >= 4 &&
+                        {(step == 4 || step == 5) &&
                             <h2 className="text-2xl font-medium tracking-tight italic mt-2">
                                ({t(`syllabus.${id}_subtitle`)})
                             </h2>

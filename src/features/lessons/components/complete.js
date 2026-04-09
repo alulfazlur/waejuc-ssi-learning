@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
     transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
-const SURVEY_URL = "https://forms.google.com/your-survey-link";
+const SURVEY_URL = "https://forms.gle/SNxWawEMEHsf3eRB6";
 
 export const CompletionPage = () => {
     const router = useRouter();

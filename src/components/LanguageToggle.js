@@ -39,6 +39,7 @@ export default function LanguageToggle({
                             {isActive ? (
                                 <motion.div
                                     layoutId="activeLanguageTab"
+                                    layoutDependency={false}
                                     className="absolute inset-0 bg-primary shadow-md rounded-xl"
                                     transition={{
                                         type: "spring",

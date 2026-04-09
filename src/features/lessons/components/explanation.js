@@ -12,13 +12,13 @@ import {
 import { useTranslation } from "react-i18next";
 
 import Instruction from "@components/Instruction";
-import RichTextEditor from "@components/RichTextEditor";
+import RichEditor from "@components/RichTextEditor";
 import Button from "@components/Button";
 
 export const ExplanationComponent = (props) => {
     const { t } = useTranslation();
     const { methods, errors } = props;
-    const { register, control } = methods;
+    const { control } = methods;
     const [selectedImage, setSelectedImage] = useState(null);
 
     const markers = [
@@ -102,9 +102,8 @@ export const ExplanationComponent = (props) => {
                         </ul>
                     </div>
 
-                    <RichTextEditor
-                        {...register("qualitative_explanation")}
-                        name="qualitative_explanation"
+                    <RichEditor
+                        name="transformation_mechanism"
                         control={control}
                         errors={errors}
                     />
