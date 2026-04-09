@@ -2,12 +2,14 @@
     "common": {
         "next": "Selanjutnya",
         "back": "Kembali",
-        "submit": "Kirim",
+        "submit": "Simpan",
         "task": "Tugas",
         "instruction": "Instruksi",
         "activity": "Aktifitas",
         "load_init": "Menginisialisasi Lingkungan Penelitian...",
-        "start_mission": "Mulai Misi"
+        "start_mission": "Mulai Misi",
+        "example": "Contoh",
+        "select_placeholder": "Pilih opsi..."
     },
     "error": {
         "video_not_supported": "Browser Anda tidak mendukung tag video.",
@@ -50,7 +52,7 @@
         "context": {
             "p1": "Masalah dimulai ketika pola konsumsi masyarakat berubah drastis ke penggunaan plastik sekali pakai, sementara sistem pengelolaan limbah belum mampu mengimbangi beban tersebut. Sampah plastik yang dibuang ke <0>Sungai Bedadung</0> di wilayah perkotaan tidak menetap di sana.",
             "p1_bold": "Sungai Bedadung",
-            "p2": "Aliran sungai membawanya sejauh 45 km menuju muara Puger — di sana, partikel tak kasat mata menyusup ke dalam <0>jaringan tubuh ikan dan kerang</0>, menjadi ancaman sistemik bagi kesehatan masyarakat dan keseimbangan ekosistem Jember yang saling terhubung.",
+            "p2": "Aliran sungai membawanya sejauh 45 km menuju muara Puger. Di sana, partikel tak kasat mata menyusup ke dalam <0>jaringan tubuh ikan dan kerang</0>, menjadi ancaman sistemik bagi kesehatan masyarakat dan keseimbangan ekosistem Jember yang saling terhubung.",
             "p2_bold": "jaringan tubuh ikan dan kerang"
         },
         "chain_title": "Rantai Masalah",
@@ -97,7 +99,8 @@
         "explanation": "Membangun Penjelasan Potensial",
         "explanation_subtitle": "Mekanisme AR",
         "decision": "Pengambilan Keputusan",
-        "decision_subtitle": "Berpikir Refleksif"
+        "decision_subtitle": "Berpikir Refleksif",
+        "reflection": "Refleksi Pembelajaran"
     },
     "initial": {
         "instruction": "Saksikan video 360° pelabuhan dan wawancara dengan tiga pemangku kepentingan (Pelaut, Penjual Makanan Laut, dan Pejabat Pemerintah).",
@@ -126,8 +129,7 @@
         "issue_description": "Setelah melihat video dan mendengar wawancara, isu utama apa yang paling mendesak? Mengapa isu tersebut saling berkaitan antara nelayan, penjual ikan, dan pemerintah?",
         "component_id": {
             "title": "Identifikasi Komponen Ekosistem",
-            "description": "Identifikasi minimal 5 komponen (biotik dan abiotik). Gunakan fitur tabel untuk mengelompokkan: Komponen, Jenis, dan Perannya.",
-            "placeholder": "Gunakan tombol tabel di atas. Contoh: | Jaring | Abiotik | Sumber mikroplastik |"
+            "description": "Identifikasi minimal 5 komponen (biotik dan abiotik). Gunakan fitur tabel untuk mengelompokkan: Komponen, Jenis, dan Perannya (Sumber Polutan/Korban/Media Transportasi)."
         },
         "table_component": {
             "headers": [
@@ -136,10 +138,13 @@
                 "Peran dalam Sistem"
             ],
             "row": [
-                "Contoh: Jaring",
+                "Jaring",
                 "Abiotik",
                 "Sumber mikroplastik fiber"
-            ]
+            ],
+            "name_placeholder": "Jaring, Ikan, Air, dll",
+            "role_placeholder": "Sumber mikroplastik fiber, Korban kontaminasi, Media transportasi, dll",
+            "add_row": "Tambah Baris"
         },
         "properties": {
             "title": "Analisis Interaksi Komponen",
@@ -234,6 +239,17 @@
             }
         }
     },
+    "reflection": {
+        "instruction": "Susunlah sebuah refleksi singkat yang merangkum poin-poin berikut.",
+        "insight": "Wawasan Baru",
+        "insight_desc": "Pengetahuan mendalam apa yang paling membekas dalam ingatan Anda (misalnya: mekanisme fragmentasi plastik atau dampak pestisida pada saraf)?",
+        "feel": "Perasaan",
+        "feel_desc": "Bagaimana perasaan Anda (marah, sedih, tertantang, atau terinspirasi) setelah menyadari bahwa keindahan alam Jember menyimpan ancaman kesehatan yang serius?",
+        "teach": "Sudut Pandang Calon Guru",
+        "teach_desc": "Sebagai calon pendidik, bagaimana pengalaman belajar menggunakan teknologi imersif (AR & 360°) ini memengaruhi cara Anda ingin mengajar siswa Anda nanti? Apakah Anda merasa metode seperti ini lebih mampu membangun karakter peduli lingkungan?",
+        "action": "Aksi untuk Bumi",
+        "action_desc": "Bagaimana pembelajaran ini menguatkan keinginan Anda untuk berkontribusi menjaga kelestarian bumi, dimulai dari langkah kecil di lingkungan Jember?"
+    },
     "complete": {
         "title": "Penyelidikan Selesai!",
         "thank_you": "Terima kasih.",
@@ -247,5 +263,11 @@
     "toast": {
         "error": "Terjadi kesalahan. Silakan coba lagi.",
         "success": "Data berhasil disimpan!"
+    },
+    "validation": {
+        "required": "Field ini wajib diisi.",
+        "numeric": "Harap masukkan nilai numerik.",
+        "positive": "Harap masukkan nilai positif.",
+        "recheck_answer": "Harap periksa kembali jawaban Anda!"
     }
 }

@@ -145,7 +145,7 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                             exit={{ opacity: 0, x: 100 }}
                             transition={{ duration: 0.3, ease: "easeOut" }}
                         >
-                            <div className="max-w-7xl mx-auto pt-12 px-6 mb-10 lg:mb-0">
+                            <div className="max-w-7xl mx-auto pt-12 px-6">
                                 {currentIndex >= 0 && (
                                     <HeaderLesson
                                         step={currentSyllabus.step}
@@ -162,7 +162,7 @@ export default function LearningLayout({ params: paramsPromise, children }) {
 
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="fixed bottom-6 right-6 lg:hidden bg-secondary text-white p-4 rounded-full shadow-2xl z-50"
+                    className="fixed bottom-25 right-6 lg:hidden bg-secondary text-white p-4 rounded-full shadow-2xl z-50"
                 >
                     <Menu />
                 </button>

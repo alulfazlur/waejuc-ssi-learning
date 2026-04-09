@@ -10,7 +10,7 @@ import trophicData from "@data/data_trophic.json";
 export const QuantitativeComponent = (props) => {
     const { t, i18n } = useTranslation();
     const { methods, errors } = props;
-    const { register, control } = methods;
+    const { control } = methods;
     const isEn = i18n.language === 'en';
 
     return (
@@ -22,7 +22,7 @@ export const QuantitativeComponent = (props) => {
                     {t('qualitative.instruction')}
                 </p>
             </div>
-          
+
             <section className="space-y-6">
                 <Instruction
                     title={t('quantitative.sections.abundance')}
@@ -61,7 +61,7 @@ export const QuantitativeComponent = (props) => {
                         icon={Pipette}
                     />
                     <RichEditor
-                        {...register("calc_runoff_vs_currents")}
+                        name="calc_runoff_vs_currents"
                         control={control}
                         errors={errors}
                     />
@@ -74,7 +74,7 @@ export const QuantitativeComponent = (props) => {
                         icon={Calculator}
                     />
                     <RichEditor
-                        {...register("calc_human_exposure")}
+                        name="calc_human_exposure"
                         control={control}
                         errors={errors}
                     />
@@ -115,7 +115,7 @@ export const QuantitativeComponent = (props) => {
                         icon={Calculator}
                     />
                     <RichEditor
-                        {...register("calc_biomagnification")}
+                        name="calc_biomagnification"
                         control={control}
                         errors={errors}
                         rows={4}

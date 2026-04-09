@@ -226,7 +226,9 @@ export default function RichTextEditor({
         content: value || "",
         immediatelyRender: false,
         onUpdate({ editor }) {
-            onChange(editor.getHTML());
+            const html = editor.getHTML();
+            const isReallyEmpty = editor.getText().trim().length === 0;
+            onChange(isReallyEmpty ? "" : html);
         },
         editorProps: {
             attributes: {
@@ -430,7 +432,7 @@ export default function RichTextEditor({
             </div>
 
             {error && (
-                <p className="text-red-500 text-xs italic mt-1">{error.message}</p>
+                <p className="text-red-500 text-[11px]">{error.message}</p>
             )}
         </>
     );

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
 import Input from "@components/Input";
+import Table from "./initial_table";
 
 function formatTime(secs) {
     if (!secs || isNaN(secs)) return "0:00";
@@ -187,7 +188,7 @@ export const InitialComponent = (props) => {
                     icon={MessageSquare}
                 />
                 <RichEditor
-                    {...register("main_issue_analysis")}
+                    name="main_issue_analysis"
                     errors={errors}
                     control={control}
                 />
@@ -198,29 +199,7 @@ export const InitialComponent = (props) => {
                     title={t('initial.component_id.title')}
                     description={t('initial.component_id.description')}
                 />
-                <div className="overflow-x-auto rounded-2xl border border-border shadow-sm">
-                    <table className="w-full text-sm text-left">
-                        <thead className="bg-tertiary dark:bg-secondary text-primary uppercase text-xs font-bold">
-                            <tr>
-                                {t('initial.table_component.headers', { returnObjects: true })?.map((header, idx) => (
-                                    <th key={idx} className="px-6 py-4">{header}</th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-border">
-                            <tr>
-                                {t('initial.table_component.row', { returnObjects: true })?.map((row, idx) => (
-                                    <td key={idx} className="px-6 py-4 opacity-80">{row}</td>
-                                ))}
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <RichEditor
-                    {...register("components_table_analysis")}
-                    errors={errors}
-                    control={control}
-                />
+                <Table control={control} register={register} errors={errors} />
             </section>
 
             <section className="bg-tertiary dark:bg-secondary p-8 rounded-3xl border border-border dark:border-primary/20">
@@ -239,20 +218,20 @@ export const InitialComponent = (props) => {
                             {t('initial.plastic_form.title')}
                         </div>
                         <div className="space-y-1">
-                            <label className="text-[12px] font-bold">{t('initial.properties.name_label')}</label>
+                            <label className="text-sm font-bold">{t('initial.properties.name_label')}</label>
                             <Input {...register("plastic_name")} errors={errors} control={control} />
                         </div>
                         <div className="space-y-1">
                             <label className="text-sm font-bold">{t('initial.plastic_form.props_label')}</label>
                             <br />
-                            <span className="text-[12px]">{t('initial.plastic_form.props_placeholder')}</span>
-                            <RichEditor {...register("plastic_props")} errors={errors} control={control} />
+                            <span className="text-sm">{t('initial.plastic_form.props_placeholder')}</span>
+                            <RichEditor name="plastic_props" errors={errors} control={control} />
                         </div>
                         <div className="space-y-1">
                             <label className="text-sm font-bold">{t('initial.plastic_form.behave_label')}</label>
                             <br />
-                            <span className="text-[12px]">{t('initial.plastic_form.behave_placeholder')}</span>
-                            <RichEditor {...register("plastic_behavior_pred")} errors={errors} control={control} />
+                            <span className="text-sm">{t('initial.plastic_form.behave_placeholder')}</span>
+                            <RichEditor name="plastic_behavior_pred" errors={errors} control={control} />
                         </div>
                     </div>
 
@@ -262,20 +241,20 @@ export const InitialComponent = (props) => {
                             {t('initial.organism_form.title')}
                         </div>
                         <div className="space-y-1">
-                            <label className="text-[12px] font-bold">{t('initial.properties.name_label')}</label>
+                            <label className="text-sm font-bold">{t('initial.properties.name_label')}</label>
                             <Input {...register("organism_name")} errors={errors} control={control} />
                         </div>
                         <div className="space-y-1">
                             <label className="text-sm font-bold">{t('initial.organism_form.props_label')}</label>
                             <br />
-                            <span className="text-[12px]">{t('initial.organism_form.props_placeholder')}</span>
-                            <RichEditor {...register("organism_props")} errors={errors} control={control} />
+                            <span className="text-sm">{t('initial.organism_form.props_placeholder')}</span>
+                            <RichEditor name="organism_props" errors={errors} control={control} />
                         </div>
                         <div className="space-y-1">
                             <label className="text-sm font-bold">{t('initial.organism_form.behave_label')}</label>
                             <br />
-                            <span className="text-[12px]">{t('initial.organism_form.behave_placeholder')}</span>
-                            <RichEditor {...register("organism_behavior_pred")} errors={errors} control={control} />
+                            <span className="text-sm">{t('initial.organism_form.behave_placeholder')}</span>
+                            <RichEditor name="organism_behavior_pred" errors={errors} control={control} />
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,7 @@ export const Hero = () => {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover"
                     poster="/images/hero-poster.webp"
                 >
@@ -30,7 +31,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-background dark:text-primary"
+                className="will-change-transform text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-background dark:text-primary"
             >
                 {t('hero.title')}
             </motion.h1>

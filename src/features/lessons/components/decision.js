@@ -10,10 +10,10 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import RichTextEditor from "@components/RichTextEditor";
+import RichEditor from "@components/RichTextEditor";
 import Input from "@components/Input";
 
-const PolicySection = ({ icon: Icon, title, description, name, placeholder, control, errors }) => (
+const PolicySection = ({ icon: Icon, title, description, name, control, errors }) => (
     <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-4 shadow-sm space-y-4">
         <div className="flex items-start gap-3">
             <div className={`p-2 rounded-xl`}>
@@ -24,11 +24,10 @@ const PolicySection = ({ icon: Icon, title, description, name, placeholder, cont
                 <h5 className="font-bold text-primary italic text-sm tracking-wide">({description})</h5>
             </div>
         </div>
-        <RichTextEditor
+        <RichEditor
             name={name}
             control={control}
             errors={errors}
-            placeholder={placeholder}
         />
     </div>
 );
@@ -59,7 +58,6 @@ export const DecisionComponent = (props) => {
                         errors={errors}
                         control={control}
                     />
-                    {errors.policy_name && <p className="text-red-500 text-xs mt-2 italic">{errors.policy_name.message}</p>}
                 </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -90,22 +88,20 @@ export const DecisionComponent = (props) => {
                 </div>
 
                 <motion.section
-                    className="mt-12 p-8 bg-primary dark:bg-secondary rounded-2xl text-background shadow-xl relative overflow-hidden"
+                    className="mt-12 p-8 bg-tertiary dark:bg-secondary rounded-2xl text-background shadow-xl relative overflow-hidden"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                 >
                     <div className="relative z-10 space-y-6">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
-                                <FileText size={24} />
-                            </div>
+                            <FileText size={24} className="text-primary" />
                             <div>
-                                <h3 className="font-bold text-2xl dark:text-primary">{t('decision.labels.conclusion')}</h3>
-                                <p className="text-white/60 text-sm">{t('decision.questions.conclusion_desc')}</p>
+                                <h3 className="font-bold text-2xl text-primary">{t('decision.labels.conclusion')}</h3>
+                                <p className="text-primary/80 text-sm">{t('decision.questions.conclusion_desc')}</p>
                             </div>
                         </div>
 
-                        <RichTextEditor
+                        <RichEditor
                             name="policy_conclusion"
                             control={control}
                             errors={errors}

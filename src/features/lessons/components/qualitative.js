@@ -12,7 +12,7 @@ import RichEditor from "@/components/RichTextEditor";
 export const QualitativeComponent = (props) => {
     const { t } = useTranslation();
     const { methods, errors } = props;
-    const { register, control } = methods;
+    const { control } = methods;
 
     return (
         <div className="space-y-8">
@@ -32,7 +32,7 @@ export const QualitativeComponent = (props) => {
                         icon={Wind}
                     />
                     <RichEditor
-                        {...register("analysis_fragmentation")}
+                        name="analysis_fragmentation"
                         errors={errors}
                         control={control}
                     />
@@ -45,7 +45,7 @@ export const QualitativeComponent = (props) => {
                         icon={Layers}
                     />
                     <RichEditor
-                        {...register("analysis_microplastic_types")}
+                        name="analysis_microplastic_types"
                         errors={errors}
                         control={control}
                     />
@@ -58,7 +58,7 @@ export const QualitativeComponent = (props) => {
                         icon={Fish}
                     />
                     <RichEditor
-                        {...register("analysis_biological_exposure")}
+                        name="analysis_biological_exposure"
                         errors={errors}
                         control={control}
                     />
