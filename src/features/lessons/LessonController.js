@@ -188,7 +188,7 @@ export default function LessonController({ slug }) {
                     methods={methods}
                     errors={errors}
                 />
-                <div className="flex justify-end sticky bottom-7.5 mt-12">
+                <div className="flex justify-end sticky bottom-7.5 mt-12 z-50">
                     <Button type="submit">
                         {t('common.submit')}
                     </Button>
