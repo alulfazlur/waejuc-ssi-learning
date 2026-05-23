@@ -83,10 +83,14 @@
         "cta": "Start Investigation"
     },
     "sidebar": {
-        "progress title": "Mission Phase",
-        "progress overview": "Your Progress",
-        "material btn": "Learning Material",
-        "logout": "Logout"
+        "progress_title": "Mission Phase",
+        "progress_overview": "Your Progress",
+        "material_btn": "Learning Material",
+        "logout": "Logout",
+        "export_btn": "Export to PDF",
+        "exporting": "Creating PDF...",
+        "export_success": "PDF downloaded successfully",
+        "export_error": "PDF export failed"
     },
     "signin": {
         "description": "Input your Researcher ID to access the Puger Project database.",

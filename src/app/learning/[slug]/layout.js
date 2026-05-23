@@ -1,14 +1,19 @@
 "use client";
 import { useState, use, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, BookOpen, Check, Lock, Pencil, LogOut, FileText, ExternalLink, TrendingUp } from "lucide-react";
+import {
+    Menu, BookOpen, Check, Lock, Pencil, LogOut,
+    FileText, ExternalLink, TrendingUp, FileDown, Loader2,
+} from "lucide-react";
 import { ThemeProvider, useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 
 import { useAuth } from "@context/AuthContext";
 import { SYLLABUS } from "@constants/syllabus";
+import { exportResponsesToPDF } from "@lib/exportPDF";
 
 import ThemeToggle from '@components/ThemeToggle';
 import LanguageToggle from '@components/LanguageToggle';
@@ -24,9 +29,10 @@ export default function LearningLayout({ params: paramsPromise, children }) {
     const router = useRouter();
     const currentSlug = params.slug;
 
-    const { maxStep, isSyncing, loading, setLoading, logout } = useAuth();
+    const { maxStep, isSyncing, loading, setLoading, logout, user, responses } = useAuth();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isExporting, setIsExporting] = useState(false);
 
     const currentIndex = SYLLABUS.findIndex(s => s.id === currentSlug);
     const currentSyllabus = SYLLABUS[currentIndex] || {};
@@ -42,6 +48,21 @@ export default function LearningLayout({ params: paramsPromise, children }) {
     const handleLogout = async () => {
         await logout();
         router.push("/");
+    };
+
+    const handleExport = async () => {
+        if (isExporting) return;
+        setIsExporting(true);
+        try {
+            await exportResponsesToPDF({ user, responses, t });
+            toast.success(t('sidebar.export_success'));
+        } catch (err) {
+            // eslint-disable-next-line no-console
+            console.error('Export PDF failed:', err);
+            toast.error(t('sidebar.export_error'));
+        } finally {
+            setIsExporting(false);
+        }
     };
 
     useEffect(() => {
@@ -86,19 +107,19 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                     <div className="px-6 pb-3 shrink-0">
                         <div className="rounded-2xl bg-background/40 dark:bg-primary/10 border border-secondary/15 dark:border-primary/15 p-4 backdrop-blur-sm">
                             <div className="flex items-center justify-between mb-3">
-                                <div className="flex items-center gap-2 text-secondary dark:text-primary">
+                                <div className="flex items-center gap-2 text-primary">
                                     <TrendingUp size={14} />
                                     <span className="text-[11px] font-bold uppercase tracking-widest">
                                         {t('sidebar.progress_overview')}
                                     </span>
                                 </div>
-                                <span className="text-[11px] font-mono text-secondary dark:text-primary opacity-70 tabular-nums">
+                                <span className="text-[11px] font-mono text-primary tabular-nums">
                                     {completedCount}/{totalCount}
                                 </span>
                             </div>
 
                             <div className="flex items-end justify-between mb-3">
-                                <div className="flex items-baseline gap-1 text-secondary dark:text-primary">
+                                <div className="flex items-baseline gap-1 text-primary">
                                     <span className="text-3xl font-bold tabular-nums leading-none">
                                         {progressPercent}
                                     </span>
@@ -130,7 +151,7 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                     </div>
 
                     {/* Material Link */}
-                    <div className="px-6 pb-4 shrink-0">
+                    <div className="px-6 pb-3 shrink-0 flex flex-col gap-3">
                         <motion.a
                             href={MATERIAL_URL}
                             target="_blank"
@@ -149,6 +170,34 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                             </span>
                             <ExternalLink size={14} className="opacity-70" />
                         </motion.a>
+                        <motion.button
+                            onClick={handleExport}
+                            disabled={isExporting}
+                            whileHover={!isExporting ? { y: -2 } : {}}
+                            whileTap={!isExporting ? { scale: 0.98 } : {}}
+                            className={`w-full cursor-pointer flex items-center justify-between gap-3 p-3 rounded-xl
+                                        bg-linear-to-r from-quaternary to-secondary dark:to-primary text-background
+                                        shadow-md shadow-quaternary/20 hover:shadow-lg hover:shadow-quaternary/30
+                                        font-bold text-sm
+                                        transition-shadow
+                                        disabled:opacity-60 disabled:cursor-not-allowed`}
+                        >
+                            <span className="flex items-center gap-2">
+                                {isExporting ? (
+                                    <Loader2 size={16} className="animate-spin" />
+                                ) : (
+                                    <FileDown size={16} />
+                                )}
+                                {isExporting
+                                    ? t('sidebar.exporting')
+                                    : t('sidebar.export_btn')}
+                            </span>
+                            {!isExporting && (
+                                <span className="text-[10px] font-mono opacity-70 px-1.5 py-0.5 rounded bg-background/15">
+                                    PDF
+                                </span>
+                            )}
+                        </motion.button>
                     </div>
 
                     {/* Syllabus list - scrollable */}
