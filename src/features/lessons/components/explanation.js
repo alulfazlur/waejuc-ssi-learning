@@ -6,14 +6,16 @@ import {
     Download,
     X,
     ZoomIn,
-    Dna,
-    ClipboardList
+    Footprints,
+    ClipboardList,
+    SearchAlert,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import Instruction from "@components/Instruction";
 import RichEditor from "@components/RichTextEditor";
 import Button from "@components/Button";
+import DiagramInput from "@/components/DiagramInput";
 
 export const ExplanationComponent = (props) => {
     const { t } = useTranslation();
@@ -28,7 +30,7 @@ export const ExplanationComponent = (props) => {
 
     return (
         <div className="space-y-8">
-            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
+            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
                 <ClipboardList className="min-w-6" />
                 <p className="text-sm leading-relaxed">
                     <b>{`${t('common.task')}: `}</b>
@@ -36,18 +38,32 @@ export const ExplanationComponent = (props) => {
                 </p>
             </div>
 
-            <div
-                className="mb-12 overflow-hidden rounded-3xl bg-linear-to-br from-primary to-primary/90 dark:from-secondary dark:to-secondary/80 text-background shadow-2xl"
-            >
+            <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
+                <Instruction
+                    title={t('explanation.setup.title')}
+                    icon={Footprints}
+                />
+                <div className="text-secondary text-[15px] dark:text-primary/80">
+                    <ul className="list-disc list-inside space-y-1">
+                        <li>{t('explanation.setup.step.0')}</li>
+                        <li>{t('explanation.setup.step.1')}</li>
+                        <li>{t('explanation.setup.step.2')}</li>
+                        <li>{t('explanation.setup.step.3')}</li>
+                        <li>{t('explanation.setup.step.4')}</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section className="bg-primary rounded-2xl border border-border dark:border-primary/20 text-background">
                 <div className="flex flex-col md:flex-row">
                     <div className="p-8 flex-1 space-y-6 flex flex-col justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white ring-1 ring-white/30">
+                            <div className="w-12 h-12 bg-background backdrop-blur-md rounded-2xl flex items-center justify-center text-primary ring-1 ring-white/30">
                                 <Download size={24} />
                             </div>
                             <div>
-                                <h3 className="font-bold text-2xl tracking-tight leading-none">{t('explanation.ar_setup_title')}</h3>
-                                <p className="text-white/60 text-xs mt-1 uppercase tracking-widest font-semibold">Micro-Lab Simulation</p>
+                                <h3 className="text-xl font-bold">{t('explanation.ar_title')}</h3>
+                                <p className="text-xs mt-1 uppercase tracking-widest font-semibold">Micro-Lab Simulation</p>
                             </div>
                         </div>
 
@@ -63,9 +79,9 @@ export const ExplanationComponent = (props) => {
                             <div
                                 key={idx}
                                 onClick={() => setSelectedImage(marker)}
-                                className="group relative bg-white p-2 pb-6 rounded-xl transition-all shadow-2xl cursor-zoom-in hover:scale-105 active:scale-95"
+                                className="group relative bg-white py-2 rounded-xl transition-all shadow-2xl cursor-zoom-in hover:scale-105 active:scale-95"
                             >
-                                <div className="relative w-28 h-40 md:w-32 md:h-44">
+                                <div className="relative w-28 h-30">
                                     <Image
                                         src={marker.src}
                                         alt={marker.label}
@@ -76,38 +92,72 @@ export const ExplanationComponent = (props) => {
                                         <ZoomIn className="text-white" />
                                     </div>
                                 </div>
-                                <p className="absolute bottom-1.5 left-0 right-0 text-[8px] font-black text-primary/40 text-center uppercase tracking-tighter">
-                                    {marker.label}
-                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <section className="space-y-6">
+            <p className="font-bold text-md leading-relaxed text-secondary dark:text-primary">
+                {t('explanation.guide')}
+            </p>
 
-                <div
-                    className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4"
-                >
-                    <Instruction
-                        title={t('explanation.q_title')}
-                        icon={Dna}
-                    />
-                    <div className="text-secondary text-[15px] dark:text-primary/80">
-                        <ul className="list-disc list-inside space-y-1">
-                            <li>{t('explanation.q1')}</li>
-                            <li>{t('explanation.q2')}</li>
-                            <li>{t('explanation.q3')}</li>
-                        </ul>
-                    </div>
+            <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
+                <Instruction
+                    icon={null}
+                    description={t('explanation.question.estimation_physical_factor')}
+                />
+                <RichEditor
+                    name="explain_estimation_physical_factor"
+                    control={control}
+                    errors={errors}
+                />
+            </section>
 
-                    <RichEditor
-                        name="transformation_mechanism"
-                        control={control}
-                        errors={errors}
-                    />
+            <section className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
+                <Instruction
+                    icon={null}
+                    description={t('explanation.question.human_digestion')}
+                />
+                <RichEditor
+                    name="explain_human_digestion"
+                    errors={errors}
+                    control={control}
+                />
+            </section>
+
+            <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
+                <Instruction
+                    icon={null}
+                    description={t('explanation.question.health_impact')}
+                />
+                <RichEditor
+                    name="explain_health_impact"
+                    control={control}
+                    errors={errors}
+                />
+            </section>
+
+            <section className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
+                <Instruction
+                    title={t('explanation.causal_loop.title')}
+                    description={t('explanation.causal_loop.desc')}
+                    icon={SearchAlert}
+                />
+                <div className="text-secondary text-[15px] dark:text-primary/80 mb-4">
+                    <ul className="list-disc list-inside space-y-1">
+                        <li>{t('explanation.causal_loop.point.0')}</li>
+                        <li>{t('explanation.causal_loop.point.1')}</li>
+                        <li>{t('explanation.causal_loop.point.2')}</li>
+                        <li>{t('explanation.causal_loop.point.3')}</li>
+                        <li>{t('explanation.causal_loop.point.4')}</li>
+                    </ul>
                 </div>
+                <DiagramInput
+                    name="explain_causal_loop"
+                    errors={errors}
+                    control={control}
+                />
             </section>
 
             <AnimatePresence>

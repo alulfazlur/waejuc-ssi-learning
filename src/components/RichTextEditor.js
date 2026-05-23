@@ -198,6 +198,7 @@ export default function RichTextEditor({
     name = "",
     errors,
     control,
+    fullHeight = false,
 }) {
     const {
         field: { value, onChange },
@@ -232,7 +233,9 @@ export default function RichTextEditor({
         },
         editorProps: {
             attributes: {
-                class: "prose prose-sm dark:prose-invert max-w-none focus:outline-none min-h-[120px] px-3 py-2",
+                class: `prose prose-sm dark:prose-invert max-w-none focus:outline-none px-3 py-2 overflow-auto ${
+                    fullHeight ? "h-[500px]" : "h-[120px]"
+                }`,
             },
         },
     });
@@ -416,7 +419,7 @@ export default function RichTextEditor({
                 </div>
 
                 {/* ── Editor Area ── */}
-                <div className="relative">
+                <div className={`relative ${fullHeight ? "flex-1 min-h-0" : ""}`}>
                     <EditorContent editor={editor} />
 
                     <div className={`

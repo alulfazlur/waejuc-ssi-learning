@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
-import Input from "@components/Input";
 import Table from "./initial_table";
 
 function formatTime(secs) {
@@ -137,10 +136,9 @@ export const InitialComponent = (props) => {
     return (
         <div className="space-y-8">
             <section className="space-y-6 border-b border-b-tertiary pb-8">
-                <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
+                <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
                     <ClipboardList className="min-w-6" />
-                    <p className="text-sm leading-relaxed">
-                        <b>{`${t('common.activity')}: `}</b>
+                    <p className="text-md leading-relaxed font-bold">
                         {t('initial.instruction')}
                     </p>
                 </div>
@@ -159,7 +157,7 @@ export const InitialComponent = (props) => {
                         href="https://www.youtube.com/watch?v=Gr-4f81zgzc&feature=youtu.be"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
+                        className="text-primarya font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
                         whileHover={{ y: -3, scale: 1.02 }}
                     >
                         Video 2
@@ -179,86 +177,77 @@ export const InitialComponent = (props) => {
                         />
                     ))}
                 </div>
+
+                <p className="text-md leading-relaxed text-secondary dark:text-primary">
+                    {t('initial.description')}
+                </p>
             </section>
 
-            <section className="space-y-4">
+
+            <section className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                 <Instruction
                     title={t('initial.issue_title')}
                     description={t('initial.issue_description')}
                     icon={MessageSquare}
                 />
                 <RichEditor
-                    name="main_issue_analysis"
+                    name="initial_main_issue_analysis"
                     errors={errors}
                     control={control}
                 />
             </section>
 
-            <section className="space-y-4 bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                <Instruction
-                    title={t('initial.component_id.title')}
-                    description={t('initial.component_id.description')}
-                />
-                <Table control={control} register={register} errors={errors} />
-            </section>
-
-            <section className="bg-tertiary dark:bg-secondary p-8 rounded-3xl border border-border dark:border-primary/20">
+            <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
                 <div className="flex items-center gap-3 mb-6">
                     <Microscope className="text-primary" size={28} />
                     <div>
-                        <h2 className="text-2xl font-bold">{t('initial.properties.title')}</h2>
-                        <p className="text-sm opacity-70">{t('initial.properties.description')}</p>
+                        <h2 className="text-2xl font-bold">{t('initial.plastic_identification')}</h2>
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
-                        <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
-                            <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">A</span>
-                            {t('initial.plastic_form.title')}
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.properties.name_label')}</label>
-                            <Input {...register("plastic_name")} errors={errors} control={control} />
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.plastic_form.props_label')}</label>
-                            <br />
-                            <span className="text-sm">{t('initial.plastic_form.props_placeholder')}</span>
-                            <RichEditor name="plastic_props" errors={errors} control={control} />
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.plastic_form.behave_label')}</label>
-                            <br />
-                            <span className="text-sm">{t('initial.plastic_form.behave_placeholder')}</span>
-                            <RichEditor name="plastic_behavior_pred" errors={errors} control={control} />
-                        </div>
-                    </div>
-
-                    <div className="space-y-4 p-6 bg-background rounded-xl border border-border">
-                        <div className="flex items-center gap-2 font-bold text-primary pb-2 border-b border-border/50">
-                            <span className="bg-primary text-background w-6 h-6 rounded-full flex items-center justify-center text-[10px]">B</span>
-                            {t('initial.organism_form.title')}
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.properties.name_label')}</label>
-                            <Input {...register("organism_name")} errors={errors} control={control} />
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.organism_form.props_label')}</label>
-                            <br />
-                            <span className="text-sm">{t('initial.organism_form.props_placeholder')}</span>
-                            <RichEditor name="organism_props" errors={errors} control={control} />
-                        </div>
-                        <div className="space-y-1">
-                            <label className="text-sm font-bold">{t('initial.organism_form.behave_label')}</label>
-                            <br />
-                            <span className="text-sm">{t('initial.organism_form.behave_placeholder')}</span>
-                            <RichEditor name="organism_behavior_pred" errors={errors} control={control} />
-                        </div>
-                    </div>
+                <div className="mb-6">
+                    <Instruction
+                        description={t('initial.source_question')}
+                        icon={null}
+                    />
+                    <RichEditor
+                        name="initial_source_analysis"
+                        errors={errors}
+                        control={control}
+                    />
+                </div>
+                <div>
+                    <Instruction
+                        description={t('initial.awareness_question')}
+                        icon={null}
+                    />
+                    <RichEditor
+                        name="initial_awareness_analysis"
+                        errors={errors}
+                        control={control}
+                    />
                 </div>
             </section>
+
+            <section className="space-y-4 bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
+                <Instruction
+                    title={t('initial.component_ecosystem.title')}
+                    description={t('initial.component_ecosystem.description')}
+                />
+                <Table control={control} register={register} errors={errors} />
+                <div className="mt-6">
+                    <Instruction
+                        description={t('initial.component_ecosystem.question')}
+                        icon={null}
+                    />
+                    <RichEditor
+                        name="initial_component_ecosystem_analysis"
+                        errors={errors}
+                        control={control}
+                    />
+                </div>
+            </section>
+
         </div>
     );
 };

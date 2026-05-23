@@ -17,15 +17,15 @@
         "phase_not_found_desc": "The requested phase was not found. Please contact customer support."
     },
     "hero": {
-        "title": "Virtual Eco-Explorer: Exploring the Boundaries of the Puger Ecosystem",
+        "title": "Virtual Nature Expedition: Exploring the Puger Ecosystem",
         "description": "Behind the crashing waves and the mesmerizing sunsets of Puger Beach, lies a hidden secret that threatens our future. Through 360° exploration videos and augmented reality technology, let's go beyond the limits of sight to uncover how microplastic pollution infiltrates the food chain and affects human health. This beauty is ours, and so is our responsibility to protect it."
     },
     "objectives": {
         "title": "Learning Objectives",
-        "goal_1": "Students are able to analyze socio-scientific issues related to microplastic contamination in the Jember region and its systemic impacts on public health and the ecosystem",
-        "goal_2": "Students are able to evaluate the complexity of the problems at the Puger Fish Farm by integrating ecological (pollution), economic (the welfare of fishermen and traders), and social (community behavior) aspects",
-        "goal_3": "Students are able to propose strategic and innovative solutions for microplastic mitigation that consider the balance of ecological, economic, and social aspects in a sustainable manner in the Jember region",
-        "goal_4": "Students are able to demonstrate systems thinking and sustainable awareness in making logical decisions in everyday life"
+        "goal_1": "After exploring environmental contamination through 360 Video and AR microplastic media, students are able to describe the systemic impact of microplastics on public health and ecosystems comprehensively and accurately",
+        "goal_2": "Through interactive analysis of the 360 ​​video of the condition of the Puger TPI and AR visualization of microplastics, students are able to assess the complexity of the problem by integrating ecological, economic, and social aspects into a system relationship matrix (causal-loop) in a holistic and logical manner",
+        "goal_3": "Based on a systemic understanding of the results of observations using 360 Video and AR microplastic, students are able to design strategic and innovative solution proposals for microplastic mitigation in the Jember region that meet the criteria for ecological, economic, and social balance in a sustainable manner",
+        "goal_4": "After going through a series of 360 Video and AR-based learning experiences, students are able to formulate logical decisions to overcome the dilemma of plastic use in everyday life consistently and responsibly"
     },
     "mission": {
         "report_tag": "Investigation Report · Puger Fish Farm",
@@ -83,14 +83,17 @@
         "cta": "Start Investigation"
     },
     "sidebar": {
-        "progress_title": "Mission Phase",
+        "progress title": "Mission Phase",
+        "progress overview": "Your Progress",
+        "material btn": "Learning Material",
         "logout": "Logout"
     },
     "signin": {
         "description": "Input your Researcher ID to access the Puger Project database.",
         "placeholder": "Enter Researcher ID...",
         "label": "Researcher Identifier (ID)",
-        "button": "Authorize Access"
+        "button": "Authorize Access",
+        "error": "Researcher ID or Password is incorrect!"
     },
     "syllabus": {
         "initial": "Triggering Initial Ideas",
@@ -108,6 +111,7 @@
             "prefix": "Open in",
             "suffix": "For a full 360° experience, click and drag the video screen to look around the TPI and see the perspectives of different stakeholders."
         },
+        "description": "With your group members, watch a 360-degree video of the Puger TPI area and listen to excerpts from interviews with local residents. Discuss your initial findings and agree on answers to the following questions:",
         "stakeholders": {
             "listen_btn": "Listen to the Recording",
             "list": {
@@ -127,9 +131,10 @@
         },
         "issue_title": "Main Issue Analysis",
         "issue_description": "After watching the video and listening to the interview, what are the most pressing issues? Why are these issues interconnected between fishermen, fish sellers, and the government?",
-        "component_id": {
+        "component_ecosystem": {
             "title": "Identifying Ecosystem Components",
-            "description": "Identify at least 5 components (biotic and abiotic). Use the table feature to group them: Components, Types, and Roles (Source of Pollutant/Victim/Medium of Transportation)."
+            "description": "Identify at least 5 components (biotic and abiotic). Use the table feature to group them: Components, Types, and Roles (Source of Pollutant/Victim/Medium of Transportation).",
+            "question": "How do you connect the accumulation of plastic waste seen in the video to the potential unseen biological threats to marine life?"
         },
         "table_component": {
             "headers": [
@@ -142,63 +147,65 @@
                 "Abiotic",
                 "Sources of fiber microplastics"
             ],
+            "biotic": "Biotic",
+            "abiotic": "Abiotic",
             "name_placeholder": "Nets, Plastic Bottles, Fish, etc.",
             "role_placeholder": "Source of Pollutant, Victim, Medium of Transportation",
             "add_row": "Add Row"
         },
-        "properties": {
-            "title": "Component Interaction Analysis",
-            "description": "Choose one plastic and one organism, then analyze their properties and predict their interactions.",
-            "name_label": "Component Name"
-        },
-        "plastic_form": {
-            "title": "Plastic Component",
-            "name_placeholder": "Example: Bottle Fragment",
-            "props_label": "Physical Properties",
-            "props_placeholder": "Does it float? What size is it? Is it difficult to biodegrade?",
-            "behave_label": "Predict Behavior",
-            "behave_placeholder": "How does this property facilitate its entry into the food chain?"
-        },
-        "organism_form": {
-            "title": "Organism Component",
-            "name_placeholder": "Examples: Fish, Clams, etc.",
-            "props_label": "Biological Properties",
-            "props_placeholder": "How does it feed? Where does it live?",
-            "behave_label": "Predicted Impact",
-            "behave_placeholder": "Why do the biological properties of this organism make it vulnerable to Component A?"
-        },
+        "plastic_identification": "Plastic Waste Identification",
+        "source_question": "Based on the video, where are the main sources of plastic waste that has the potential to enter and settle in the waters of the Puger TPI?",
+        "awareness_question": "Based on the interview results, what is the level of awareness of local communities regarding the dangers of invisible plastics (microplastics)? What social barriers have been identified?",
         "footer": "Ensure all component and property observations are filled in before proceeding to the analysis phase."
     },
     "qualitative": {
         "instruction": "Compare the large plastic bottles (seen at the port) with the microplastic fibers (mentioned by the seller).",
+        "illustration": {
+            "plastic": "Plastic Bottle",
+            "fiber": "Microplastic Fiber"
+        },
         "analysis": {
             "q1_title": "Fragmentation & Physical Changes",
-            "q1_desc": "If plastic waste (such as drinking bottles or fishing nets) were in Puger waters for a very long time, what would most likely happen to the shape and size of the plastic? Explain the factors that influence these changes!",
-            "q2_title": "Microplastic Classification",
-            "q2_desc": "Based on their shape, microplastics are divided into several types. Explain the differences in shape and state the main sources of plastic!",
-            "q3_title": "Filter Feeder vs. Predator Analysis",
-            "q3_desc": "Observe the following two organisms that live in Jember waters: the Blood Clam (Anadara granosa), which is a filter feeder (filters water) at the bottom of the waters, and the Tuna, which is an active predator in the waters. Why is the Blood Clam Are tuna at higher risk of exposure to microplastic fragments that settle on the seabed than tuna? How do the differences in their \"feeding habits\" determine the types of microplastics that enter their bodies?"
+            "q1_desc": "Have an in-depth discussion with your group mates and make a qualitative prediction chart regarding the pathway of change of how macro plastic waste (bottles/nets) is fragmented into microplastics.",
+            "q2_title": "Anomaly Formation",
+            "q2_desc": "Plastic waste floating in Puger waters undergoes degradation. Its surface is rapidly colonized by bacteria, microalgae, and pathogens, forming a mini-ecosystem called the \"Plastisphere.\" Furthermore, biofouling by algae produces the compound Dimethyl sulfide (DMS).",
+            "q2_step1": "Create a qualitative diagram showing the path of marine plastic fragmentation to form the Plastisphere ecosystem.",
+            "q2_step2": "Analyze how the formation of the Plastisphere and the release of DMS gas affect the foraging behavior of endemic/local marine animals (such as pelagic seabirds or reef fish).",
+            "q2_step3": "Why do these biological changes on the plastic surface qualitatively increase the risk of microplastics being actively ingested by marine animals (rather than just accidentally)?"
         },
-        "footer": "This qualitative analysis will form the basis for quantitative calculations in the next phase."
+        "footer": "This qualitative analysis will form the basis for quantitative calculations in the next phase.",
+        "diagram_input": {
+            "hints": "Drag the circle on the edge of a variable to another variable to establish a causal relationship.",
+            "add_variable": "Add Variable",
+            "delete": "Delete",
+            "variable": "variable",
+            "relation": "relation",
+            "legend": "Legend",
+            "positive": "Unidirectional",
+            "negative": "Reverse"
+        }
     },
     "quantitative": {
-        "instruction": "Pay attention to the data table on the abundance of microplastics in various areas in Jember from rivers to beaches.",
-        "sections": {
-            "abundance": "Microplastic Abundance Analysis",
-            "biomagnification": "Trophic Level & Biomagnification"
+        "instruction": "In the qualitative section, you analyzed how microplastics, when left in water for extended periods, form a plastisphere and release DMS gas, which triggers active ingestion by marine animals. Now, analyze the following field data from the Bedadung watershed to the Puger coast to demonstrate the systemic impact of this phenomenon.",
+        "abundance": {
+            "title": "Microplastic Abundance Analysis (Spatial)",
+            "description": "Examine the two quantitative data tables in your worksheet. Collaboratively discuss any patterns, anomalies, or spikes in the data with your group. Answer the following questions based on the results of your group's mathematical analysis:"
+        },
+        "biomagnification": {
+            "title": "Trophic Level & Biomagnification",
+            "description": "Researchers extracted digestive and muscle tissue from various organisms in the Puger Marine Zone to examine the transfer of microplastics through food webs."
         },
         "questions": {
             "q1_title": "Estuary vs Marine Concentration",
-            "q1_desc": "Why does concentration drop at Station 4 but spike at Station 3? Link this to river runoff vs ocean currents.",
+            "q1_desc": "Why did the concentration decrease at Station 4 but increase sharply at Station 3? This is attributed to the breakdown of microplastics and the formation of plastipheres.",
             "q2_title": "Human Exposure Estimation",
-            "q2_desc": "Based on Station 2, estimate particles ingested if a human drinks 2L of water/day.",
-            "q3_title": "Biomagnification Factor (BMF)",
-            "q3_desc": "Calculate BMF between Cockles and Tuna. If a person eats 250g of cockles/week, how many mg of plastic is ingested?",
-            "placeholders": {
-                "q1": "Explain the interaction between runoff and currents...",
-                "q2": "Calculation: (Conc / 1000) * 2...",
-                "q3": "BMF = Tuna / Cockle. Weekly = Load * 0.25..."
-            }
+            "q2_desc": "Based on data from Station 2, calculate the estimated number of microplastic particles ingested by humans if they use water from the river body (without RO filtration) as much as 2 liters per day!",
+            "q3_title": "Biomagnification Factor (BMF) & Feeding Behavior",
+            "q3_desc": "Calculate the Biomagnification Factor (BMF) from Marine Phytoplankton to Blood Cockles (passive ingestion/filter feeding), then compare it with the BMF from Blood Cockles to Indian Mackerel. Use your qualitative understanding of DMS gas to explain why there was such an extreme spike in plastic accumulation in Indian Mackerel (a pelagic fish that hunts using olfactory chemosensory signals)!",
+            "q4_title": "Transfer to Top Predators",
+            "q4_desc": "How does active ingestion at the secondary consumer level (Mackerel) accelerate the biomagnification process to reach 48.50 mg/kg in Yellowfin Tuna?",
+            "q5_title": "Consumption Risk (Public Health)",
+            "q5_desc": "If a local resident consumes 250 grams of Blood Cockles per week from these waters, how many milligrams total mass of plastic that enters his digestive system in one month?"
         },
         "columns": {
             "station": "Station",
@@ -211,44 +218,101 @@
         }
     },
     "explanation": {
-        "instruction": "Open the Augmented Reality (AR) app on your device. Focus on the \"Cellular Impact\" and \"Fragmentation\" modules.",
-        "ar_setup_title": "AR Virtual Laboratory",
-        "q_title": "Physical-Chemical Transformation Mechanisms",
-        "q1": "Use your observations from the AR tool to explain the mechanism problem.",
-        "q2": "How can a plastic bottle from the harbor (seafarer's domain) physically transform into a health risk for consumers (seller's domain)?",
-        "q3": "Create a mechanism diagram using arrows and your explanation should consider chemical interactions in various subsystems, such as the atmosphere, the air column, and biological cells."
+        "instruction": "Open the Augmented Reality (AR) app on your device. Focus on the \"Mobile Impact\" and \"Fragmentation\" modules.",
+        "ar_title": "AR Virtual Laboratory",
+        "setup": {
+            "title": "Augmented Reality (AR) User Guide",
+            "step": [
+                "Make sure you're using an Android-based device (smartphone). Scan the following QR code to download the AR app (this app is guaranteed safe for your device).",
+                "Once downloaded, install and open the app.",
+                "Please read the User Guide available within the app.",
+                "Select (tap) one of the Scenes, then point your device's camera at the Marker image displayed on the web page.",
+                "Have fun exploring and enjoying the AR experience!"
+            ]
+        },
+        "guide": "Use each member's smartphone to scan the AR marker Fragmentation & Human Health Risk. Specifically observe Scenes 2 and 3. Afterward, brainstorm within the group to map this systemic crisis:",
+        "question": {
+            "estimation_physical_factor": "Based on observations of Scenes 2-3 in the AR app, how long do you estimate it will take for macroplastic waste to fully fragment into microplastics in the Puger marine environment? What physical factors accelerate this process?",
+            "human_digestion": "Biochemically, why are these microplastics recalcitrant (unable to be digested or broken down) by enzymes or stomach acid in the human digestive system?",
+            "health_impact": "Based on the visualization of the microplastic entry route into vital human organs in the AR app, explain the systemic health impacts that can occur from consuming contaminated seafood over a long period of time!"
+        },
+        "causal_loop": {
+            "title": "Causal Loop Diagram",
+            "desc": "Construct a causal loop diagram connecting all the subsystems you have studied. Ensure your diagram includes the interaction flow between the following elements: (Social/Tourism): Waste disposal activities in the upstream, market, and coastal areas of Puger",
+            "point": [
+                "(Micro-Ecology-AR): Plastic fragmentation process in the Puger marine zone.",
+                "(Biology/Chemo-sensory): Plastisphere Formation & DMS Gas Release (Based on Phase 2)",
+                "(Behavior & Ecotoxicology): Active Ingestion & Extreme Biomagnification processes in the Puger Food Web (Based on Phase 3 Data)",
+                "(Human Health-AR): Particle Entry Routes & Systemic Health Impacts on Human Organs.",
+                "(Macro-Impacts): Long-term consequences on the Fishermen's Economy (decrease in catch quality) and widespread ecosystem damage."
+            ]
+        }
     },
     "decision": {
-        "instruction": "You are a consultant to a government official. You must propose a strategy to reduce microplastic levels (e.g., a “Microfilter Act” for washing machines or a “Plastic Tax”).",
-        "labels": {
-            "strategy_name": "Strategy / Policy Name",
-            "env_benefit": "Environmental Benefits",
-            "env_benefit_desc": "Ecological Impact",
-            "eco_cost": "Economic Costs",
-            "eco_cost_desc": "Economic Burden for Sellers",
-            "social_impact": "Social Impact",
-            "social_impact_desc": "Social Impact of the Seafaring Community",
-            "conclusion": "Professional Conclusion"
+        "instruction": "As a team of scientists, discuss within your group. Debate scientifically to select, evaluate, and agree on the most rational final mitigation solution to be implemented in the Puger area. Based on the critical points in your group's Causal Loop Diagram, propose one specific strategy (applied technology, biological monitoring, or ecological intervention) to address this problem!",
+        "ecology_biosafety": {
+            "title": "Ecological & Biosafety Parameters",
+            "description": "Does your biological solution pose any side risks to the native Puger ecosystem? (For example, concerns about the release of GMOs or alien species)."
         },
-        "questions": {
-            "conclusion_desc": "Why is this systemic solution more effective than just a professional-scale 'Beach Cleanup'?",
-            "placeholders": {
-                "strategy": "Example: Industrial Microplastic Filter Regulation...",
-                "general": "Impact analysis from a consultant's perspective...",
-                "final": "Synthesis of why upstream prevention is better than downstream cleanup..."
-            }
+        "fisherman_economy": {
+            "title": "Fisherman's Economic Parameters",
+            "description": "Will implementing this strategy financially burden local fishermen, or will it save the Puger fish market in the long run?"
+        },
+        "table_component": {
+            "roles": [
+                "Fisherman",
+                "Trader",
+                "Government"
+            ],
+            "headers": [
+                "Name",
+                "Role",
+                "Solution",
+                "Impact"
+            ],
+            "economy_impact": {
+                "title": "Fisherman's Economic Parameters",
+                "description": "Will implementing this strategy financially burden local fishermen, or will it save the Puger fish market in the long run?"
+            },
+            "env_impact": {
+                "title": "Ecological Parameters & Biosafety",
+                "description": "Does your biological solution pose any side effects to the native Puger ecosystem? (E.g., concerns about the release of GMOs or alien species)"
+            },
+            "name_placeholder": "Your Name"
+        },
+        "conclusion": {
+            "title": "Professional Conclusion",
+            "desc_primary": "Instructions for Presentation & Class Discussion (Defending an Argument):",
+            "desc": "At the end of this phase, each group will present the results of their discussion to the class. You do not need to create a new copy of the presentation (such as PowerPoint). Project your group's LKM web dashboard directly onto the classroom screen as the main presentation medium!",
+            "discuss": "Interactive Discussion Forum (Q&A):",
+            "presenter": "As Presenter",
+            "presenter_desc": "Defend the feasibility of your group's solution (scientific defense). Re-display the data graphs or analysis on your website if needed to answer questions from lecturer or other groups.",
+            "audience": "As an Audience Member",
+            "audience_desc": "Be a critical reviewer of the group presenting. Listen carefully and provide high-level questions (HOTS) or constructive criticism regarding gaps in the ecological solutions they propose.",
+            "placeholder": "Write the final solution..."
         }
     },
     "reflection": {
-        "instruction": "Compose a short reflection that summarizes the following points.",
-        "insight": "New Insight",
-        "insight_desc": "What profound knowledge has stuck with you most (for example: the mechanism of plastic fragmentation or the impact of pesticides on nerves)?",
-        "feel": "Feeling",
-        "feel_desc": "How did you feel (angry, sad, challenged, or inspired) after realizing that Jember's natural beauty harbors a serious health threat?",
-        "teach": "Prospective Teacher's Perspective",
-        "teach_desc": "As a prospective educator, how has this experience of learning using immersive technology (AR & 360°) influenced the way you want to teach your students in the future? Do you feel this method is more capable of building environmental stewardship?",
-        "action": "Action for the Earth",
-        "action_desc": "How has this learning strengthened your desire to contribute to preserving the earth, starting with small steps in the Jember environment?"
+        "instruction": "Please provide your honest assessment of this learning experience to help us improve.",
+        "scale": {
+            "very_bad": "Very Bad",
+            "bad": "Poor",
+            "neutral": "Fair",
+            "good": "Good",
+            "very_good": "Very Good"
+        },
+        "website_ease": {
+            "title": "Website Ease",
+            "desc": "How easy was this website to use and navigate during the learning process?"
+        },
+        "material_difficulty": {
+            "title": "Material Difficulty",
+            "desc": "How difficult was the material presented for you to understand and work on?"
+        },
+        "learning_enjoyment": {
+            "title": "Enjoyable Learning",
+            "desc": "How enjoyable and engaging did you find the learning experience?"
+        }
     },
     "complete": {
         "title": "Investigation Completed!",
@@ -256,9 +320,7 @@
         "description": "You have successfully completed the entire microplastic investigation module at the Puger Fish Farm. Your contribution is invaluable to this research.",
         "one_more_step": "One More Step",
         "fill_survey": "Please take a few minutes to complete the final questionnaire. Your feedback helps us improve the quality of this learning program.",
-        "survey_link": "Fill Out Questionnaire Now",
-        "or": "Or",
-        "logout": "Log out of your account"
+        "survey_link": "Fill Out Questionnaire Now"
     },
     "toast": {
         "error": "An error occurred. Please try again.",
@@ -268,6 +330,8 @@
         "required": "This field is required.",
         "numeric": "Please enter a valid number.",
         "positive": "Please enter a positive value.",
-        "recheck_answer": "Please recheck your answer!"
+        "recheck_answer": "Please recheck your answer!",
+        "diagram_min_nodes": "There must be at least 5 variables in the diagram",
+        "diagram_min_edges": "There must be at least 2 relationships between variables"
     }
 }
