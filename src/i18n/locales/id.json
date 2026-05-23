@@ -1,0 +1,337 @@
+{
+    "common": {
+        "next": "Selanjutnya",
+        "back": "Kembali",
+        "submit": "Simpan",
+        "task": "Tugas",
+        "instruction": "Instruksi",
+        "activity": "Aktifitas",
+        "load_init": "Menginisialisasi Lingkungan Penelitian...",
+        "start_mission": "Mulai Misi",
+        "example": "Contoh",
+        "select_placeholder": "Pilih opsi..."
+    },
+    "error": {
+        "video_not_supported": "Browser Anda tidak mendukung tag video.",
+        "phase_not_found": "Fase Tidak Ditemukan",
+        "phase_not_found_desc": "Fase yang diminta tidak ditemukan. Silakan hubungi customer support."
+    },
+    "hero": {
+        "title": "Ekspedisi Alam Virtual: Mengupas Tuntas Ekosistem Puger",
+        "description": "Di balik deburan ombak dan pesona sunset Pantai Puger, tersimpan rahasia kecil yang mengancam masa depan kita. Melalui eksplorasi video 360° dan teknologi Augmented Reality, mari kita menembus batas penglihatan untuk mengungkap bagaimana polusi mikroplastik menyusup ke dalam rantai makanan dan mempengaruhi kesehatan manusia. Keindahan ini adalah milik kita, begitupun tanggung jawab untuk menjaganya"
+    },
+    "objectives": {
+        "title": "Tujuan Pembelajaran",
+        "goal_1": "Setelah mengeksplorasi kontaminasi lingkungan melalui Video 360 dan media AR microplastic, mahasiswa mampu menguraikan dampak sistemik mikroplastik terhadap kesehatan masyarakat dan ekosistem secara komprehensif dan tepat",
+        "goal_2": "Melalui analisis interaktif pada Video 360 kondisi TPI Puger dan visualisasi AR microplastic, mahasiswa mampu menilai kompleksitas permasalahan dengan mengintegrasikan aspek ekologi, ekonomi, dan sosial ke dalam matriks hubungan sistem (causal-loop) secara holistik dan logis",
+        "goal_3": "Berdasarkan pemahaman sistemik dari hasil observasi menggunakan Video 360 dan AR microplastic, mahasiswa mampu merancang proposal solusi strategis dan inovatif untuk mitigasi mikroplastik di wilayah Jember yang memenuhi criteria keseimbangan ekologi, ekonomi, dan sosial secara berkelanjutan",
+        "goal_4": "Setelah melalui seluruh rangkaian pengalaman belajar berbasis Video 360 dan AR, mahasiswa mampu merumuskan keputusan logis untuk mengatasi dilema penggunaan plastik dalam kehidupan sehari-hari secara konsisten dan bertanggung jawab"
+    },
+    "mission": {
+        "report_tag": "Laporan Penyelidikan · TPI Puger",
+        "title": "Krisis Tak Kasat Mata:",
+        "subtitle": "Mikroplastik di Ekosistem Jember",
+        "description": "Sebuah investigasi multidisiplin tentang bagaimana pola konsumsi plastik di perkotaan menciptakan ancaman sistemik sejauh 45 km hingga ke muara Puger.",
+        "stats": {
+            "distance": {
+                "label": "Jarak Aliran",
+                "value": "45 km",
+                "sub": "Bedadung → Puger"
+            },
+            "scale": {
+                "label": "Skala Masalah",
+                "value": "Sistemik",
+                "sub": "Ekonomi & ekosistem"
+            },
+            "subject": {
+                "label": "Subjek Utama",
+                "value": "Ikan & Kerang",
+                "sub": "Kontaminasi jaringan"
+            }
+        },
+        "context": {
+            "p1": "Masalah dimulai ketika pola konsumsi masyarakat berubah drastis ke penggunaan plastik sekali pakai, sementara sistem pengelolaan limbah belum mampu mengimbangi beban tersebut. Sampah plastik yang dibuang ke <0>Sungai Bedadung</0> di wilayah perkotaan tidak menetap di sana.",
+            "p1_bold": "Sungai Bedadung",
+            "p2": "Aliran sungai membawanya sejauh 45 km menuju muara Puger. Di sana, partikel tak kasat mata menyusup ke dalam <0>jaringan tubuh ikan dan kerang</0>, menjadi ancaman sistemik bagi kesehatan masyarakat dan keseimbangan ekosistem Jember yang saling terhubung.",
+            "p2_bold": "jaringan tubuh ikan dan kerang"
+        },
+        "chain_title": "Rantai Masalah",
+        "chain_items": [
+            {
+                "title": "Perubahan perilaku konsumsi",
+                "sub": "Masyarakat beralih ke plastik sekali pakai"
+            },
+            {
+                "title": "Sistem pengelolaan limbah kewalahan",
+                "sub": "Kapasitas tidak mengimbangi volume sampah"
+            },
+            {
+                "title": "Plastik masuk ke Sungai Bedadung",
+                "sub": "Terbawa arus sejauh 45 km"
+            },
+            {
+                "title": "Mikroplastik menyusup ke ikan & kerang",
+                "sub": "Ancaman kesehatan masyarakat TPI Puger"
+            }
+        ],
+        "goal": {
+            "title": "Tujuan Modul",
+            "desc": "Membedah sistem ini dari level <0>perilaku manusia</0> hingga ke level <1>seluler ikan</1>. Apakah Anda siap memulai penyelidikan?",
+            "desc_bold1": "perilaku manusia",
+            "desc_bold2": "seluler ikan"
+        },
+        "cta": "Mulai Penyelidikan"
+    },
+    "sidebar": {
+        "progress_title": "Fase Misi",
+        "progress_overview": "Progres Anda",
+        "material_btn": "Materi Pembelajaran",
+        "logout": "Keluar"
+    },
+    "signin": {
+        "description": "Masukkan ID Peneliti Anda untuk mengakses basis data Proyek Puger.",
+        "placeholder": "Masukkan ID Peneliti...",
+        "label": "Pengidentifikasi Peneliti (ID)",
+        "button": "Otorisasi Akses",
+        "error": "ID Peneliti atau Password salah!"
+    },
+    "syllabus": {
+        "initial": "Pemicu Ide Awal",
+        "qualitative": "Analisis Data Kualitatif",
+        "quantitative": "Analisis Data Kuantitatif",
+        "explanation": "Membangun Penjelasan Potensial",
+        "explanation_subtitle": "Mekanisme AR",
+        "decision": "Pengambilan Keputusan",
+        "decision_subtitle": "Berpikir Refleksif",
+        "reflection": "Refleksi Pembelajaran"
+    },
+    "initial": {
+        "instruction": "Saksikan video 360° pelabuhan dan wawancara dengan tiga pemangku kepentingan (Pelaut, Penjual Makanan Laut, dan Pejabat Pemerintah).",
+        "tips": {
+            "prefix": "Buka di",
+            "suffix": "untuk pengalaman 360° penuh. Klik dan tarik layar video untuk melihat sekeliling TPI dan perhatikan perspektif para pemangku kepentingan yang berbeda."
+        },
+        "description": "Bersama anggota kelompok Anda, amati tayangan Video 360 terkait kawasan TPI Puger dan mendengar potongan Hasil Wawancara masyarakat setempat. Diskusikan temuan awal Anda dan sepakati jawaban untuk pertanyaan berikut:",
+        "stakeholders": {
+            "listen_btn": "Dengarkan Rekaman",
+            "list": {
+                "sailor": {
+                    "label": "Nelayan",
+                    "summary": "Mengeluhkan tumpukan sampah yang menyangkut di jaring dan mesin kapal."
+                },
+                "seller": {
+                    "label": "Pedagang Seafood",
+                    "summary": "Khawatir akan kualitas ikan yang terkontaminasi sampah plastik di pelabuhan."
+                },
+                "official": {
+                    "label": "Pejabat Pemerintah",
+                    "summary": "Menjelaskan sulitnya regulasi pengelolaan limbah di kawasan pesisir."
+                }
+            }
+        },
+        "issue_title": "Analisis Isu Utama",
+        "issue_description": "Setelah melihat video dan mendengar wawancara, isu utama apa yang paling mendesak? Mengapa isu tersebut saling berkaitan antara nelayan, penjual ikan, dan pemerintah?",
+        "component_ecosystem": {
+            "title": "Identifikasi Komponen Ekosistem",
+            "description": "Identifikasi minimal 5 komponen (biotik dan abiotik). Gunakan fitur tabel untuk mengelompokkan: Komponen, Jenis, dan Perannya (Sumber Polutan/Korban/Media Transportasi).",
+            "question": "Bagaimana Anda menghubungkan penumpukan sampah plastik yang terlihat di video dengan potensi ancaman biologis yang tidak terlihat pada biota laut?"
+        },
+        "table_component": {
+            "headers": [
+                "Komponen",
+                "Tipe (Biotik/Abiotik)",
+                "Peran dalam Sistem"
+            ],
+            "row": [
+                "Jaring",
+                "Abiotik",
+                "Sumber mikroplastik fiber"
+            ],
+            "biotic": "Biotik",
+            "abiotic": "Abiotik",
+            "name_placeholder": "Jaring, Ikan, Air, dll",
+            "role_placeholder": "Sumber mikroplastik fiber, Korban kontaminasi, Media transportasi, dll",
+            "add_row": "Tambah Baris"
+        },
+        "plastic_identification": "Identifikasi Sampah Plastik",
+        "source_question": "Berdasarkan video, dari mana saja sumber utama sampah plastik yang berpotensi masuk dan mengendap di perairan TPI Puger",
+        "awareness_question": "Berdasarkan hasil wawancara, bagaimana tingkat kesadaran masyarakat lokal mengenai bahaya plastik yang tidak kasat mata (mikroplastik)? Apa hambatan sosial yang teridentifikasi?",
+        "footer": "Pastikan semua observasi komponen dan properti telah terisi sebelum lanjut ke tahap analisis."
+    },
+    "qualitative": {
+        "instruction": "Bandingkan botol plastik besar (yang terlihat di pelabuhan) dengan serat mikroplastik (yang disebutkan oleh Penjual).",
+        "illustration": {
+            "plastic": "Botol Plastik",
+            "fiber": "Serat Mikroplastik"
+        },
+        "analysis": {
+            "q1_title": "Fragmentasi & Perubahan Fisik",
+            "q1_desc": "Lakukan diskusi mendalam dengan rekan sekelompok Anda dan Buatlah bagan prediksi kualitatif mengenai jalur perubahan bagaimana sampah plastik makro (botol/jaring) terfragmentasi menjadi mikroplastik",
+            "q2_title": "Pembentukan Anomali",
+            "q2_desc": "Sampah plastik yang mengapung di perairan Puger mengalami degradasi. Permukaannya dengan cepat dikolonisasi oleh bakteri, mikroalga, dan patogen membentuk ekosistem mini yang disebut \"Plastisphere\". Selain itu, biofouling oleh alga menghasilkan senyawa Dimethyl sulfide (DMS).",
+            "q2_step1": "Buatlah bagan kualitatif yang menunjukkan alur fragmentasi plastik laut hingga membentuk ekosistem Plastisphere.",
+            "q2_step2": "Analisis bagaimana pembentukan Plastisphere dan pelepasan gas DMS memengaruhi perilaku makan (foraging behavior) hewan laut endemik/lokal (seperti burung laut pelagis atau ikan karang).",
+            "q2_step3": "Mengapa perubahan biologis pada permukaan plastik ini justru secara kualitatif meningkatkan risiko mikroplastik ditelan secara aktif oleh hewan laut (bukan sekadar ketidaksengajaan)?"
+        },
+        "footer": "Analisis kualitatif ini akan menjadi dasar untuk perhitungan kuantitatif di fase berikutnya.",
+        "diagram_input": {
+            "hints": "Drag bulatan di tepi variabel ke variabel lain untuk membangun hubungan kausalitas.",
+            "add_variable": "Tambah Variabel",
+            "delete": "Hapus",
+            "variable": "variabel",
+            "relation": "relasi",
+            "legend": "Legenda",
+            "positive": "Searah",
+            "negative": "Berbalik"
+        }
+    },
+    "quantitative": {
+        "instruction": "Pada bagian kualitatif, Anda telah menganalisis bagaimana mikroplastik yang lama berada di air akan membentuk Plastisphere dan melepaskan gas DMS, yang memicu hewan laut menelannya secara aktif (active ingestion). Sekarang, analisislah data lapangan dari DAS Bedadung hingga pesisir Puger berikut ini untuk membuktikan dampak sistemik fenomena tersebut.",
+        "abundance": {
+            "title": "Analisis Kelimpahan Mikroplastik (Spasial)",
+            "description": "Cermati kedua tabel data kuantitatif di LKM Anda. Diskusikan secara kolaboratif temuan pola, anomali, atau lonjakan angka pada data tersebut dengan kelompok Anda. Jawablah pertanyaan berikut berdasarkan hasil analisis matematis kelompok:"
+        },
+        "biomagnification": {
+            "title": "Tingkat Trofik & Biomagnifikasi",
+            "description": "Peneliti mengekstraksi jaringan pencernaan dan otot dari berbagai organisme di Zona Laut Puger untuk melihat transfer mikroplastik pada jaring-jaring makanan."
+        },
+        "questions": {
+            "q1_title": "Muara vs Konsentrasi Laut",
+            "q1_desc": "Mengapa konsentrasi menurun di Stasiun 4 tetapi meningkat tajam di Stasiun 3? Hubungkan ini dengan pemecahan mikroplastik dan pembentukan plastiphere.",
+            "q2_title": "Estimasi Paparan Manusia",
+            "q2_desc": "Berdasarkan data Stasiun 2, hitunglah perkiraan jumlah partikel mikroplastik yang tertelan oleh manusia jika mereka menggunakan air dari badan sungai tersebut (tanpa filtrasi RO) sebanyak 2 liter per hari!",
+            "q3_title": "Faktor Biomagnifikasi (BMF) & Perilaku Makan",
+            "q3_desc": "Hitunglah Faktor Biomagnifikasi (BMF) dari Marine Phytoplankton ke Blood Cockles (penelanan pasif/ filter feeding), lalu bandingkan dengan BMF dari Blood Cockles ke Indian Mackerel. Gunakan pemahaman kualitatif Anda tentang gas DMS untuk menjelaskan mengapa terjadi lonjakan akumulasi plastik yang sangat ekstrem pada ikan Indian Mackerel (ikan pelagis yang berburu menggunakan sinyal kemo-sensori penciuman)!",
+            "q4_title": "Transfer ke Predator Puncak",
+            "q4_desc": "Bagaimana fenomena active ingestion pada tingkat konsumen sekunder (Mackerel) mempercepat proses Biomagnifikasi hingga mencapai angka 48.50 mg/kg pada Yellowfin Tuna?",
+            "q5_title": "Risiko Konsumsi (Public Health)",
+            "q5_desc": "Jika seorang warga lokal mengonsumsi 250 gram kerang dara (Blood Cockles) per minggu dari perairan tersebut, berapa miligram total massa plastik yang masuk ke dalam sistem pencernaannya dalam waktu satu bulan?"
+        },
+        "columns": {
+            "station": "Stasiun",
+            "location": "Deskripsi Lokasi",
+            "distance": "Jarak (km)",
+            "concentration": "Konsentrasi Mikroplastik (partikel/m³)",
+            "level": "Tingkat Trofik",
+            "species": "Spesies Representatif",
+            "load": "Rata-rata Beban Plastik (mg/kg)"
+        }
+    },
+    "explanation": {
+        "instruction": "Buka aplikasi Augmented Reality (AR) di perangkat Anda. Fokuskan pada modul \"Dampak Seluler\" dan \"Fragmentasi\".",
+        "ar_title": "Laboratorium Virtual AR",
+        "setup": {
+            "title": "Petunjuk Penggunaan Augmented Reality (AR)",
+            "step": [
+                "Pastikan Anda menggunakan perangkat (smartphone) berbasis Android.Pindai QR Code berikut untuk mengunduh aplikasi AR (aplikasi ini dipastikan aman untuk perangkat Anda).",
+                "Setelah berhasil diunduh, instal dan buka aplikasi tersebut.",
+                "Silakan baca Petunjuk Penggunaan yang tersedia di dalam aplikasi.",
+                "Pilih (tap) salah satu Scene, lalu arahkan kamera perangkat Anda ke gambar Marker yang tampil di halaman web.",
+                "Selamat menjelajah dan menikmati pengalaman AR!"
+            ]
+        },
+        "guide": "Gunakan perangkat smartphone masing-masing anggota untuk memindai marker AR Fragmentasi & Risiko Kesehatan Manusia. Amati secara spesifik Scene 2 dan 3. Setelah itu, lakukan brainstorming di dalam kelompok untuk memetakan krisis sistemik ini:",
+        "question": {
+            "estimation_physical_factor": "Berdasarkan pengamatan pada Scene 2-3 di aplikasi AR, berapa estimasi waktu yang dibutuhkan oleh sampah makroplastik untuk terfragmentasi sepenuhnya menjadi mikroplastik di lingkungan laut Puger? Faktor fisik apa saja yang mempercepat proses tersebut?",
+            "human_digestion": "Secara biokimiawi, mengapa mikroplastik ini bersifat rekalsitran (tidak dapat dicerna atau diuraikan) oleh enzim maupun asam lambung di dalam sistem pencernaan manusia?",
+            "health_impact": "Berdasarkan visualisasi rute masuknya (entry) mikroplastik ke organ vital manusia di aplikasi AR, jelaskan bagaimana dampak kesehatan sistemik yang dapat terjadi akibat konsumsi seafood yang terkontaminasi dalam jangka waktu yang panjang!"
+        },
+        "causal_loop": {
+            "title": "Causal Loop Diagram",
+            "desc": "Susunlah sebuah diagram sebab-akibat (Causal Loop Diagram) yang menghubungkan seluruh subsistem yang telah Anda pelajari. Pastikan diagram Anda memuat alur interaksi antar-elemen berikut: (Sosial/Pariwisata): Aktivitas pembuangan sampah di kawasan hulu, pasar, dan pesisir Puger",
+            "point": [
+                "(Ekologi Mikro-AR): Proses fragmentasi plastik di zona laut Puger.",
+                "(Biologi/Kemo-sensori): Pembentukan Plastisphere & Pelepasan Gas DMS (Berdasarkan Fase 2).",
+                "(Perilaku & Ekotoksikologi): Penelanan aktif (Active Ingestion) & proses Biomagnifikasi ekstrem dalam Jaring Makanan Puger (Berdasarkan Data Fase 3).",
+                "(Kesehatan Manusia-AR): Rute masuk partikel (Entry) & Dampak Kesehatan Sistemik pada organ manusia.",
+                "(Dampak Makro): Konsekuensi jangka panjang terhadap Ekonomi Nelayan (penurunan kualitas tangkapan) dan kerusakan Ekosistem secara luas."
+            ]
+        }
+    },
+    "decision": {
+        "instruction": "Sebagai sebuah tim saintis, Diskusikan di dalam kelompok Anda. Berdebatlah secara ilmiah untuk memilih, mengevaluasi, dan menyepakati satu solusi mitigasi final yang paling rasional untuk diterapkan di kawasan Puger. Berdasarkan titik kritis dalam Causal Loop Diagram kelompok Anda, usulkan satu strategi spesifik (teknologi terapan, monitoring biologi, atau intervensi ekologi) untuk memutus masalah ini!",
+        "ecology_biosafety": {
+            "title": "Parameter Ekologis & Biosafety",
+            "description": "Apakah solusi biologis Anda memiliki risiko sampingan terhadap ekosistem asli Puger? (Misal: kekhawatiran pelepasan GMO atau spesies asing)."
+        },
+        "fisherman_economy": {
+            "title": "Parameter Ekonomi Nelayan",
+            "description": "Apakah implementasi strategi ini memberatkan nelayan lokal secara finansial, atau justru dalam jangka panjang menyelamatkan pasar ikan Puger?"
+        },
+        "table_component": {
+            "roles": [
+                "Nelayan",
+                "Pedagang",
+                "Pemerintah"
+            ],
+            "headers": [
+                "Nama",
+                "Peran",
+                "Solusi",
+                "Dampak"
+            ],
+            "economy_impact": {
+                "title": "Parameter Ekonomi Nelayan",
+                "description": "Apakah implementasi strategi ini memberatkan nelayan lokal secara finansial, atau justru dalam jangka panjang menyelamatkan pasar ikan Puger?"
+            },
+            "env_impact": {
+                "title": "Parameter Ekologis & Biosafety",
+                "description": "Apakah solusi biologis Anda memiliki risiko sampingan terhadap ekosistem asli Puger? (Misal: kekhawatiran pelepasan GMO atau spesies asing)"
+            },
+            "name_placeholder": "Nama Anda"
+        },
+        "conclusion": {
+            "title": "Kesimpulan Profesional",
+            "desc_primary": "Instruksi Presentasi & Diskusi Kelas (Mempertahankan Argumen):",
+            "desc": "Di akhir fase ini, setiap kelompok akan memaparkan hasil diskusinya di depan kelas. Anda tidak perlu membuat salinan presentasi baru (seperti PowerPoint). Proyeksikan langsung dashboard web LKM kelompok Anda ke layar kelas sebagai media presentasi utama!",
+            "discuss": "Forum Diskusi Interaktif (Tanya-Jawab):",
+            "presenter": "Sebagai Presenter",
+            "presenter_desc": "Pertahankan kelayakan solusi kelompok Anda (scientific defense). Tampilkan kembali grafik data atau analisis di web Anda jika diperlukan untuk menjawab pertanyaan dari dosen atau kelompok lain.",
+            "audience": "Sebagai Audience",
+            "audience_desc": "Jadilah pengkaji yang kritis bagi kelompok yang sedang presentasi. Dengarkan dengan saksama dan berikan pertanyaan tingkat tinggi (HOTS) atau kritik konstruktif terkait celah dari solusi ekologi yang mereka tawarkan.",
+            "placeholder": "Tuliskan solusi final..."
+        }
+    },
+    "reflection": {
+        "instruction": "Berikan penilaian jujurmu terhadap pengalaman belajar ini untuk membantu kami menjadi lebih baik.",
+        "scale": {
+            "very_bad": "Sangat Buruk",
+            "bad": "Buruk",
+            "neutral": "Cukup",
+            "good": "Baik",
+            "very_good": "Sangat Baik"
+        },
+        "website_ease": {
+            "title": "Kemudahan Website",
+            "desc": "Seberapa mudah website ini digunakan dan dinavigasi selama proses belajar?"
+        },
+        "material_difficulty": {
+            "title": "Tingkat Kesulitan Materi",
+            "desc": "Seberapa sulit materi yang disajikan untuk anda pahami dan kerjakan?"
+        },
+        "learning_enjoyment": {
+            "title": "Pembelajaran Menyenangkan",
+            "desc": "Seberapa menyenangkan dan menarik pengalaman belajar yang anda rasakan?"
+        }
+    },
+    "complete": {
+        "title": "Penyelidikan Selesai!",
+        "thank_you": "Terima kasih.",
+        "description": "Anda telah berhasil menyelesaikan seluruh modul investigasi mikroplastik di TPI Puger. Kontribusi Anda sangat berarti untuk penelitian ini.",
+        "one_more_step": "Satu Langkah Lagi",
+        "fill_survey": "Mohon luangkan beberapa menit untuk mengisi kuesioner akhir. Masukan Anda membantu kami meningkatkan kualitas program pembelajaran ini.",
+        "survey_link": "Isi Kuesioner Sekarang"
+    },
+    "toast": {
+        "error": "Terjadi kesalahan. Silakan coba lagi.",
+        "success": "Data berhasil disimpan!"
+    },
+    "validation": {
+        "required": "Field ini wajib diisi.",
+        "numeric": "Harap masukkan nilai numerik.",
+        "positive": "Harap masukkan nilai positif.",
+        "recheck_answer": "Harap periksa kembali jawaban Anda!",
+        "diagram_min_nodes": "Minimal harus ada 5 variabel di diagram",
+        "diagram_min_edges": "Minimal harus ada 2 relasi antar variabel"
+    }
+}
