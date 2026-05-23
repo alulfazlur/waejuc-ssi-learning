@@ -1,5 +1,5 @@
 "use client";
-import { Calculator, Pipette, Fish, Waves, ClipboardList } from "lucide-react";
+import { Calculator, Pipette, Fish, Waves, ClipboardList, Layers, Crown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
@@ -15,17 +15,18 @@ export const QuantitativeComponent = (props) => {
 
     return (
         <div className="space-y-12">
-            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 rounded-2xl border border-secondary/10">
+            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
                 <ClipboardList className="min-w-6" />
                 <p className="text-sm leading-relaxed">
                     <b>{`${t('common.activity')}: `}</b>
-                    {t('qualitative.instruction')}
+                    {t('quantitative.instruction')}
                 </p>
             </div>
 
             <section className="space-y-6">
                 <Instruction
-                    title={t('quantitative.sections.abundance')}
+                    title={t('quantitative.abundance.title')}
+                    description={t('quantitative.abundance.description')}
                     icon={Waves}
                 />
 
@@ -54,27 +55,27 @@ export const QuantitativeComponent = (props) => {
                     </table>
                 </div>
 
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4">
+                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                     <Instruction
                         title={t('quantitative.questions.q1_title')}
                         description={t('quantitative.questions.q1_desc')}
                         icon={Pipette}
                     />
                     <RichEditor
-                        name="calc_runoff_vs_currents"
+                        name="quant_estuary_concentration"
                         control={control}
                         errors={errors}
                     />
                 </div>
 
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4">
+                <div className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
                     <Instruction
                         title={t('quantitative.questions.q2_title')}
                         description={t('quantitative.questions.q2_desc')}
                         icon={Calculator}
                     />
                     <RichEditor
-                        name="calc_human_exposure"
+                        name="quant_exposure_estimation"
                         control={control}
                         errors={errors}
                     />
@@ -83,7 +84,8 @@ export const QuantitativeComponent = (props) => {
 
             <section className="space-y-6">
                 <Instruction
-                    title={t('quantitative.sections.biomagnification')}
+                    title={t('quantitative.biomagnification.title')}
+                    description={t('quantitative.biomagnification.description')}
                     icon={Fish}
                 />
 
@@ -108,14 +110,42 @@ export const QuantitativeComponent = (props) => {
                     </table>
                 </div>
 
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4">
+                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                     <Instruction
                         title={t('quantitative.questions.q3_title')}
                         description={t('quantitative.questions.q3_desc')}
+                        icon={Layers}
+                    />
+                    <RichEditor
+                        name="quant_bmf"
+                        control={control}
+                        errors={errors}
+                        rows={4}
+                    />
+                </div>
+
+                <div className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
+                    <Instruction
+                        title={t('quantitative.questions.q4_title')}
+                        description={t('quantitative.questions.q4_desc')}
+                        icon={Crown}
+                    />
+                    <RichEditor
+                        name="quant_predators"
+                        control={control}
+                        errors={errors}
+                        rows={4}
+                    />
+                </div>
+
+                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
+                    <Instruction
+                        title={t('quantitative.questions.q5_title')}
+                        description={t('quantitative.questions.q5_desc')}
                         icon={Calculator}
                     />
                     <RichEditor
-                        name="calc_biomagnification"
+                        name="quant_public_health"
                         control={control}
                         errors={errors}
                         rows={4}

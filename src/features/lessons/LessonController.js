@@ -44,44 +44,63 @@ export default function LessonController({ slug }) {
 
     const schemas = {
         initial: yup.object({
-            main_issue_analysis: richTextValidation,
-            plastic_name: yup.string().required(t('validation.required')),
-            plastic_props: richTextValidation,
-            plastic_behavior_pred: richTextValidation,
-            organism_name: yup.string().required(t('validation.required')),
-            organism_props: richTextValidation,
-            organism_behavior_pred: richTextValidation,
-            components_table: yup.array().of(yup.object({}).shape({
+            initial_main_issue_analysis: richTextValidation,
+            initial_source_analysis: richTextValidation,
+            initial_awareness_analysis: richTextValidation,
+            initial_component_ecosystem: yup.array().of(yup.object({}).shape({
                 component: yup.string().required(t('validation.required')),
-                type: richTextValidation,
+                type: yup.string().required(t('validation.required')),
                 role: yup.string().required(t('validation.required')),
-            }))
+            })),
+            initial_component_ecosystem_analysis: richTextValidation,
         }),
         qualitative: yup.object({
-            analysis_fragmentation: richTextValidation,
-            analysis_microplastic_types: richTextValidation,
-            analysis_biological_exposure: richTextValidation,
+            qual_analysis_fragmentation: richTextValidation,
+            qual_analysis_anomaly_diagram: yup.object({
+                nodes: yup.array()
+                    .min(5, t('validation.diagram_min_nodes'))
+                    .required(t('validation.required')),
+                edges: yup.array()
+                    .min(2, t('validation.diagram_min_edges'))
+                    .required(t('validation.required')),
+            }).required(t('validation.required')),
+            qual_analysis_anomaly_behaviour: richTextValidation,
+            qual_analysis_microplastic_risk: richTextValidation,
         }),
         quantitative: yup.object({
-            calc_runoff_vs_currents: richTextValidation,
-            calc_human_exposure: richTextValidation,
-            calc_biomagnification: richTextValidation,
+            quant_estuary_concentration: richTextValidation,
+            quant_exposure_estimation: richTextValidation,
+            quant_bmf: richTextValidation,
+            quant_predators: richTextValidation,
+            quant_public_health: richTextValidation,
         }),
         explanation: yup.object({
-            transformation_mechanism: richTextValidation,
-        }),
-        reflection: yup.object({
-            reflection_insight: richTextValidation,
-            reflection_feel: richTextValidation,
-            reflection_teach: richTextValidation,
-            reflection_action: richTextValidation,
+            explain_estimation_physical_factor: richTextValidation,
+            explain_human_digestion: richTextValidation,
+            explain_health_impact: richTextValidation,
+            explain_causal_loop: yup.object({
+                nodes: yup.array()
+                    .min(5, t('validation.diagram_min_nodes'))
+                    .required(t('validation.required')),
+                edges: yup.array()
+                    .min(2, t('validation.diagram_min_edges'))
+                    .required(t('validation.required')),
+            }).required(t('validation.required'))
         }),
         decision: yup.object({
-            policy_name: yup.string().required(t('validation.required')),
-            env_benefit: richTextValidation,
-            eco_cost: richTextValidation,
-            social_impact: richTextValidation,
-            policy_conclusion: richTextValidation,
+            decision_strategy: yup.array().of(yup.object({}).shape({
+                name: yup.string().required(t('validation.required')),
+                role: yup.string().required(t('validation.required')),
+                solution: yup.string().required(t('validation.required')),
+                economy_impact: yup.string().required(t('validation.required')),
+                env_impact: yup.string().required(t('validation.required')),
+            })),
+            decision_conclusion: richTextValidation,
+        }),
+        reflection: yup.object({
+            reflection_website: yup.number().min(1, t('validation.required')).max(5).required(t('validation.required')),
+            reflection_difficulty: yup.number().min(1, t('validation.required')).max(5).required(t('validation.required')),
+            reflection_enjoyment: yup.number().min(1, t('validation.required')).max(5).required(t('validation.required')),
         }),
     };
 
@@ -92,48 +111,76 @@ export default function LessonController({ slug }) {
         shouldFocusError: true,
         defaultValues: {
             // initial
-            main_issue_analysis: '',
-            plastic_name: '',
-            plastic_props: '',
-            plastic_behavior_pred: '',
-            organism_name: '',
-            organism_props: '',
-            organism_behavior_pred: '',
-            components_table: Array(5).fill({ component: "", type: "", role: "" }),
+            initial_main_issue_analysis: '',
+            initial_source_analysis: '',
+            initial_awareness_analysis: '',
+            initial_component_ecosystem: Array(5).fill({ component: "", type: "", role: "" }),
+            initial_component_ecosystem_analysis: '',
             // qualitative
-            analysis_fragmentation: '',
-            analysis_microplastic_types: '',
-            analysis_biological_exposure: '',
+            qual_analysis_fragmentation: '',
+            qual_analysis_anomaly_diagram: { nodes: [], edges: [] },
+            qual_analysis_anomaly_behaviour: '',
+            qual_analysis_microplastic_risk: '',
             // quantitative
-            calc_runoff_vs_currents: '',
-            calc_human_exposure: '',
-            calc_biomagnification: '',
+            quant_estuary_concentration: '',
+            quant_exposure_estimation: '',
+            quant_bmf: '',
+            quant_predators: '',
+            quant_public_health: '',
             // explanation
-            transformation_mechanism: '',
-            // reflection
-            reflection_insight: '',
-            reflection_feel: '',
-            reflection_teach: '',
-            reflection_action: '',
+            explain_estimation_physical_factor: '',
+            explain_human_digestion: '',
+            explain_health_impact: '',
+            explain_causal_loop: { nodes: [], edges: [] },
             // decision
-            policy_name: '',
-            env_benefit: '',
-            eco_cost: '',
-            social_impact: '',
-            policy_conclusion: '',
+            decision_strategy: Array(5).fill({ name: "", role: "", solution: "", economy_impact: "", env_impact: "" }),
+            decision_conclusion: '',
+            // reflection
+            reflection_website: null,
+            reflection_difficulty: null,
+            reflection_enjoyment: null,
         }
     });
 
     const { handleSubmit, formState: { errors } } = methods;
 
+    const cleanDiagram = (diagram) => {
+        if (!diagram || typeof diagram !== 'object') return diagram;
+        return {
+            nodes: (diagram.nodes ?? []).map(n => ({
+                id: n.id,
+                position: n.position,
+                data: n.data,
+                ...(n.style ? { style: n.style } : {}),
+            })),
+            edges: (diagram.edges ?? []).map(e => ({
+                id: e.id,
+                source: e.source,
+                target: e.target,
+                ...(e.sourceHandle ? { sourceHandle: e.sourceHandle } : {}),
+                ...(e.targetHandle ? { targetHandle: e.targetHandle } : {}),
+                data: e.data,
+                label: e.label,
+            })),
+        };
+    };
+
+
     const onSubmit = async (formData) => {
         try {
+            const cleaned = {
+                ...formData,
+                ...(formData.qual_analysis_anomaly_diagram && {
+                    qual_analysis_anomaly_diagram: cleanDiagram(formData.qual_analysis_anomaly_diagram),
+                }),
+            };
+
             const { error: dbError } = await supabase
                 .from('student_responses')
                 .upsert({
                     student_id: user.id,
                     level_slug: slug,
-                    content: formData,
+                    content: cleaned,
                 }, {
                     onConflict: 'student_id, level_slug'
                 });
@@ -167,7 +214,7 @@ export default function LessonController({ slug }) {
         if (savedContent) {
             methods.reset(savedContent);
         } else {
-            methods.reset({ components_table: Array(5).fill({ component: "", type: "", role: "" }) });
+            methods.reset();
         }
     }, [slug, responses, methods]);
 
@@ -183,17 +230,15 @@ export default function LessonController({ slug }) {
 
     return (
         <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit, onError)}>
-                <ActiveComponent
-                    methods={methods}
-                    errors={errors}
-                />
-                <div className="flex justify-end sticky bottom-7.5 mt-12 z-50">
-                    <Button type="submit">
-                        {t('common.submit')}
-                    </Button>
-                </div>
-            </form>
+            <ActiveComponent
+                methods={methods}
+                errors={errors}
+            />
+            <div className="flex justify-end sticky bottom-7.5 mt-12 z-50">
+                <Button type="submit" onClick={handleSubmit(onSubmit, onError)}>
+                    {t('common.submit')}
+                </Button>
+            </div>
         </FormProvider>
     );
 }

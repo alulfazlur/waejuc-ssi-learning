@@ -1,8 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { CheckCircle, ExternalLink, LogOut } from "lucide-react";
-import { useAuth } from "@context/AuthContext";
+import { CheckCircle, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const fadeUp = (delay = 0) => ({
@@ -11,17 +9,10 @@ const fadeUp = (delay = 0) => ({
     transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
-const SURVEY_URL = "https://forms.gle/SNxWawEMEHsf3eRB6";
+const SURVEY_URL = "https://forms.gle/r63MmskQFftzP1Kv8";
 
 export const CompletionPage = () => {
-    const router = useRouter();
-    const { logout } = useAuth();
     const { t } = useTranslation();
-
-    const handleLogout = async () => {
-        await logout();
-        router.push("/");
-    };
 
     return (
         <div className="pt-20 bg-background text-primary flex flex-col items-center justify-center overflow-hidden relative">
@@ -84,26 +75,6 @@ export const CompletionPage = () => {
                         <ExternalLink size={14} />
                     </a>
                 </motion.div>
-
-                <motion.div {...fadeUp(0.36)}>
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="h-px flex-1 bg-primary/10" />
-                        <span className="text-xs text-secondary font-mono tracking-widest">{t('complete.or')}</span>
-                        <div className="h-px flex-1 bg-primary/10" />
-                    </div>
-                </motion.div>
-
-                <motion.div {...fadeUp(0.42)} className="flex justify-center">
-                    <button
-                        type="button"
-                        onClick={handleLogout}
-                        className="flex items-center gap-2 text-secondary hover:text-primary transition-colors text-sm cursor-pointer group"
-                    >
-                        <LogOut size={15} className="group-hover:-translate-x-0.5 transition-transform" />
-                        {t('complete.logout')}
-                    </button>
-                </motion.div>
-
             </div>
         </div>
     );

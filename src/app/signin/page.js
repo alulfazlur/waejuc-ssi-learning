@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Fingerprint, Beaker, ShieldCheck } from "lucide-react";
+import { Fingerprint, Beaker, ShieldCheck, Lock, Eye, EyeOff } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { createClient } from "@lib/supabase/client";
@@ -17,6 +17,10 @@ import LanguageToggle from '@components/LanguageToggle'
 
 export default function SignIn() {
     const [studentId, setStudentId] = useState("");
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
+
     const { login, isSyncing, loading, setLoading } = useAuth();
     const { t } = useTranslation();
     const supabase = createClient();
@@ -28,16 +32,17 @@ export default function SignIn() {
     const backgroundClass = 'bg-background dark:bg-background';
 
     const handleSignIn = async (e) => {
+        setError('')
         setLoading(true);
         e.preventDefault();
 
         const { data: { user }, error } = await supabase.auth.signInWithPassword({
             email: `${studentId}@microlab.com`,
-            password: studentId,
+            password: password,
         });
 
         if (error) {
-            alert(t('auth.error_msg') || "ID Peneliti tidak terdaftar!");
+            setError(t('signin.error'));
             setLoading(false);
         } else {
             await login(user);
@@ -132,17 +137,18 @@ export default function SignIn() {
                             <Fingerprint size={32} />
                         </div>
                         <h2 className="text-3xl font-black text-primary tracking-tight">
-                            Micro-Lab <span className="font-light opacity-50">Auth</span>
+                            WAVES-SSI <span className="font-light opacity-50">Auth</span>
                         </h2>
                         <p className="text-secondary/60 text-sm dark:text-primary mt-2">
                             {t('signin.description')}
                         </p>
                     </div>
 
-                    <form onSubmit={handleSignIn} className="space-y-6">
+                    <form onSubmit={handleSignIn} className="space-y-5">
+                        {/* INPUT ID PENELITI */}
                         <div className="space-y-2">
                             <label className="text-[13px] font-bold">{t('signin.label')}</label>
-                            <div className="relative group mt-1">
+                            <div className="relative group mt-1 mb-0">
                                 <div className="absolute inset-y-0 left-4 flex items-center text-primary/30 group-focus-within:text-primary transition-colors dark:text-background/50 dark:group-focus-within:text-background">
                                     <ShieldCheck size={20} />
                                 </div>
@@ -153,12 +159,43 @@ export default function SignIn() {
                                     placeholder={t('signin.placeholder')}
                                     className={`w-full pl-12 bg-background dark:bg-primary text-primary dark:text-background border border-secondary/50
                                         rounded-lg p-2 outline-none transition-all resize-none pr-12`}
-                                    onChange={(e) => setStudentId(e.target.value)}
+                                    onChange={(e) => {setStudentId(e.target.value); setError('')}}
                                 />
                             </div>
+                            {!!error && <span className="text-red-500 text-xs">{error}</span>}
                         </div>
 
-                        <Button className="w-full py-4 rounded-2xl text-md font-bold shadow-xl shadow-primary/10">
+                        {/* 3. TAMBAHAN INPUT PASSWORD + TOGGLE EYE */}
+                        <div className="space-y-2">
+                            <label className="text-[13px] font-bold">Password</label>
+                            <div className="relative group mt-1 mb-0">
+                                {/* Ikon Kunci di Sisi Kiri */}
+                                <div className="absolute inset-y-0 left-4 flex items-center text-primary/30 group-focus-within:text-primary transition-colors dark:text-background/50 dark:group-focus-within:text-background">
+                                    <Lock size={20} />
+                                </div>
+
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    required
+                                    placeholder="Masukkan password Anda"
+                                    className={`w-full pl-12 pr-12 bg-background dark:bg-primary text-primary dark:text-background border border-secondary/50
+                                        rounded-lg p-2 outline-none transition-all`}
+                                    value={password}
+                                    onChange={(e) => {setPassword(e.target.value); setError('')}}
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute inset-y-0 right-4 flex items-center text-primary/30 hover:text-primary transition-colors dark:text-background/50 dark:hover:text-background"
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+                            {!!error && <span className="text-red-500 text-xs">{error}</span>}
+                        </div>
+
+                        <Button className="w-full py-4 rounded-2xl text-md font-bold shadow-xl shadow-primary/10 mt-2">
                             {t('signin.button')}
                         </Button>
                     </form>

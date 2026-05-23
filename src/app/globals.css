@@ -18,9 +18,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #e5e1dd;
+  --background: #e9e8e8;
   --primary: #083a4f;
-  --secondary: #407e8c;
+  --secondary: #36717e;
   --tertiary: #c0d6d6;
   --card: #f8fafc;
   --muted: #64748b;
@@ -30,8 +30,8 @@
 
 .dark {
   --background: #083a4f;
-  --primary: #e5e1dd;
-  --secondary: #407e8c;
+  --primary: #e9e8e8;
+  --secondary: #36717e;
   --tertiary: #c0d6d6;
   --card: #1e293b;
   --muted: #94a3b8;

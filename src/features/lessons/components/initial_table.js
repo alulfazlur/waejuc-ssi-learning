@@ -1,6 +1,3 @@
-// Taruh di InitialComponent.jsx, ganti section components_table_analysis
-// Pastikan schema zod/yup kamu juga diupdate (lihat bagian bawah file ini)
-
 "use client";
 import { useFieldArray } from "react-hook-form";
 import { Plus, Trash2 } from "lucide-react";
@@ -14,10 +11,10 @@ const ComponentsTable = ({ control, register, errors }) => {
 
     const { fields, append, remove } = useFieldArray({
         control,
-        name: "components_table",
+        name: "initial_component_ecosystem",
     });
 
-    const tableErrors = errors?.components_table;
+    const tableErrors = errors?.initial_component_ecosystem;
     const rootError = tableErrors?.root?.message || tableErrors?.message;
 
     const addRow = () => {
@@ -25,34 +22,32 @@ const ComponentsTable = ({ control, register, errors }) => {
     };
 
     const TYPE_OPTIONS = [
-        { value: "Biotik", label: "Biotik" },
-        { value: "Abiotik", label: "Abiotik" },
+        { value: "Biotic", label: t("initial.table_component.biotic") },
+        { value: "Abiotic", label: t("initial.table_component.abiotic") },
     ];
 
     return (
-        <div className="space-y-4">
-            <div className="overflow-x-auto rounded-2xl border border-border shadow-sm">
-                <table className="w-full h-full text-sm text-left">
+        <div className="space-y-4 min-w-0">
+            <div className="min-w-0 overflow-x-auto rounded-2xl border border-border shadow-sm">
+                <table className="text-sm text-left" style={{ minWidth: "320px", width: "100%" }}>
                     <thead className="bg-tertiary dark:bg-secondary text-primary uppercase text-xs font-bold">
                         <tr>
                             <th className="px-4 py-3 w-8 text-center">#</th>
-                            <th className="px-4 py-3">
+                            <th className="px-4 py-3 min-w-44">
                                 {t('initial.table_component.headers.0')}
                             </th>
-                            <th className="px-4 py-3 w-60">
+                            <th className="px-4 py-3 w-44">
                                 {t('initial.table_component.headers.1')}
                             </th>
-                            <th className="px-4 py-3">
+                            <th className="px-4 py-3 min-w-44">
                                 {t('initial.table_component.headers.2')}
                             </th>
                             <th className="px-4 py-3 w-10" />
                         </tr>
-
-
                     </thead>
 
                     <tbody className="divide-y divide-border">
-                        <tr className="font-normal italic text-secondary bg-tertiary/60 dark:bg-secondary/60 border-t border-border">
+                        <tr className="font-normal italic text-secondary dark:text-primary bg-tertiary/60 dark:bg-secondary/60 border-t border-border">
                             <td className="px-4 py-2 text-center opacity-40 text-xs">{t('common.example')}</td>
                             {t('initial.table_component.row', { returnObjects: true })?.map((cell, idx) => (
                                 <td key={idx} className="px-4 py-2 opacity-60 text-xs">{cell}</td>
@@ -69,7 +64,7 @@ const ComponentsTable = ({ control, register, errors }) => {
 
                                     <td className="px-4 py-3">
                                         <Input
-                                            {...register(`components_table.${index}.component`)}
+                                            {...register(`initial_component_ecosystem.${index}.component`)}
                                             placeholder={t('initial.table_component.name_placeholder')}
                                             errors={errors}
                                             error={rowError?.component}
@@ -79,7 +74,7 @@ const ComponentsTable = ({ control, register, errors }) => {
 
                                     <td className="px-4 py-3">
                                         <Select
-                                            {...register(`components_table.${index}.type`)}
+                                            {...register(`initial_component_ecosystem.${index}.type`)}
                                             placeholder={t('common.select_placeholder')}
                                             errors={errors}
                                             error={rowError?.type}
@@ -90,7 +85,7 @@ const ComponentsTable = ({ control, register, errors }) => {
 
                                     <td className="px-4 py-3">
                                         <Input
-                                            {...register(`components_table.${index}.role`)}
+                                            {...register(`initial_component_ecosystem.${index}.role`)}
                                             placeholder={t('initial.table_component.role_placeholder')}
                                             errors={errors}
                                             error={rowError?.role}
@@ -98,7 +93,7 @@ const ComponentsTable = ({ control, register, errors }) => {
                                         />
                                     </td>
 
-                                    <td className="px-3 py-3">
+                                    <td className="px-3 py-3 align-middle">
                                         <button
                                             type="button"
                                             onClick={() => remove(index)}
@@ -137,6 +132,6 @@ const ComponentsTable = ({ control, register, errors }) => {
             </div>
         </div>
     );
-}
+};
 
-export default ComponentsTable
+export default ComponentsTable;
