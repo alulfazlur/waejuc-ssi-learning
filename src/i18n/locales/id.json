@@ -86,7 +86,11 @@
         "progress_title": "Fase Misi",
         "progress_overview": "Progres Anda",
         "material_btn": "Materi Pembelajaran",
-        "logout": "Keluar"
+        "logout": "Keluar",
+        "export_btn": "Export ke PDF",
+        "exporting": "Membuat PDF...",
+        "export_success":"PDF berhasil diunduh",
+        "export_error":"Gagal export PDF"
     },
     "signin": {
         "description": "Masukkan ID Peneliti Anda untuk mengakses basis data Proyek Puger.",
