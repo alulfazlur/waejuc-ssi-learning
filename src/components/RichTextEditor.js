@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useController } from "react-hook-form";
+import { get } from 'lodash';
 import { useEditor, EditorContent, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -204,7 +205,8 @@ export default function RichTextEditor({
         field: { value, onChange },
     } = useController({ name, control, defaultValue: "" });
 
-    const error = errors?.[name];
+    const error = errors?.[name] || get(errors, name);
+
     const [showTablePicker, setShowTablePicker] = useState(false);
     const [showTableContext, setShowTableContext] = useState(false);
     const tablePickerRef = useRef(null);

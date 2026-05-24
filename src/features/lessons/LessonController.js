@@ -55,7 +55,6 @@ export default function LessonController({ slug }) {
             initial_component_ecosystem_analysis: richTextValidation,
         }),
         qualitative: yup.object({
-            qual_analysis_fragmentation: richTextValidation,
             qual_analysis_anomaly_diagram: yup.object({
                 nodes: yup.array()
                     .min(5, t('validation.diagram_min_nodes'))
@@ -117,7 +116,6 @@ export default function LessonController({ slug }) {
             initial_component_ecosystem: Array(5).fill({ component: "", type: "", role: "" }),
             initial_component_ecosystem_analysis: '',
             // qualitative
-            qual_analysis_fragmentation: '',
             qual_analysis_anomaly_diagram: { nodes: [], edges: [] },
             qual_analysis_anomaly_behaviour: '',
             qual_analysis_microplastic_risk: '',
