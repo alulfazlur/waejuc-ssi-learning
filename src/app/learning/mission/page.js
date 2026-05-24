@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Anchor, ArrowRight, Fish, Users, TrendingDown, MapPin, AlertTriangle } from "lucide-react";
