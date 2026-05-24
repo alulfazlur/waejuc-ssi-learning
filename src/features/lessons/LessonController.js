@@ -70,9 +70,9 @@ export default function LessonController({ slug }) {
         quantitative: yup.object({
             quant_estuary_concentration: richTextValidation,
             quant_exposure_estimation: richTextValidation,
-            quant_bmf: richTextValidation,
-            quant_predators: richTextValidation,
-            quant_public_health: richTextValidation,
+            quant_consump_exposure: richTextValidation,
+            quant_consump_limit: richTextValidation,
+            quant_concept_app: richTextValidation,
         }),
         explanation: yup.object({
             explain_estimation_physical_factor: richTextValidation,
@@ -124,9 +124,9 @@ export default function LessonController({ slug }) {
             // quantitative
             quant_estuary_concentration: '',
             quant_exposure_estimation: '',
-            quant_bmf: '',
-            quant_predators: '',
-            quant_public_health: '',
+            quant_consump_exposure: '',
+            quant_consump_limit: '',
+            quant_concept_app: '',
             // explanation
             explain_estimation_physical_factor: '',
             explain_human_digestion: '',

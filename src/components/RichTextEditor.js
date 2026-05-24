@@ -234,7 +234,7 @@ export default function RichTextEditor({
         editorProps: {
             attributes: {
                 class: `prose prose-sm dark:prose-invert max-w-none focus:outline-none px-3 py-2 overflow-auto ${
-                    fullHeight ? "h-[500px]" : "h-[120px]"
+                    fullHeight ? "h-[400px]" : "h-[120px]"
                 }`,
             },
         },

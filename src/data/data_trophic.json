@@ -14,13 +14,13 @@
     {
       "level_id": "Konsumen Primer",
       "level_en": "Primary Consumer",
-      "species": "Blood Cockles (Anadara granosa)",
+      "species": "Neocalanus sp. (Kopepoda)",
       "avg_load_mg_kg": 4.10
     },
     {
       "level_id": "Produsen Primer",
       "level_en": "Primary Producer",
-      "species": "Marine Phytoplankton",
+      "species": "Chaetoceros sp. (Diatom)",
       "avg_load_mg_kg": 0.05
     }
   ]

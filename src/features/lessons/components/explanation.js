@@ -105,7 +105,15 @@ export const ExplanationComponent = (props) => {
             <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
                 <Instruction
                     icon={null}
-                    description={t('explanation.question.estimation_physical_factor')}
+                    description={(
+                        <>
+                            {t('explanation.question.estimation_physical_factor')}
+                            <br />
+                            <b className="text-sm">
+                                {`${t('common.reference')} 1,2`}
+                            </b>
+                        </>
+                    )}
                 />
                 <RichEditor
                     name="explain_estimation_physical_factor"
@@ -117,7 +125,15 @@ export const ExplanationComponent = (props) => {
             <section className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                 <Instruction
                     icon={null}
-                    description={t('explanation.question.human_digestion')}
+                    description={(
+                        <>
+                            {t('explanation.question.human_digestion')}
+                            <br />
+                            <b className="text-sm">
+                                {`${t('common.reference')} 9`}
+                            </b>
+                        </>
+                    )}
                 />
                 <RichEditor
                     name="explain_human_digestion"
@@ -129,7 +145,15 @@ export const ExplanationComponent = (props) => {
             <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
                 <Instruction
                     icon={null}
-                    description={t('explanation.question.health_impact')}
+                    description={(
+                        <>
+                            {t('explanation.question.health_impact')}
+                            <br />
+                            <b className="text-sm">
+                                {`${t('common.reference')} 9`}
+                            </b>
+                        </>
+                    )}
                 />
                 <RichEditor
                     name="explain_health_impact"

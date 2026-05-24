@@ -9,7 +9,8 @@
         "load_init": "Initializing Research Environment...",
         "start_mission": "Start Mission",
         "example": "Example",
-        "select_placeholder": "Select an option"
+        "select_placeholder": "Select an option",
+        "reference": "Material Reference:"
     },
     "error": {
         "video_not_supported": "Your browser does not support the video tag.",
@@ -174,8 +175,8 @@
             "q2_title": "Anomaly Formation",
             "q2_desc": "Plastic waste floating in Puger waters undergoes degradation. Its surface is rapidly colonized by bacteria, microalgae, and pathogens, forming a mini-ecosystem called the \"Plastisphere.\" Furthermore, biofouling by algae produces the compound Dimethyl sulfide (DMS).",
             "q2_step1": "Create a qualitative diagram showing the path of marine plastic fragmentation to form the Plastisphere ecosystem.",
-            "q2_step2": "Analyze how the formation of the Plastisphere and the release of DMS gas affect the foraging behavior of endemic/local marine animals (such as pelagic seabirds or reef fish).",
-            "q2_step3": "Why do these biological changes on the plastic surface qualitatively increase the risk of microplastics being actively ingested by marine animals (rather than just accidentally)?"
+            "q2_step2": "Analyze how the formation of the Plastisphere and the release of DMS gas affect the foraging behavior of endemic/local marine animals.",
+            "q2_step3": "Why do these biological changes on the plastic surface actually increase the risk of microplastics being actively ingested by marine animals (rather than just accidentally)?"
         },
         "footer": "This qualitative analysis will form the basis for quantitative calculations in the next phase.",
         "diagram_input": {
@@ -204,18 +205,18 @@
             "q1_desc": "Why did the concentration decrease at Station 4 but increase sharply at Station 3? This is attributed to the breakdown of microplastics and the formation of plastipheres.",
             "q2_title": "Human Exposure Estimation",
             "q2_desc": "Based on data from Station 2, calculate the estimated number of microplastic particles ingested by humans if they use water from the river body (without RO filtration) as much as 2 liters per day!",
-            "q3_title": "Biomagnification Factor (BMF) & Feeding Behavior",
-            "q3_desc": "Calculate the Biomagnification Factor (BMF) from Marine Phytoplankton to Blood Cockles (passive ingestion/filter feeding), then compare it with the BMF from Blood Cockles to Indian Mackerel. Use your qualitative understanding of DMS gas to explain why there was such an extreme spike in plastic accumulation in Indian Mackerel (a pelagic fish that hunts using olfactory chemosensory signals)!",
-            "q4_title": "Transfer to Top Predators",
-            "q4_desc": "How does active ingestion at the secondary consumer level (Mackerel) accelerate the biomagnification process to reach 48.50 mg/kg in Yellowfin Tuna?",
-            "q5_title": "Consumption Risk (Public Health)",
-            "q5_desc": "If a local resident consumes 250 grams of Blood Cockles per week from these waters, how many milligrams total mass of plastic that enters his digestive system in one month?"
+            "q3_title": "Consumption Exposure Comparison",
+            "q3_desc": "A consumer eats 200 grams of Yellowfin Tuna (Thunnus albacares) in a single meal. How many weeks would that person need to consume 250 grams of Yellowfin Tuna (Rastrelliger kanagurta) to achieve the same plastic mass accumulation as a single serving of tuna?",
+            "q4_title": "Safe Consumption Limit",
+            "q4_desc": "If the theoretical safe limit for microplastic intake is 0.5 mg per kg of body weight per week, what is the maximum limit (grams) of Yellowfin Tuna consumption per week for an adult weighing 60 kg?",
+            "q5_title": "Conceptual Application / Market Choice",
+            "q5_desc": "Based on the plastic load data in the table above, if you were to go to the fish market to buy fish for your family, which of the two commercial fish (Yellowfin Tuna vs. Yellowfin Tuna) would be the wiser and safer choice? Explain the scientific rationale. based on the concept of the food chain."
         },
         "columns": {
             "station": "Station",
             "location": "Location Description",
             "distance": "Distance (km)",
-            "concentration": "MP Concentration (particles/m³)",
+            "concentration": "MP Concentration (particles/L)",
             "level": "Trophic Level",
             "species": "Representative Species",
             "load": "Avg. Plastic Load (mg/kg)"
@@ -237,8 +238,8 @@
         "guide": "Use each member's smartphone to scan the AR marker Fragmentation & Human Health Risk. Specifically observe Scenes 2 and 3. Afterward, brainstorm within the group to map this systemic crisis:",
         "question": {
             "estimation_physical_factor": "Based on observations of Scenes 2-3 in the AR app, how long do you estimate it will take for macroplastic waste to fully fragment into microplastics in the Puger marine environment? What physical factors accelerate this process?",
-            "human_digestion": "Biochemically, why are these microplastics recalcitrant (unable to be digested or broken down) by enzymes or stomach acid in the human digestive system?",
-            "health_impact": "Based on the visualization of the microplastic entry route into vital human organs in the AR app, explain the systemic health impacts that can occur from consuming contaminated seafood over a long period of time!"
+            "human_digestion": "Based on observations in Scene 8 in the AR app, biochemically, why are these microplastics recalcitrant (unable to be digested or broken down) by enzymes or stomach acid in the human digestive system?",
+            "health_impact": "Based on observations in Scene 8 in the AR app, and the visualization of the microplastic entry route into vital human organs in the AR app, explain the systemic health impacts that can occur from consuming contaminated seafood over a long period of time!"
         },
         "causal_loop": {
             "title": "Causal Loop Diagram",
@@ -282,7 +283,8 @@
                 "title": "Ecological Parameters & Biosafety",
                 "description": "Does your biological solution pose any side effects to the native Puger ecosystem? (E.g., concerns about the release of GMOs or alien species)"
             },
-            "name_placeholder": "Your Name"
+            "name_placeholder": "Your Name",
+            "solution_placeholder": "Explain your proposed solution..."
         },
         "conclusion": {
             "title": "Professional Conclusion",
