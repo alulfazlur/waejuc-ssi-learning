@@ -498,7 +498,7 @@ const renderCardList = (rows, primary, blocks, t) => {
             return `
               <div style="margin:12px 0;padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;page-break-inside:avoid">
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid #e2e8f0">
-                  <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#083a4f;color:#ffffff;font-weight:700;font-size:11px;border-radius:50%;flex-shrink:0">${idx + 1}</span>
+                  <span style="color:#083a4f;font-weight:700;font-size:11px;flex-shrink:0">${idx + 1}</span>
                   <div style="font-size:12px;line-height:1.5">${headerParts}</div>
                 </div>
                 ${blockParts}
