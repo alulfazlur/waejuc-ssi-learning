@@ -97,14 +97,8 @@ export const EXPORT_STRUCTURE = [
         titleKey: 'syllabus.qualitative',
         fields: [
             {
-                name: 'qual_analysis_fragmentation',
-                titleKey: 'qualitative.analysis.q1_title',
-                descKey: 'qualitative.analysis.q1_desc',
-                type: 'rich',
-            },
-            {
                 name: 'qual_analysis_anomaly_diagram',
-                titleKey: 'qualitative.analysis.q2_title',
+                titleKey: 'qualitative.analysis.q1_title',
                 descKey: 'qualitative.analysis.q2_step1',
                 type: 'diagram',
             },
@@ -137,19 +131,19 @@ export const EXPORT_STRUCTURE = [
                 type: 'rich',
             },
             {
-                name: 'quant_bmf',
+                name: 'quant_consump_exposure',
                 titleKey: 'quantitative.questions.q3_title',
                 descKey: 'quantitative.questions.q3_desc',
                 type: 'rich',
             },
             {
-                name: 'quant_predators',
+                name: 'quant_consump_limit',
                 titleKey: 'quantitative.questions.q4_title',
                 descKey: 'quantitative.questions.q4_desc',
                 type: 'rich',
             },
             {
-                name: 'quant_public_health',
+                name: 'quant_concept_app',
                 titleKey: 'quantitative.questions.q5_title',
                 descKey: 'quantitative.questions.q5_desc',
                 type: 'rich',

@@ -2,13 +2,17 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
+import { motion, AnimatePresence } from "framer-motion";
 
+import { useAuth } from "@context/AuthContext";
 import ThemeToggle from '@components/ThemeToggle'
 import LanguageToggle from '@components/LanguageToggle'
 
 export default function MarketingLayout({ children }) {
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
+
+    const { loading } = useAuth();
 
     const colorClass = 'text-primary dark:text-primary';
     const backgroundClass = 'bg-background dark:bg-background';
@@ -32,6 +36,23 @@ export default function MarketingLayout({ children }) {
 
     return (
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+            <AnimatePresence>
+                {loading && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-60 flex items-center justify-center bg-background/80 backdrop-blur-md"
+                    >
+                        <div className="flex flex-col items-center gap-4">
+                            <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                            <p className="text-sm font-mono animate-pulse text-primary">
+                                {loading ? "Loading..." : t('common.load_init')}
+                            </p>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <nav
                 className={`
                         fixed top-0 left-0 right-0 z-60 px-6 py-4 flex justify-between lg:justify-normal items-center duration-200
