@@ -2,18 +2,18 @@
     {
       "id": 1,
       "station": "Station 1",
-      "location_id": "Upstream (Tegal Gede, Jember)",
+      "location_id": "Hulu (Tegal Gede, Jember)",
       "location_en": "Upstream (Tegal Gede, Jember)",
       "distance": 0,
-      "concentration": 120000
+      "concentration": 0.45
     },
     {
       "id": 2,
       "station": "Station 2",
       "location_id": "Tengah Sungai (Kecamatan Kaliwates)",
-      "location_en": "Midstream (Kaliwates District)",
+      "location_en": "Urban Area (Kaliwates District)",
       "distance": 12,
-      "concentration": 1180000
+      "concentration": 1.87
     },
     {
       "id": 3,
@@ -21,14 +21,14 @@
       "location_id": "Muara (Muara Sungai Puger)",
       "location_en": "Estuary (Puger River Mouth)",
       "distance": 45,
-      "concentration": 1870000
+      "concentration": 5.60
     },
     {
       "id": 4,
       "station": "Station 4",
-      "location_id": "Zona Laut (Pelabuhan Perikanan Puger)",
+      "location_id": "Zona Laut Terbuka (Pelabuhan Perikanan Puger)",
       "location_en": "Marine Zone (Puger Fishing Harbor)",
       "distance": 48,
-      "concentration": 950000
+      "concentration": 2.10
     }
   ]

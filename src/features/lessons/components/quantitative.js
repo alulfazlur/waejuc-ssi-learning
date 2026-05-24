@@ -1,5 +1,5 @@
 "use client";
-import { Calculator, Pipette, Fish, Waves, ClipboardList, Layers, Crown } from "lucide-react";
+import { Calculator, Pipette, Fish, Waves, ClipboardList, Scale, Gauge, Store } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Instruction from "@components/Instruction";
 import RichEditor from "@/components/RichTextEditor";
@@ -58,7 +58,15 @@ export const QuantitativeComponent = (props) => {
                 <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                     <Instruction
                         title={t('quantitative.questions.q1_title')}
-                        description={t('quantitative.questions.q1_desc')}
+                        description={(
+                            <>
+                                {t('quantitative.questions.q1_desc')}
+                                <br />
+                                <b className="text-sm">
+                                    {`${t('common.reference')} 11`}
+                                </b>
+                            </>
+                        )}
                         icon={Pipette}
                     />
                     <RichEditor
@@ -114,10 +122,10 @@ export const QuantitativeComponent = (props) => {
                     <Instruction
                         title={t('quantitative.questions.q3_title')}
                         description={t('quantitative.questions.q3_desc')}
-                        icon={Layers}
+                        icon={Scale}
                     />
                     <RichEditor
-                        name="quant_bmf"
+                        name="quant_consump_exposure"
                         control={control}
                         errors={errors}
                         rows={4}
@@ -128,10 +136,10 @@ export const QuantitativeComponent = (props) => {
                     <Instruction
                         title={t('quantitative.questions.q4_title')}
                         description={t('quantitative.questions.q4_desc')}
-                        icon={Crown}
+                        icon={Gauge}
                     />
                     <RichEditor
-                        name="quant_predators"
+                        name="quant_consump_limit"
                         control={control}
                         errors={errors}
                         rows={4}
@@ -142,10 +150,10 @@ export const QuantitativeComponent = (props) => {
                     <Instruction
                         title={t('quantitative.questions.q5_title')}
                         description={t('quantitative.questions.q5_desc')}
-                        icon={Calculator}
+                        icon={Store}
                     />
                     <RichEditor
-                        name="quant_public_health"
+                        name="quant_concept_app"
                         control={control}
                         errors={errors}
                         rows={4}

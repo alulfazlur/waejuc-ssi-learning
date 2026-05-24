@@ -9,7 +9,8 @@
         "load_init": "Menginisialisasi Lingkungan Penelitian...",
         "start_mission": "Mulai Misi",
         "example": "Contoh",
-        "select_placeholder": "Pilih opsi..."
+        "select_placeholder": "Pilih opsi...",
+        "reference": "Rujukan Materi:"
     },
     "error": {
         "video_not_supported": "Browser Anda tidak mendukung tag video.",
@@ -174,8 +175,8 @@
             "q2_title": "Pembentukan Anomali",
             "q2_desc": "Sampah plastik yang mengapung di perairan Puger mengalami degradasi. Permukaannya dengan cepat dikolonisasi oleh bakteri, mikroalga, dan patogen membentuk ekosistem mini yang disebut \"Plastisphere\". Selain itu, biofouling oleh alga menghasilkan senyawa Dimethyl sulfide (DMS).",
             "q2_step1": "Buatlah bagan kualitatif yang menunjukkan alur fragmentasi plastik laut hingga membentuk ekosistem Plastisphere.",
-            "q2_step2": "Analisis bagaimana pembentukan Plastisphere dan pelepasan gas DMS memengaruhi perilaku makan (foraging behavior) hewan laut endemik/lokal (seperti burung laut pelagis atau ikan karang).",
-            "q2_step3": "Mengapa perubahan biologis pada permukaan plastik ini justru secara kualitatif meningkatkan risiko mikroplastik ditelan secara aktif oleh hewan laut (bukan sekadar ketidaksengajaan)?"
+            "q2_step2": "Analisis bagaimana pembentukan Plastisphere dan pelepasan gas DMS memengaruhi perilaku makan (foraging behavior) hewan laut endemik/lokal.",
+            "q2_step3": "Mengapa perubahan biologis pada permukaan plastik ini justru meningkatkan risiko mikroplastik ditelan secara aktif oleh hewan laut (bukan sekadar ketidaksengajaan)?"
         },
         "footer": "Analisis kualitatif ini akan menjadi dasar untuk perhitungan kuantitatif di fase berikutnya.",
         "diagram_input": {
@@ -204,18 +205,18 @@
             "q1_desc": "Mengapa konsentrasi menurun di Stasiun 4 tetapi meningkat tajam di Stasiun 3? Hubungkan ini dengan pemecahan mikroplastik dan pembentukan plastiphere.",
             "q2_title": "Estimasi Paparan Manusia",
             "q2_desc": "Berdasarkan data Stasiun 2, hitunglah perkiraan jumlah partikel mikroplastik yang tertelan oleh manusia jika mereka menggunakan air dari badan sungai tersebut (tanpa filtrasi RO) sebanyak 2 liter per hari!",
-            "q3_title": "Faktor Biomagnifikasi (BMF) & Perilaku Makan",
-            "q3_desc": "Hitunglah Faktor Biomagnifikasi (BMF) dari Marine Phytoplankton ke Blood Cockles (penelanan pasif/ filter feeding), lalu bandingkan dengan BMF dari Blood Cockles ke Indian Mackerel. Gunakan pemahaman kualitatif Anda tentang gas DMS untuk menjelaskan mengapa terjadi lonjakan akumulasi plastik yang sangat ekstrem pada ikan Indian Mackerel (ikan pelagis yang berburu menggunakan sinyal kemo-sensori penciuman)!",
-            "q4_title": "Transfer ke Predator Puncak",
-            "q4_desc": "Bagaimana fenomena active ingestion pada tingkat konsumen sekunder (Mackerel) mempercepat proses Biomagnifikasi hingga mencapai angka 48.50 mg/kg pada Yellowfin Tuna?",
-            "q5_title": "Risiko Konsumsi (Public Health)",
-            "q5_desc": "Jika seorang warga lokal mengonsumsi 250 gram kerang dara (Blood Cockles) per minggu dari perairan tersebut, berapa miligram total massa plastik yang masuk ke dalam sistem pencernaannya dalam waktu satu bulan?"
+            "q3_title": "Perbandingan Paparan Konsumsi",
+            "q3_desc": "Seorang konsumen memakan 200 gram Yellowfin Tuna (Thunnus albacares) dalam sekali makan. Berapa minggu orang tersebut harus mengonsumsi Kembung Lelaki (Rastrelliger kanagurta) dengan porsi 250 gram/minggu untuk mencapai akumulasi massa plastik yang sama dengan satu porsi tuna tersebut?",
+            "q4_title": "Batas Aman Konsumsi",
+            "q4_desc": "Jika batas aman asupan mikroplastik teoritis adalah 0.5 mg per kg berat badan per minggu, berapakah batas maksimal (gram) konsumsi ikan Kembung Lelaki per minggu bagi seorang dewasa dengan berat badan 60 kg?",
+            "q5_title": "Penerapan Konseptual / Pilihan Pasar",
+            "q5_desc": "Berdasarkan data beban plastik pada tabel di atas, jika Anda pergi ke pasar ikan untuk membeli ikan konsumsi bagi keluarga, manakah pilihan yang lebih bijak dan aman di antara kedua jenis ikan komersial tersebut (Yellowfin Tuna vs Kembung Lelaki)? Jelaskan alasan ilmiahnya berdasarkan konsep rantai makanan."
         },
         "columns": {
             "station": "Stasiun",
             "location": "Deskripsi Lokasi",
             "distance": "Jarak (km)",
-            "concentration": "Konsentrasi Mikroplastik (partikel/m³)",
+            "concentration": "Konsentrasi Mikroplastik (partikel/L)",
             "level": "Tingkat Trofik",
             "species": "Spesies Representatif",
             "load": "Rata-rata Beban Plastik (mg/kg)"
@@ -237,8 +238,8 @@
         "guide": "Gunakan perangkat smartphone masing-masing anggota untuk memindai marker AR Fragmentasi & Risiko Kesehatan Manusia. Amati secara spesifik Scene 2 dan 3. Setelah itu, lakukan brainstorming di dalam kelompok untuk memetakan krisis sistemik ini:",
         "question": {
             "estimation_physical_factor": "Berdasarkan pengamatan pada Scene 2-3 di aplikasi AR, berapa estimasi waktu yang dibutuhkan oleh sampah makroplastik untuk terfragmentasi sepenuhnya menjadi mikroplastik di lingkungan laut Puger? Faktor fisik apa saja yang mempercepat proses tersebut?",
-            "human_digestion": "Secara biokimiawi, mengapa mikroplastik ini bersifat rekalsitran (tidak dapat dicerna atau diuraikan) oleh enzim maupun asam lambung di dalam sistem pencernaan manusia?",
-            "health_impact": "Berdasarkan visualisasi rute masuknya (entry) mikroplastik ke organ vital manusia di aplikasi AR, jelaskan bagaimana dampak kesehatan sistemik yang dapat terjadi akibat konsumsi seafood yang terkontaminasi dalam jangka waktu yang panjang!"
+            "human_digestion": "Berdasarkan pengamatan pada Scene 8 di aplikasi AR, secara biokimiawi, mengapa mikroplastik ini bersifat rekalsitran (tidak dapat dicerna atau diuraikan) oleh enzim maupun asam lambung di dalam sistem pencernaan manusia?",
+            "health_impact": "Berdasarkan pengamatan pada Scene 8 di aplikasi AR, berdasarkan visualisasi rute masuknya (entry) mikroplastik ke organ vital manusia di aplikasi AR, jelaskan bagaimana dampak kesehatan sistemik yang dapat terjadi akibat konsumsi seafood yang terkontaminasi dalam jangka waktu yang panjang!"
         },
         "causal_loop": {
             "title": "Causal Loop Diagram",
@@ -282,7 +283,8 @@
                 "title": "Parameter Ekologis & Biosafety",
                 "description": "Apakah solusi biologis Anda memiliki risiko sampingan terhadap ekosistem asli Puger? (Misal: kekhawatiran pelepasan GMO atau spesies asing)"
             },
-            "name_placeholder": "Nama Anda"
+            "name_placeholder": "Nama Anda",
+            "solution_placeholder": "Jelaskan solusi yang Anda usulkan..."
         },
         "conclusion": {
             "title": "Kesimpulan Profesional",

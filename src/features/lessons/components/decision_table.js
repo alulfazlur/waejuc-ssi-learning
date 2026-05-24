@@ -34,17 +34,16 @@ const ComponentsTable = ({ control, register, errors }) => {
                 <table className="text-sm text-left" style={{ minWidth: "320px", width: "100%" }}>
                     <thead className="bg-tertiary dark:bg-secondary text-primary uppercase text-xs font-bold">
                         <tr>
-                            <th className="px-4 py-3 w-8 text-center">#</th>
-                            <th className="px-4 py-3 w-40">
+                            <th className="px-4 py-3 w-[1%] text-center">#</th>
+                            <th className="px-4 py-3 w-[47.5%]">
                                 {t('decision.table_component.headers.0')} / {t('decision.table_component.headers.1')}
-                            </th>
-                            <th className="px-4 py-3 w-[38%]">
+                                <br />
                                 {t('decision.table_component.headers.2')}
                             </th>
-                            <th className="px-4 py-3 w-[38%]">
+                            <th className="px-4 py-3 w-[47.5%]">
                                 {t('decision.table_component.headers.3')}
                             </th>
-                            <th className="px-4 py-3 w-10" />
+                            <th className="px-4 py-3 w-[5%]" />
                         </tr>
                     </thead>
 
@@ -57,32 +56,32 @@ const ComponentsTable = ({ control, register, errors }) => {
                                         {index + 1}
                                     </td>
 
-                                    <td className="px-4 py-3 place-content-center flex flex-col gap-3">
-                                        <Input
-                                            {...register(`decision_strategy.${index}.component`)}
-                                            errors={errors}
-                                            error={rowError?.component}
-                                            control={control}
-                                            placeholder={t('decision.table_component.name_placeholder')}
-                                        />
-                                        <Select
-                                            {...register(`decision_strategy.${index}.role`)}
-                                            placeholder={t('common.select_placeholder')}
-                                            errors={errors}
-                                            error={rowError?.type}
-                                            control={control}
-                                            options={ROLE_OPTIONS}
-                                        />
-                                    </td>
-
-                                    <td className="px-4 py-3">
-                                        <RichEditor
-                                            name={`decision_strategy.${index}.solution`}
-                                            control={control}
-                                            errors={errors}
-                                            rows={4}
-                                            fullHeight
-                                        />
+                                    <td className="px-4 py-3 place-content-center">
+                                        <div className="flex flex-col gap-3">
+                                            <Input
+                                                {...register(`decision_strategy.${index}.component`)}
+                                                errors={errors}
+                                                error={rowError?.component}
+                                                control={control}
+                                                placeholder={t('decision.table_component.name_placeholder')}
+                                            />
+                                            <Select
+                                                {...register(`decision_strategy.${index}.role`)}
+                                                placeholder={t('common.select_placeholder')}
+                                                errors={errors}
+                                                error={rowError?.type}
+                                                control={control}
+                                                options={ROLE_OPTIONS}
+                                            />
+                                            <RichEditor
+                                                name={`decision_strategy.${index}.solution`}
+                                                control={control}
+                                                errors={errors}
+                                                rows={4}
+                                                fullHeight
+                                                placeholder={t('decision.table_component.solution_placeholder')}
+                                            />
+                                        </div>
                                     </td>
 
                                     <td className="px-4 py-3 flex flex-col gap-3">

@@ -60,13 +60,11 @@ export default function MissionInfoPage() {
         }
 
         const responseKeys = Object.keys(responses);
+        const targetSlug = responseKeys.length > 0
+            ? responseKeys[responseKeys.length - 1]
+            : SYLLABUS[0].id;
 
-        if (responseKeys.length > 0) {
-            const lastSlug = responseKeys[responseKeys.length - 1];
-            router.push(`/learning/${lastSlug}`);
-        } else {
-            router.push(`/learning/${SYLLABUS[0].id}`);
-        }
+        router.push(`/learning/${targetSlug}`);
     };
 
     const STATS = [
@@ -117,6 +115,14 @@ export default function MissionInfoPage() {
             sub: t('mission.chain_items.3.sub'),
         },
     ];
+
+    useEffect(() => {
+        const targetSlug = Object.keys(responses).length > 0
+            ? Object.keys(responses)[responses.length - 1]
+            : SYLLABUS[0].id;
+        router.prefetch(`/learning/${targetSlug}`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [responses]);
 
     return (
         <div className="pt-28 min-h-screen bg-background text-primary flex flex-col items-center justify-center px-6 py-20 overflow-hidden relative">

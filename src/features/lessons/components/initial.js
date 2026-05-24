@@ -237,7 +237,15 @@ export const InitialComponent = (props) => {
                 <Table control={control} register={register} errors={errors} />
                 <div className="mt-6">
                     <Instruction
-                        description={t('initial.component_ecosystem.question')}
+                        description={(
+                            <>
+                                {t('initial.component_ecosystem.question')}
+                                <br />
+                                <b className="text-sm">
+                                    {`${t('common.reference')} 4,5,12`}
+                                </b>
+                            </>
+                        )}
                         icon={null}
                     />
                     <RichEditor

@@ -1,7 +1,6 @@
 "use client";
 import {
     ClipboardList,
-    SearchAlert,
     Wind,
     Container,
     Sparkles,
@@ -52,28 +51,27 @@ export const QualitativeComponent = (props) => {
             </div>
 
             <section className="space-y-6">
-                <div className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
+                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                     <Instruction
                         title={t('qualitative.analysis.q1_title')}
                         description={t('qualitative.analysis.q1_desc')}
                         icon={Wind}
                     />
-                    <RichEditor
-                        name="qual_analysis_fragmentation"
-                        errors={errors}
-                        control={control}
-                    />
-                </div>
-
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
                     <Instruction
-                        title={t('qualitative.analysis.q2_title')}
                         description={t('qualitative.analysis.q2_desc')}
-                        icon={SearchAlert}
+                        icon={null}
                     />
                     <div className="mb-6">
                         <Instruction
-                            description={t('qualitative.analysis.q2_step1')}
+                            description={(
+                                <>
+                                    {t('qualitative.analysis.q2_step1')}
+                                    <br />
+                                    <b className="text-sm">
+                                        {`${t('common.reference')} 1,2,3,10`}
+                                    </b>
+                                </>
+                            )}
                             icon={null}
                         />
                         <DiagramInput
@@ -84,7 +82,15 @@ export const QualitativeComponent = (props) => {
                     </div>
                     <div className="mb-6">
                         <Instruction
-                            description={t('qualitative.analysis.q2_step2')}
+                            description={(
+                                <>
+                                    {t('qualitative.analysis.q2_step2')}
+                                    <br />
+                                    <b className="text-sm">
+                                        {`${t('common.reference')} 6,7`}
+                                    </b>
+                                </>
+                            )}
                             icon={null}
                         />
                         <RichEditor
@@ -95,7 +101,15 @@ export const QualitativeComponent = (props) => {
                     </div>
                     <div>
                         <Instruction
-                            description={t('qualitative.analysis.q2_step3')}
+                            description={(
+                                <>
+                                    {t('qualitative.analysis.q2_step3')}
+                                    <br />
+                                    <b className="text-sm">
+                                        {`${t('common.reference')} 6,7`}
+                                    </b>
+                                </>
+                            )}
                             icon={null}
                         />
                         <RichEditor

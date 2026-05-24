@@ -101,6 +101,7 @@ export const Objectives = () => {
                 >
                     <Button
                         onClick={() => router.push('/learning/mission')}
+                        onMouseEnter={() => router.prefetch('/learning/mission')}
                         className="px-12 py-6 rounded-2xl shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all"
                     >
                         {t('common.start_mission')}
