@@ -54,7 +54,10 @@ export default function MissionInfoPage() {
     const { user, responses } = useAuth();
     const { t } = useTranslation();
 
-    const startInvestigation = () => {
+    const { setLoading } = useAuth();
+
+    const startInvestigation = async () => {
+        setLoading(true)
         if (!user) {
             router.push("/signin");
             return;
@@ -65,7 +68,8 @@ export default function MissionInfoPage() {
             ? responseKeys[responseKeys.length - 1]
             : SYLLABUS[0].id;
 
-        router.push(`/learning/${targetSlug}`);
+        await router.push(`/learning/${targetSlug}`);
+        setLoading(true)
     };
 
     const STATS = [

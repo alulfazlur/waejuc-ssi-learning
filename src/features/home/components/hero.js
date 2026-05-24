@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useLayout } from "@app/(marketing)/layout"
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 export const Hero = () => {
     const { scrollToId } = useLayout();
@@ -11,7 +12,7 @@ export const Hero = () => {
         <section id="hero" className="relative flex flex-col items-center justify-center py-20 px-6 text-center h-screen gap-12">
 
             <div className="absolute inset-0 -z-20 w-full h-full">
-                <video
+                {/* <video
                     autoPlay
                     muted
                     loop
@@ -23,7 +24,8 @@ export const Hero = () => {
                     <source src="/videos/hero-bg.webm" type="video/webm" />
                     <source src="/videos/hero-bg.mp4" type="video/mp4" />
                     {t('error.video_not_supported')}
-                </video>
+                </video> */}
+                <Image src="/images/hero-poster.webp" alt="hero" layout="fill" objectFit="cover" priority />
             </div>
             <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-[1px]" />
 
@@ -48,7 +50,7 @@ export const Hero = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 1 }}
+                transition={{ delay: 0.4, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
                 onClick={() => scrollToId('objectives')}
             >
