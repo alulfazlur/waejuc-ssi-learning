@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     const supabase = createClient();
 
     const refreshProgress = async (currentUser) => {
+        setLoading(true);
         setIsSyncing(true);
         try {
             const { data } = await supabase
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }) => {
                 setMaxStep(data.length + 1);
             }
         } finally {
+            setLoading(false);
             setIsSyncing(false);
         }
     };
@@ -62,7 +64,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         };
         initAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
