@@ -59,9 +59,9 @@ const ComponentsTable = ({ control, register, errors }) => {
                                     <td className="px-4 py-3 place-content-center">
                                         <div className="flex flex-col gap-3">
                                             <Input
-                                                {...register(`decision_strategy.${index}.component`)}
+                                                {...register(`decision_strategy.${index}.name`)}
                                                 errors={errors}
-                                                error={rowError?.component}
+                                                error={rowError?.name}
                                                 control={control}
                                                 placeholder={t('decision.table_component.name_placeholder')}
                                             />
@@ -69,7 +69,7 @@ const ComponentsTable = ({ control, register, errors }) => {
                                                 {...register(`decision_strategy.${index}.role`)}
                                                 placeholder={t('common.select_placeholder')}
                                                 errors={errors}
-                                                error={rowError?.type}
+                                                error={rowError?.role}
                                                 control={control}
                                                 options={ROLE_OPTIONS}
                                             />
