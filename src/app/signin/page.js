@@ -62,6 +62,7 @@ export default function SignIn() {
     };
 
     useEffect(() => {
+        setLoading(false)
         const handleScroll = () => {
             if (window.scrollY > 20) {
                 setIsScrolled(true);
@@ -74,6 +75,7 @@ export default function SignIn() {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -159,7 +161,7 @@ export default function SignIn() {
                                     placeholder={t('signin.placeholder')}
                                     className={`w-full pl-12 bg-background dark:bg-primary text-primary dark:text-background border border-secondary/50
                                         rounded-lg p-2 outline-none transition-all resize-none pr-12`}
-                                    onChange={(e) => {setStudentId(e.target.value); setError('')}}
+                                    onChange={(e) => { setStudentId(e.target.value); setError('') }}
                                 />
                             </div>
                             {!!error && <span className="text-red-500 text-xs">{error}</span>}
@@ -181,7 +183,7 @@ export default function SignIn() {
                                     className={`w-full pl-12 pr-12 bg-background dark:bg-primary text-primary dark:text-background border border-secondary/50
                                         rounded-lg p-2 outline-none transition-all`}
                                     value={password}
-                                    onChange={(e) => {setPassword(e.target.value); setError('')}}
+                                    onChange={(e) => { setPassword(e.target.value); setError('') }}
                                 />
 
                                 <button

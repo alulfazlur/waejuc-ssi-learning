@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Button from '@components/Button'
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@context/AuthContext";
 import {
     Microscope,
     Network,
@@ -13,6 +14,7 @@ import {
 export const Objectives = () => {
     const router = useRouter();
     const { t } = useTranslation();
+    const { setLoading } = useAuth();
 
     const goals = [
         {
@@ -100,7 +102,7 @@ export const Objectives = () => {
                     className="mt-12 flex flex-col items-center gap-4"
                 >
                     <Button
-                        onClick={() => router.push('/learning/mission')}
+                        onClick={() => { setLoading(); router.push('/learning/mission') }}
                         onMouseEnter={() => router.prefetch('/learning/mission')}
                         className="px-12 py-6 rounded-2xl shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all"
                     >

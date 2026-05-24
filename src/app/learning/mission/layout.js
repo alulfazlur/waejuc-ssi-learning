@@ -12,13 +12,14 @@ export default function MarketingLayout({ children }) {
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const { loading } = useAuth();
+    const { loading, setLoading } = useAuth();
 
     const colorClass = 'text-primary dark:text-primary';
     const backgroundClass = 'bg-background dark:bg-background';
 
 
     useEffect(() => {
+        setLoading(false)
         const handleScroll = () => {
             if (window.scrollY > 20) {
                 setIsScrolled(true);
@@ -31,6 +32,7 @@ export default function MarketingLayout({ children }) {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
