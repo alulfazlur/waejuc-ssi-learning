@@ -9,6 +9,7 @@ import { Table } from "@tiptap/extension-table";
 import { TableRow } from "@tiptap/extension-table-row";
 import { TableHeader } from "@tiptap/extension-table-header";
 import { TableCell } from "@tiptap/extension-table-cell";
+import FieldError from "@components/FieldError";
 
 // ── Toolbar Button ────────────────────────────────────────────────────────────
 function ToolbarButton({ onClick, isActive, title, children }) {
@@ -20,12 +21,14 @@ function ToolbarButton({ onClick, isActive, title, children }) {
                 onClick();
             }}
             title={title}
+            aria-label={title}
+            aria-pressed={isActive}
             className={`
-                inline-flex items-center justify-center w-7 h-7 rounded text-xs font-medium
+                inline-flex items-center justify-center w-8 h-8 rounded-lg text-xs font-medium
                 transition-colors duration-100 cursor-pointer
                 ${isActive
-                    ? "bg-primary text-background dark:bg-background dark:text-primary"
-                    : "text-primary/70 dark:text-background/70 hover:bg-primary/10 dark:hover:bg-background/10 hover:text-primary dark:hover:text-background"
+                    ? "bg-primary text-background"
+                    : "text-muted hover:bg-surface-subtle hover:text-primary"
                 }
             `}
         >
@@ -36,7 +39,7 @@ function ToolbarButton({ onClick, isActive, title, children }) {
 
 // ── Divider ───────────────────────────────────────────────────────────────────
 function Divider() {
-    return <div className="w-px h-5 bg-secondary/30 mx-0.5 self-center" />;
+    return <div className="w-px h-5 bg-border mx-1 self-center" />;
 }
 
 // ── Table Picker ──────────────────────────────────────────────────────────────
@@ -46,10 +49,10 @@ function TablePicker({ onInsert, onClose }) {
 
     return (
         <div
-            className="absolute top-full left-0 mt-1 z-50 bg-background dark:bg-primary border border-secondary/30 rounded-lg shadow-lg p-2"
+            className="absolute top-full left-0 mt-1 z-50 bg-card ring-1 ring-border rounded-xl shadow-card p-2"
             onMouseLeave={() => setHovered({ rows: 0, cols: 0 })}
         >
-            <p className="text-[10px] text-secondary font-mono mb-1.5 px-0.5">
+            <p className="text-xs text-muted font-mono mb-1.5 px-0.5">
                 {hovered.rows > 0 && hovered.cols > 0
                     ? `${hovered.rows} × ${hovered.cols}`
                     : "Pilih ukuran tabel"}
@@ -65,8 +68,8 @@ function TablePicker({ onInsert, onClose }) {
                             type="button"
                             className={`w-5 h-5 rounded-sm border transition-colors duration-75
                                 ${active
-                                    ? "bg-primary/20 dark:bg-background/20 border-primary/40 dark:border-background/40"
-                                    : "bg-primary/5 dark:bg-background/5 border-secondary/20"
+                                    ? "bg-secondary/30 border-secondary"
+                                    : "bg-surface-subtle border-border"
                                 }`}
                             onMouseEnter={() => setHovered({ rows: row, cols: col })}
                             onMouseDown={(e) => {
@@ -97,18 +100,18 @@ function TableContextMenu({ editor, onClose }) {
     ];
 
     return (
-        <div className="absolute top-full left-0 mt-1 z-50 bg-background dark:bg-primary border border-secondary/30 rounded-lg shadow-lg py-1 min-w-44">
+        <div className="absolute top-full left-0 mt-1 z-50 bg-card ring-1 ring-border rounded-xl shadow-card py-1 min-w-44">
             {actions.map((item, i) =>
                 item === null ? (
-                    <div key={i} className="h-px bg-secondary/20 my-1 mx-2" />
+                    <div key={i} className="h-px bg-border my-1 mx-2" />
                 ) : (
                     <button
                         key={item.label}
                         type="button"
-                        className={`w-full text-left px-3 py-1.5 text-xs transition-colors
+                        className={`w-full text-left px-3 py-2 text-sm transition-colors
                             ${item.danger
-                                ? "text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10"
-                                : "text-primary dark:text-background hover:bg-primary/5 dark:hover:bg-background/5"
+                                ? "text-danger hover:bg-danger/10"
+                                : "text-primary hover:bg-surface-subtle"
                             }`}
                         onMouseDown={(e) => {
                             e.preventDefault();
@@ -200,6 +203,7 @@ export default function RichTextEditor({
     errors,
     control,
     fullHeight = false,
+    ariaLabel,
 }) {
     const {
         field: { value, onChange },
@@ -223,7 +227,7 @@ export default function RichTextEditor({
             Placeholder.configure({
                 placeholder,
                 emptyNodeClass:
-                    "before:content-[attr(data-placeholder)] before:text-secondary/50 before:pointer-events-none before:float-left before:h-0",
+                    "before:content-[attr(data-placeholder)] before:text-muted/70 before:pointer-events-none before:float-left before:h-0",
             }),
         ],
         content: value || "",
@@ -235,9 +239,11 @@ export default function RichTextEditor({
         },
         editorProps: {
             attributes: {
-                class: `prose prose-sm dark:prose-invert max-w-none focus:outline-none px-3 py-2 overflow-auto ${
-                    fullHeight ? "h-[400px]" : "h-[120px]"
+                class: `max-w-none focus:outline-none px-4 py-3 pb-8 overflow-auto text-[15px] leading-relaxed ${
+                    fullHeight ? "h-[400px]" : "min-h-[160px] max-h-[480px]"
                 }`,
+                "aria-label": ariaLabel || name,
+                ...(error ? { "aria-invalid": "true" } : {}),
             },
         },
     });
@@ -349,17 +355,18 @@ export default function RichTextEditor({
             `}</style>
 
             <div
+                data-field={name}
                 className={`
-                    tiptap-editor relative w-full rounded-lg border transition-all
-                    bg-background dark:bg-primary text-primary dark:text-background
-                    ${error ? "border-red-500" : "border-secondary/50"}
+                    tiptap-editor relative w-full overflow-hidden rounded-xl border-[1.5px] transition-[border-color,box-shadow]
+                    bg-card text-primary focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/30
+                    ${error ? "border-danger" : "border-input"}
                 `}
             >
                 {/* ── Toolbar ── */}
-                <div className={`
-                    flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b
-                    ${error ? "border-red-300" : "border-secondary/30"}
-                `}>
+                <div
+                    role="toolbar"
+                    className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-border bg-surface-subtle/60"
+                >
 
                     <ToolbarButton onClick={() => editor.chain().focus().toggleBold().run()} isActive={editorState.isBold} title="Bold">        <Icons.Bold />        </ToolbarButton>
                     <ToolbarButton onClick={() => editor.chain().focus().toggleItalic().run()} isActive={editorState.isItalic} title="Italic">      <Icons.Italic />      </ToolbarButton>
@@ -424,21 +431,16 @@ export default function RichTextEditor({
                 <div className={`relative ${fullHeight ? "flex-1 min-h-0" : ""}`}>
                     <EditorContent editor={editor} />
 
-                    <div className={`
-                        absolute bottom-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded shadow-sm border
-                        ${error
-                            ? "bg-red-50 text-red-500 border-red-200"
-                            : "bg-primary/10 text-primary border-primary/20 dark:bg-background/10 dark:text-background dark:border-background/20"
-                        }
+                    <div aria-hidden="true" className={`
+                        pointer-events-none absolute bottom-2 right-3 text-xs font-mono
+                        ${error ? "text-danger" : "text-muted"}
                     `}>
                         {editorState.charCount} chars
                     </div>
                 </div>
             </div>
 
-            {error && (
-                <p className="text-red-500 text-[11px]">{error.message}</p>
-            )}
+            <FieldError message={error?.message} />
         </>
     );
 }

@@ -18,6 +18,7 @@ import {
 import { useController } from "react-hook-form";
 import { Plus, Trash2, Sparkles, Undo2, Redo2, RotateCcw } from "lucide-react";
 import "@xyflow/react/dist/style.css";
+import FieldError from "@components/FieldError";
 import { useTranslation } from "react-i18next";
 import Button from "@components/Button";
 
@@ -152,7 +153,7 @@ function RelationModal({ open, onConfirm, onCancel }) {
                     })}
                 </div>
                 <div className="flex gap-2 justify-end">
-                    <Button type="button" color="ghost" size="sm" onClick={onCancel} className="shadow-none hover:shadow-none bg-transparent">Batal</Button>
+                    <Button type="button" color="ghost" size="sm" onClick={onCancel}>Batal</Button>
                     <Button type="button" color="primary" size="sm" onClick={() => onConfirm(rel)}>Hubungkan</Button>
                 </div>
             </div>
@@ -177,7 +178,7 @@ function AddNodeModal({ open, onConfirm, onCancel }) {
                     className="w-full text-xs px-3.5 py-2.5 rounded-xl border border-(--border) bg-(--background) text-(--primary) placeholder:text-(--muted) focus:outline-none focus:ring-2 focus:ring-(--secondary)/30 mb-4"
                 />
                 <div className="flex gap-2 justify-end">
-                    <Button type="button" color="ghost" size="sm" onClick={onCancel} className="shadow-none hover:shadow-none bg-transparent">Batal</Button>
+                    <Button type="button" color="ghost" size="sm" onClick={onCancel}>Batal</Button>
                     <Button type="button" color="primary" size="sm" onClick={() => val.trim() && onConfirm(val.trim())} disabled={!val.trim()}>Simpan</Button>
                 </div>
             </div>
@@ -394,7 +395,7 @@ export default function DiagramInput({ name, control, errors, label, defaultNode
 
     return (
         <>
-            <div className={`space-y-2 ${hasError ? "ring-1 ring-red-400 rounded-2xl p-1" : ""}`}>
+            <div data-field={name} className="space-y-2">
                 {/* Header */}
                 <div className="flex items-center justify-between flex-wrap gap-2">
                     <div>
@@ -405,20 +406,18 @@ export default function DiagramInput({ name, control, errors, label, defaultNode
                     </div>
                     <div className="flex items-center gap-2">
                         {selected && (
-                            <Button size="sm" onClick={deleteSelected}
-                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-xl bg-red-50 hover:bg-red-500/10 text-red-700 border border-red-200 font-semibold shadow-none hover:shadow-none">
+                            <Button size="sm" color="danger" onClick={deleteSelected}>
                                 <Trash2 size={13} /> {t("qualitative.diagram_input.delete")}
                             </Button>
                         )}
-                        <Button size="sm" onClick={() => setShowAddModal(true)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-xl bg-(--primary) text-(--background) font-semibold">
+                        <Button size="sm" onClick={() => setShowAddModal(true)}>
                             <Plus size={13} /> {t("qualitative.diagram_input.add_variable")}
                         </Button>
                     </div>
                 </div>
 
                 {/* Canvas */}
-                <div className="relative w-full h-115 border border-(--border) rounded-2xl overflow-hidden bg-linear-to-br from-(--secondary)/5 via-(--background) to-(--secondary)/15 shadow-inner">
+                <div className={`relative w-full h-115 border-[1.5px] ${hasError ? "border-danger" : "border-input"} rounded-2xl overflow-hidden bg-linear-to-br from-(--secondary)/5 via-(--background) to-(--secondary)/15 shadow-inner`}>
                     <ReactFlow
                         nodes={nodes}
                         edges={edges}
@@ -479,12 +478,7 @@ export default function DiagramInput({ name, control, errors, label, defaultNode
                 </div>
 
                 {/* Error */}
-                {hasError && errorMessage && (
-                    <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                        <span className="inline-flex w-3 h-3 rounded-full bg-red-500 text-white text-[9px] font-bold items-center justify-center">!</span>
-                        {errorMessage}
-                    </p>
-                )}
+                {hasError && <FieldError message={errorMessage} />}
             </div>
 
             <RelationModal open={!!pendingConn} onConfirm={confirmRelation} onCancel={() => setPendingConn(null)} />

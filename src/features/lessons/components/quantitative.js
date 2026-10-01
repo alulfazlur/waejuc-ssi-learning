@@ -1,11 +1,33 @@
 "use client";
-import { Calculator, Pipette, Fish, Waves, ClipboardList, Scale, Gauge, Store } from "lucide-react";
+import { Calculator, Pipette, Fish, Waves, Scale, Gauge, Store } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import Instruction from "@components/Instruction";
+import Callout from "@components/Callout";
+import Card from "@components/Card";
+import QuestionCard from "@components/QuestionCard";
 import RichEditor from "@/components/RichTextEditor";
 
 import stationsData from "@data/data_stations.json";
 import trophicData from "@data/data_trophic.json";
+
+function DataSection({ icon: Icon, title, description, children }) {
+    return (
+        <Card as="section" className="overflow-hidden">
+            <div className="p-5 sm:p-6">
+                <div className="mb-2 flex items-center gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-surface-subtle text-secondary">
+                        <Icon size={18} aria-hidden="true" />
+                    </span>
+                    <h2 className="text-lg font-semibold sm:text-xl">{title}</h2>
+                </div>
+                <p className="text-[15px] leading-relaxed text-primary/90">{description}</p>
+            </div>
+            <div className="overflow-x-auto border-t border-border">{children}</div>
+        </Card>
+    );
+}
+
+const th = "px-4 py-3 font-semibold sm:px-6";
+const td = "px-4 py-3 sm:px-6";
 
 export const QuantitativeComponent = (props) => {
     const { t, i18n } = useTranslation();
@@ -13,153 +35,82 @@ export const QuantitativeComponent = (props) => {
     const { control } = methods;
     const isEn = i18n.language === 'en';
 
+    const question = (number, key, field, Icon, refs) => (
+        <QuestionCard
+            number={number}
+            icon={Icon}
+            title={t(`quantitative.questions.${key}_title`)}
+            description={t(`quantitative.questions.${key}_desc`)}
+            refs={refs}
+            fields={[field]}
+        >
+            <RichEditor
+                name={field}
+                control={control}
+                errors={errors}
+                ariaLabel={t(`quantitative.questions.${key}_title`)}
+            />
+        </QuestionCard>
+    );
+
     return (
-        <div className="space-y-12">
-            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
-                <ClipboardList className="min-w-6" />
-                <p className="text-sm leading-relaxed">
-                    <b>{`${t('common.activity')}: `}</b>
-                    {t('quantitative.instruction')}
-                </p>
-            </div>
+        <div className="space-y-6">
+            <Callout label={t('common.activity')}>
+                {t('quantitative.instruction')}
+            </Callout>
 
-            <section className="space-y-6">
-                <Instruction
-                    title={t('quantitative.abundance.title')}
-                    description={t('quantitative.abundance.description')}
-                    icon={Waves}
-                />
-
-                <div className="overflow-x-auto rounded-2xl border border-border shadow-sm">
-                    <table className="w-full text-sm text-left">
-                        <thead className="bg-tertiary dark:bg-secondary text-primary uppercase text-xs font-bold">
-                            <tr>
-                                <th className="px-6 py-4">{t('quantitative.columns.station')}</th>
-                                <th className="px-6 py-4">{t('quantitative.columns.location')}</th>
-                                <th className="px-6 py-4 text-center">{t('quantitative.columns.distance')}</th>
-                                <th className="px-6 py-4 text-right">{t('quantitative.columns.concentration')}</th>
+            <DataSection icon={Waves} title={t('quantitative.abundance.title')} description={t('quantitative.abundance.description')}>
+                <table className="w-full min-w-120 text-left text-sm">
+                    <thead className="bg-surface-subtle text-xs uppercase tracking-wide">
+                        <tr>
+                            <th scope="col" className={th}>{t('quantitative.columns.station')}</th>
+                            <th scope="col" className={th}>{t('quantitative.columns.location')}</th>
+                            <th scope="col" className={`${th} text-center`}>{t('quantitative.columns.distance')}</th>
+                            <th scope="col" className={`${th} text-right`}>{t('quantitative.columns.concentration')}</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                        {stationsData.map((row) => (
+                            <tr key={row.id}>
+                                <td className={`${td} whitespace-nowrap font-medium`}>{row.station}</td>
+                                <td className={`${td} text-primary/80`}>{isEn ? row.location_en : row.location_id}</td>
+                                <td className={`${td} text-center font-mono`}>{row.distance}</td>
+                                <td className={`${td} text-right font-mono font-medium tabular-nums`}>
+                                    {row.concentration.toLocaleString()}
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody className="divide-y divide-border">
-                            {stationsData.map((row) => (
-                                <tr key={row.id} className="hover:bg-primary/5 transition-colors">
-                                    <td className="px-6 py-4 font-medium">{row.station}</td>
-                                    <td className="px-6 py-4 opacity-80">{isEn ? row.location_en : row.location_id}</td>
-                                    <td className="px-6 py-4 text-center font-mono">{row.distance}</td>
-                                    <td className="px-6 py-4 text-right font-mono font-bold text-primary">
-                                        {row.concentration.toLocaleString()}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
+            </DataSection>
 
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                    <Instruction
-                        title={t('quantitative.questions.q1_title')}
-                        description={(
-                            <>
-                                {t('quantitative.questions.q1_desc')}
-                                <br />
-                                <b className="text-sm">
-                                    {`${t('common.reference')} 11`}
-                                </b>
-                            </>
-                        )}
-                        icon={Pipette}
-                    />
-                    <RichEditor
-                        name="quant_estuary_concentration"
-                        control={control}
-                        errors={errors}
-                    />
-                </div>
+            {question(1, "q1", "quant_estuary_concentration", Pipette, "11")}
+            {question(2, "q2", "quant_exposure_estimation", Calculator)}
 
-                <div className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
-                    <Instruction
-                        title={t('quantitative.questions.q2_title')}
-                        description={t('quantitative.questions.q2_desc')}
-                        icon={Calculator}
-                    />
-                    <RichEditor
-                        name="quant_exposure_estimation"
-                        control={control}
-                        errors={errors}
-                    />
-                </div>
-            </section>
-
-            <section className="space-y-6">
-                <Instruction
-                    title={t('quantitative.biomagnification.title')}
-                    description={t('quantitative.biomagnification.description')}
-                    icon={Fish}
-                />
-
-                <div className="overflow-x-auto rounded-2xl border border-border shadow-sm">
-                    <table className="w-full text-sm text-left">
-                        <thead className="bg-tertiary dark:bg-secondary text-primary uppercase text-xs font-bold">
-                            <tr>
-                                <th className="px-6 py-4">{t('quantitative.columns.level')}</th>
-                                <th className="px-6 py-4">{t('quantitative.columns.species')}</th>
-                                <th className="px-6 py-4 text-right">{t('quantitative.columns.load')}</th>
+            <DataSection icon={Fish} title={t('quantitative.biomagnification.title')} description={t('quantitative.biomagnification.description')}>
+                <table className="w-full min-w-120 text-left text-sm">
+                    <thead className="bg-surface-subtle text-xs uppercase tracking-wide">
+                        <tr>
+                            <th scope="col" className={th}>{t('quantitative.columns.level')}</th>
+                            <th scope="col" className={th}>{t('quantitative.columns.species')}</th>
+                            <th scope="col" className={`${th} text-right`}>{t('quantitative.columns.load')}</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                        {trophicData.map((row, idx) => (
+                            <tr key={idx}>
+                                <td className={`${td} font-medium`}>{isEn ? row.level_en : row.level_id}</td>
+                                <td className={`${td} italic text-primary/80`}>{row.species}</td>
+                                <td className={`${td} text-right font-mono font-medium tabular-nums`}>{row.avg_load_mg_kg.toFixed(2)}</td>
                             </tr>
-                        </thead>
-                        <tbody className="divide-y divide-border">
-                            {trophicData.map((row, idx) => (
-                                <tr key={idx} className="hover:bg-primary/5 transition-colors">
-                                    <td className="px-6 py-4 font-medium">{isEn ? row.level_en : row.level_id}</td>
-                                    <td className="px-6 py-4 italic opacity-80">{row.species}</td>
-                                    <td className="px-6 py-4 text-right font-mono font-bold text-primary">{row.avg_load_mg_kg.toFixed(2)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        ))}
+                    </tbody>
+                </table>
+            </DataSection>
 
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                    <Instruction
-                        title={t('quantitative.questions.q3_title')}
-                        description={t('quantitative.questions.q3_desc')}
-                        icon={Scale}
-                    />
-                    <RichEditor
-                        name="quant_consump_exposure"
-                        control={control}
-                        errors={errors}
-                        rows={4}
-                    />
-                </div>
-
-                <div className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
-                    <Instruction
-                        title={t('quantitative.questions.q4_title')}
-                        description={t('quantitative.questions.q4_desc')}
-                        icon={Gauge}
-                    />
-                    <RichEditor
-                        name="quant_consump_limit"
-                        control={control}
-                        errors={errors}
-                        rows={4}
-                    />
-                </div>
-
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                    <Instruction
-                        title={t('quantitative.questions.q5_title')}
-                        description={t('quantitative.questions.q5_desc')}
-                        icon={Store}
-                    />
-                    <RichEditor
-                        name="quant_concept_app"
-                        control={control}
-                        errors={errors}
-                        rows={4}
-                    />
-                </div>
-            </section>
+            {question(3, "q3", "quant_consump_exposure", Scale)}
+            {question(4, "q4", "quant_consump_limit", Gauge)}
+            {question(5, "q5", "quant_concept_app", Store)}
         </div>
     );
 };

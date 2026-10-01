@@ -10,7 +10,16 @@
         "start_mission": "Start Mission",
         "example": "Example",
         "select_placeholder": "Select an option",
-        "reference": "Material Reference:"
+        "reference": "Material Reference:",
+        "close": "Close",
+        "loading": "Loading...",
+        "opens_new_tab": "(opens in a new tab)",
+        "theme_light": "Switch to light mode",
+        "theme_dark": "Switch to dark mode",
+        "language": "Language",
+        "actions": "Actions",
+        "row": "Row",
+        "delete_row": "Delete row"
     },
     "error": {
         "video_not_supported": "Your browser does not support the video tag.",
@@ -19,14 +28,24 @@
     },
     "hero": {
         "title": "Virtual Nature Expedition: Exploring the Puger Ecosystem",
-        "description": "Behind the crashing waves and the mesmerizing sunsets of Puger Beach, lies a hidden secret that threatens our future. Through 360° exploration videos and augmented reality technology, let's go beyond the limits of sight to uncover how microplastic pollution infiltrates the food chain and affects human health. This beauty is ours, and so is our responsibility to protect it."
+        "description": "Behind the crashing waves and the mesmerizing sunsets of Puger Beach, lies a hidden secret that threatens our future. Through 360° exploration videos and augmented reality technology, let's go beyond the limits of sight to uncover how microplastic pollution infiltrates the food chain and affects human health. This beauty is ours, and so is our responsibility to protect it.",
+        "tag": "Socio-Scientific Issue · Puger Beach",
+        "cta_start": "Start the investigation",
+        "cta_about": "About WAVES-SSI",
+        "scroll_down": "Scroll down"
     },
     "objectives": {
         "title": "Learning Objectives",
         "goal_1": "After exploring environmental contamination through 360 Video and AR microplastic media, students are able to describe the systemic impact of microplastics on public health and ecosystems comprehensively and accurately",
         "goal_2": "Through interactive analysis of the 360 ​​video of the condition of the Puger TPI and AR visualization of microplastics, students are able to assess the complexity of the problem by integrating ecological, economic, and social aspects into a system relationship matrix (causal-loop) in a holistic and logical manner",
         "goal_3": "Based on a systemic understanding of the results of observations using 360 Video and AR microplastic, students are able to design strategic and innovative solution proposals for microplastic mitigation in the Jember region that meet the criteria for ecological, economic, and social balance in a sustainable manner",
-        "goal_4": "After going through a series of 360 Video and AR-based learning experiences, students are able to formulate logical decisions to overcome the dilemma of plastic use in everyday life consistently and responsibly"
+        "goal_4": "After going through a series of 360 Video and AR-based learning experiences, students are able to formulate logical decisions to overcome the dilemma of plastic use in everyday life consistently and responsibly",
+        "items": [
+            "Analyze impact",
+            "Evaluate complexity",
+            "Propose solutions",
+            "Systems thinking"
+        ]
     },
     "mission": {
         "report_tag": "Investigation Report · Puger Fish Farm",
@@ -91,14 +110,25 @@
         "export_btn": "Export to PDF",
         "exporting": "Creating PDF...",
         "export_success": "PDF downloaded successfully",
-        "export_error": "PDF export failed"
+        "export_error": "PDF export failed",
+        "resources": "Resources",
+        "account": "Student",
+        "locked": "(locked)",
+        "completed": "(completed)"
     },
     "signin": {
         "description": "Input your Researcher ID to access the Puger Project database.",
         "placeholder": "Enter Researcher ID...",
         "label": "Researcher Identifier (ID)",
         "button": "Authorize Access",
-        "error": "Researcher ID or Password is incorrect!"
+        "error": "Researcher ID or Password is incorrect!",
+        "title": "Sign in",
+        "password_label": "Password",
+        "password_placeholder": "Enter your password",
+        "show_password": "Show password",
+        "hide_password": "Hide password",
+        "tagline": "Investigating microplastics in the Puger ecosystem.",
+        "tagline_sub": "6 steps · answer drafts saved automatically"
     },
     "syllabus": {
         "initial": "Triggering Initial Ideas",
@@ -251,7 +281,8 @@
                 "(Human Health-AR): Particle Entry Routes & Systemic Health Impacts on Human Organs.",
                 "(Macro-Impacts): Long-term consequences on the Fishermen's Economy (decrease in catch quality) and widespread ecosystem damage."
             ]
-        }
+        },
+        "zoom_marker": "Enlarge marker"
     },
     "decision": {
         "instruction": "As a team of scientists, discuss within your group. Debate scientifically to select, evaluate, and agree on the most rational final mitigation solution to be implemented in the Puger area. Based on the critical points in your group's Causal Loop Diagram, propose one specific strategy (applied technology, biological monitoring, or ecological intervention) to address this problem!",
@@ -284,7 +315,9 @@
                 "description": "Does your biological solution pose any side effects to the native Puger ecosystem? (E.g., concerns about the release of GMOs or alien species)"
             },
             "name_placeholder": "Your Name",
-            "solution_placeholder": "Explain your proposed solution..."
+            "solution_placeholder": "Explain your proposed solution...",
+            "title": "Mitigation Strategies",
+            "strategy": "Strategy"
         },
         "conclusion": {
             "title": "Professional Conclusion",
@@ -339,5 +372,53 @@
         "recheck_answer": "Please recheck your answer!",
         "diagram_min_nodes": "There must be at least 5 variables in the diagram",
         "diagram_min_edges": "There must be at least 2 relationships between variables"
+    },
+    "lesson": {
+        "step_of": "Step {{step}} / {{total}}",
+        "answered": "Answered",
+        "previous": "Previous",
+        "submit_next": "Submit & continue",
+        "filled_count": "{{filled}} of {{total}} answers filled in",
+        "more_options": "More options",
+        "open_navigation": "Open step navigation"
+    },
+    "autosave": {
+        "saving": "Saving draft...",
+        "saved": "Draft saved · {{time}}",
+        "unavailable": "Drafts can't be saved on this device",
+        "restored": "Draft from {{time}} restored.",
+        "discard": "Discard draft"
+    },
+    "nav": {
+        "signin": "Sign in",
+        "continue": "Continue"
+    },
+    "about": {
+        "title": "About WAVES-SSI",
+        "p1": "Web-based Augmented & Virtual Environmental SSI (WAVES-SSI) is a web-based learning ecosystem designed to bridge the gap between classroom science theory and the complex socio-environmental realities in the field. The platform integrates two main immersive technologies, 360° video and Augmented Reality (AR), to explore socio-scientific issues (SSI) around waste management at Pancer Beach and the Puger fish auction site (TPI Puger).",
+        "p2": "360° video and augmented reality (AR) help students observe contexts that are hard to bring directly into the classroom. Through activities and worksheets, students identify the components of a system, trace cause-and-effect relationships, build representations of those relationships, and weigh the impact of different courses of action.",
+        "p3": "WAVES-SSI is designed to support Education for Sustainable Development (ESD) in the education of pre-service biology teachers. The learning experience is intended to help students develop systems thinking skills and sustainability awareness that they can carry into their teaching practice and their lives in the community.",
+        "team_title": "WAEJUC Research Team",
+        "logo_alt": "WAEJUC consortium logo: Universitas Negeri Malang, Universitas Jember, and Curtin University",
+        "members": [
+            {
+                "role": "Principal investigator",
+                "name": "Prof. Sri Rahayu, Ph.D.",
+                "affiliation": "Universitas Negeri Malang, Indonesia"
+            },
+            {
+                "role": "Member",
+                "name": "Dr. Hikmah Buroidah",
+                "affiliation": "Universitas Jember, Indonesia"
+            },
+            {
+                "role": "Member",
+                "name": "Prof. Dr. Mauro Mocerino",
+                "affiliation": "Curtin University, Australia"
+            }
+        ]
+    },
+    "footer": {
+        "copyright": "© 2026 WAVES-SSI · WAEJUC Research Team"
     }
 }

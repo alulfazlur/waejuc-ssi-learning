@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle, ExternalLink } from "lucide-react";
+import { CheckCircle2, ExternalLink, ClipboardCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const fadeUp = (delay = 0) => ({
@@ -15,52 +15,39 @@ export const CompletionPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="pt-20 bg-background text-primary flex flex-col items-center justify-center overflow-hidden relative">
-
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 border border-primary rounded-full animate-ping [animation-duration:4s]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-95 h-95 border border-primary/40 rounded-full" />
-            </div>
-
-            <div className="max-w-2xl w-full relative z-10">
-
-                <motion.div
-                    {...fadeUp(0.08)}
-                    className="flex justify-center mb-8"
-                >
-                    <div className="relative">
-                        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-                            <CheckCircle size={40} className="text-primary" strokeWidth={1.5} />
-                        </div>
-                        <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping [animation-duration:2.5s]" />
-                    </div>
+        <div className="relative flex flex-col items-center justify-center pt-10 text-primary sm:pt-16">
+            <div className="relative z-10 w-full max-w-2xl">
+                <motion.div {...fadeUp(0.08)} className="mb-8 flex justify-center">
+                    <span className="flex h-20 w-20 items-center justify-center rounded-full bg-surface-subtle text-secondary">
+                        <CheckCircle2 size={40} strokeWidth={1.75} aria-hidden="true" />
+                    </span>
                 </motion.div>
 
-                <motion.div {...fadeUp(0.16)} className="text-center mb-10">
-                    <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
-                        {t('complete.title')}
-                        <span className="text-secondary dark:text-primary/60 italic font-normal">
+                <motion.div {...fadeUp(0.16)} className="mb-10 text-center">
+                    <h1 className="mb-4 text-3xl font-bold leading-tight md:text-4xl">
+                        {t('complete.title')}{" "}
+                        <span className="font-normal italic text-secondary">
                             {t('complete.thank_you')}
                         </span>
                     </h1>
-                    <p className="text-secondary dark:text-primary leading-relaxed text-base max-w-lg mx-auto">
+                    <p className="mx-auto max-w-lg text-base leading-relaxed text-primary/90">
                         {t('complete.description')}
                     </p>
                 </motion.div>
 
                 <motion.div
                     {...fadeUp(0.28)}
-                    className="bg-primary border border-primary/20 rounded-2xl p-6 mb-6"
+                    className="rounded-[20px] bg-primary p-6 text-background sm:p-8"
                 >
-                    <div className="flex gap-4 items-start mb-5">
-                        <div className="bg-background p-2.5 rounded-full shrink-0">
-                            <ExternalLink size={18} className="text-primary" />
-                        </div>
+                    <div className="mb-5 flex items-start gap-4">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-background text-primary">
+                            <ClipboardCheck size={20} aria-hidden="true" />
+                        </span>
                         <div>
-                            <h3 className="font-semibold text-background text-lg mb-1">
+                            <h2 className="mb-1 text-lg font-semibold">
                                 {t('complete.one_more_step')}
-                            </h3>
-                            <p className="text-background/80 text-sm leading-relaxed">
+                            </h2>
+                            <p className="text-sm leading-relaxed opacity-85">
                                 {t('complete.fill_survey')}
                             </p>
                         </div>
@@ -69,13 +56,14 @@ export const CompletionPage = () => {
                         href={SURVEY_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-background text-primary font-semibold text-sm rounded-xl hover:bg-background/90 transition-colors"
+                        className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-background px-4 text-sm font-semibold text-primary transition-colors hover:bg-background/90"
                     >
                         {t('complete.survey_link')}
-                        <ExternalLink size={14} />
+                        <ExternalLink size={14} aria-hidden="true" />
+                        <span className="sr-only">{t('common.opens_new_tab')}</span>
                     </a>
                 </motion.div>
             </div>
         </div>
     );
-}
+};

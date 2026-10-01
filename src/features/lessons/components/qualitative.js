@@ -1,13 +1,9 @@
 "use client";
-import {
-    ClipboardList,
-    Wind,
-    Container,
-    Sparkles,
-    Spline
-} from "lucide-react";
+import { Container, Sparkles, Spline } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Callout from "@components/Callout";
 import Instruction from "@components/Instruction";
+import QuestionCard from "@components/QuestionCard";
 import RichEditor from "@/components/RichTextEditor";
 import DiagramInput from "@/components/DiagramInput";
 
@@ -17,110 +13,64 @@ export const QualitativeComponent = (props) => {
     const { control } = methods;
 
     return (
-        <div className="space-y-8">
-            <div className="flex flex-col gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
-                <div className="flex gap-3">
-                    <ClipboardList className="min-w-6 text-primary" />
-                    <p className="text-sm leading-relaxed">
-                        <b>{`${t('common.task')}: `}</b>
-                        {t('qualitative.instruction')}
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-4 p-4 bg-background dark:bg-secondary/20 rounded-xl border border-secondary/10 shadow-sm group">
-                        <div className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-lg">
-                            <Container size={32} />
-                        </div>
-                        <div>
-                            <h4 className="text-sm font-bold">{t('qualitative.illustration.plastic')}</h4>
-                        </div>
+        <div className="space-y-6">
+            <Callout label={t('common.task')}>
+                {t('qualitative.instruction')}
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="flex items-center gap-3 rounded-xl bg-card p-3">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-quaternary/15 text-quaternary">
+                            <Container size={24} aria-hidden="true" />
+                        </span>
+                        <span className="text-sm font-semibold">{t('qualitative.illustration.plastic')}</span>
                     </div>
-
-                    <div className="flex items-center gap-4 p-4 bg-background dark:bg-secondary/20 rounded-xl border border-secondary/10 shadow-sm group">
-                        <div className="p-3 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg relative">
-                            <Spline size={32} />
-                            <Sparkles size={14} className="absolute top-2 right-2 animate-pulse text-sky-500" />
-                        </div>
-                        <div>
-                            <h4 className="text-sm font-bold">{t('qualitative.illustration.fiber')}</h4>
-                        </div>
+                    <div className="flex items-center gap-3 rounded-xl bg-card p-3">
+                        <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondary">
+                            <Spline size={24} aria-hidden="true" />
+                            <Sparkles size={11} className="absolute right-1.5 top-1.5" aria-hidden="true" />
+                        </span>
+                        <span className="text-sm font-semibold">{t('qualitative.illustration.fiber')}</span>
                     </div>
-
                 </div>
-            </div>
+            </Callout>
 
-            <section className="space-y-6">
-                <div className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                    <Instruction
-                        title={t('qualitative.analysis.q1_title')}
-                        description={t('qualitative.analysis.q1_desc')}
-                        icon={Wind}
+            <QuestionCard
+                number={1}
+                title={t('qualitative.analysis.q1_title')}
+                description={(
+                    <div className="space-y-2">
+                        <p>{t('qualitative.analysis.q1_desc')}</p>
+                        <p>{t('qualitative.analysis.q2_desc')}</p>
+                    </div>
+                )}
+                fields={["qual_analysis_anomaly_diagram", "qual_analysis_anomaly_behaviour", "qual_analysis_microplastic_risk"]}
+            >
+                <div>
+                    <Instruction description={t('qualitative.analysis.q2_step1')} refs="1, 2, 3, 10" />
+                    <DiagramInput
+                        name="qual_analysis_anomaly_diagram"
+                        errors={errors}
+                        control={control}
                     />
-                    <Instruction
-                        description={t('qualitative.analysis.q2_desc')}
-                        icon={null}
-                    />
-                    <div className="mb-6">
-                        <Instruction
-                            description={(
-                                <>
-                                    {t('qualitative.analysis.q2_step1')}
-                                    <br />
-                                    <b className="text-sm">
-                                        {`${t('common.reference')} 1,2,3,10`}
-                                    </b>
-                                </>
-                            )}
-                            icon={null}
-                        />
-                        <DiagramInput
-                            name="qual_analysis_anomaly_diagram"
-                            errors={errors}
-                            control={control}
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <Instruction
-                            description={(
-                                <>
-                                    {t('qualitative.analysis.q2_step2')}
-                                    <br />
-                                    <b className="text-sm">
-                                        {`${t('common.reference')} 6,7`}
-                                    </b>
-                                </>
-                            )}
-                            icon={null}
-                        />
-                        <RichEditor
-                            name="qual_analysis_anomaly_behaviour"
-                            errors={errors}
-                            control={control}
-                        />
-                    </div>
-                    <div>
-                        <Instruction
-                            description={(
-                                <>
-                                    {t('qualitative.analysis.q2_step3')}
-                                    <br />
-                                    <b className="text-sm">
-                                        {`${t('common.reference')} 6,7`}
-                                    </b>
-                                </>
-                            )}
-                            icon={null}
-                        />
-                        <RichEditor
-                            name="qual_analysis_microplastic_risk"
-                            errors={errors}
-                            control={control}
-                        />
-                    </div>
                 </div>
-
-            </section>
+                <div>
+                    <Instruction description={t('qualitative.analysis.q2_step2')} refs="6, 7" />
+                    <RichEditor
+                        name="qual_analysis_anomaly_behaviour"
+                        errors={errors}
+                        control={control}
+                        ariaLabel={t('qualitative.analysis.q2_step2')}
+                    />
+                </div>
+                <div>
+                    <Instruction description={t('qualitative.analysis.q2_step3')} refs="6, 7" />
+                    <RichEditor
+                        name="qual_analysis_microplastic_risk"
+                        errors={errors}
+                        control={control}
+                        ariaLabel={t('qualitative.analysis.q2_step3')}
+                    />
+                </div>
+            </QuestionCard>
         </div>
     );
 };

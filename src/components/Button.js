@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 
 export default function Button({
     color = "primary",
@@ -6,50 +7,60 @@ export default function Button({
     children,
     href,
     disabled = false,
+    loading = false,
     className = "",
     ...props
 }) {
     const colors = {
         primary: "bg-primary text-background hover:bg-primary/90",
-        secondary: "bg-secondary text-background hover:bg-primary/90",
-        outline: "border-1 border-primary/20 text-primary hover:bg-primary/5",
-        ghost: "bg-transparent text-primary hover:bg-primary/10 shadow-none hover:shadow-none",
-        white: "bg-background text-primary hover:bg-background/90 shadow-none hover:shadow-none",
+        secondary: "bg-secondary text-background hover:bg-secondary/90",
+        outline: "bg-card text-primary ring-[1.5px] ring-inset ring-input hover:bg-surface-subtle",
+        ghost: "bg-transparent text-secondary hover:bg-surface-subtle",
+        white: "bg-background text-primary hover:bg-background/90",
+        danger: "bg-transparent text-danger hover:bg-danger/10",
     };
 
     const sizes = {
-        sm: "px-4 py-2 text-sm",
-        md: "px-8 py-3 text-background",
-        lg: "px-10 py-4 text-lg",
+        sm: "min-h-10 px-4 py-2 text-sm",
+        md: "min-h-11 px-6 py-2.5 text-[15px]",
+        lg: "min-h-12 px-8 py-3 text-base",
     };
 
+    const isDisabled = disabled || loading;
+
     const baseClass = `
-        ${colors[color] || colors.primary} 
-        ${sizes[size]} 
-        rounded-full font-bold ${disabled ? "cursor-not-allowed" : "cursor-pointer"} 
-        transition-all duration-300 ease-out
-        flex items-center justify-center gap-2
-        ${disabled ? "" : "hover:-translate-y-1 hover:shadow-xl"}
-        ${disabled ? "" : "active:scale-95 active:translate-y-0"}
-        shadow-lg
+        ${colors[color] || colors.primary}
+        ${sizes[size] || sizes.md}
+        inline-flex items-center justify-center gap-2 rounded-xl font-semibold
+        transition-colors duration-200 select-none
+        ${isDisabled ? "cursor-not-allowed opacity-60" : "cursor-pointer active:scale-[0.98]"}
         ${className}
     `;
+
+    const content = (
+        <>
+            {loading && <Loader2 size={16} className="animate-spin" aria-hidden="true" />}
+            {children}
+        </>
+    );
 
     if (href) {
         return (
             <Link href={href} className={baseClass} {...props}>
-                {children || 'Link'}
+                {content}
             </Link>
         );
     }
 
     return (
         <button
+            type="button"
             className={baseClass}
-            disabled={disabled}
+            disabled={isDisabled}
+            aria-busy={loading || undefined}
             {...props}
         >
-            {children || 'Click'}
+            {content}
         </button>
     );
 }

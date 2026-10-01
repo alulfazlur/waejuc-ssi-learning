@@ -1,15 +1,17 @@
 "use client";
-import { Angry, Frown, Meh, Smile, Laugh, ClipboardList, Globe, Brain, Heart } from "lucide-react";
+import { Angry, Frown, Meh, Smile, Laugh, Globe, Brain, Heart } from "lucide-react";
 import { Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import Instruction from "@components/Instruction";
+import Callout from "@components/Callout";
+import FieldError from "@components/FieldError";
+import QuestionCard from "@components/QuestionCard";
 
 const RATING_SCALE = [
-    { value: 1, icon: Angry, labelKey: 'reflection.scale.very_bad', color: '#ef4444' },
-    { value: 2, icon: Frown, labelKey: 'reflection.scale.bad', color: '#f97316' },
-    { value: 3, icon: Meh, labelKey: 'reflection.scale.neutral', color: '#eab308' },
-    { value: 4, icon: Smile, labelKey: 'reflection.scale.good', color: '#84cc16' },
-    { value: 5, icon: Laugh, labelKey: 'reflection.scale.very_good', color: '#22c55e' },
+    { value: 1, icon: Angry, labelKey: 'reflection.scale.very_bad' },
+    { value: 2, icon: Frown, labelKey: 'reflection.scale.bad' },
+    { value: 3, icon: Meh, labelKey: 'reflection.scale.neutral' },
+    { value: 4, icon: Smile, labelKey: 'reflection.scale.good' },
+    { value: 5, icon: Laugh, labelKey: 'reflection.scale.very_good' },
 ];
 
 const QUESTIONS = [
@@ -18,7 +20,7 @@ const QUESTIONS = [
     { name: 'reflection_enjoyment', icon: Heart, titleKey: 'reflection.learning_enjoyment.title', descKey: 'reflection.learning_enjoyment.desc' },
 ];
 
-const SmileyRating = ({ name, control, errors }) => {
+const SmileyRating = ({ name, control, errors, label }) => {
     const { t } = useTranslation();
     const error = errors?.[name];
 
@@ -26,42 +28,56 @@ const SmileyRating = ({ name, control, errors }) => {
         <Controller
             name={name}
             control={control}
-            render={({ field: { value, onChange } }) => (
-                <div className="space-y-3">
-                    <div className="flex justify-between gap-1 sm:gap-3 py-2">
-                        {RATING_SCALE.map((option) => {
+            render={({ field: { value, onChange, ref } }) => (
+                <div data-field={name}>
+                    <div
+                        role="radiogroup"
+                        aria-label={label}
+                        aria-invalid={!!error || undefined}
+                        className="grid grid-cols-5 gap-1.5 sm:gap-3"
+                    >
+                        {RATING_SCALE.map((option, index) => {
                             const Icon = option.icon;
                             const isSelected = value === option.value;
+                            // Roving tabindex: the selected option (or the first) is the tab stop.
+                            const isTabStop = isSelected || (!value && index === 0);
+                            const move = (e, delta) => {
+                                const nextIndex = (index + delta + RATING_SCALE.length) % RATING_SCALE.length;
+                                onChange(RATING_SCALE[nextIndex].value);
+                                e.currentTarget.parentElement.children[nextIndex]?.focus();
+                            };
                             return (
                                 <button
                                     key={option.value}
+                                    ref={index === 0 ? ref : undefined}
                                     type="button"
+                                    role="radio"
+                                    aria-checked={isSelected}
+                                    tabIndex={isTabStop ? 0 : -1}
                                     onClick={() => onChange(option.value)}
-                                    aria-label={t(option.labelKey)}
-                                    className={`group flex flex-1 flex-col items-center gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-2xl transition-all duration-300 cursor-pointer ${isSelected
-                                            ? 'bg-primary/10 dark:bg-primary/20 scale-105 shadow-sm'
-                                            : 'hover:bg-primary/5 hover:scale-105'
+                                    onKeyDown={(e) => {
+                                        if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); move(e, 1); }
+                                        if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); move(e, -1); }
+                                    }}
+                                    className={`flex min-h-20 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-2xl border-[1.5px] p-2 transition-colors sm:p-3
+                                        ${isSelected
+                                            ? "border-secondary bg-surface-subtle text-secondary"
+                                            : "border-transparent text-muted hover:bg-surface-subtle hover:text-primary"
                                         }`}
                                 >
                                     <Icon
-                                        className={`w-8 h-8 sm:w-12 sm:h-12 transition-all duration-300 ${isSelected ? 'drop-shadow-md' : 'opacity-40 group-hover:opacity-100'
-                                            }`}
-                                        style={{ color: isSelected ? option.color : undefined }}
-                                        strokeWidth={isSelected ? 2 : 1.5}
+                                        className="h-8 w-8 sm:h-10 sm:w-10"
+                                        strokeWidth={isSelected ? 2.25 : 1.5}
+                                        aria-hidden="true"
                                     />
-                                    <span className={`text-[10px] sm:text-xs font-medium text-center leading-tight transition-opacity ${isSelected ? 'opacity-100' : 'opacity-50 group-hover:opacity-80'
-                                        }`}>
+                                    <span className={`text-center text-[11px] leading-tight sm:text-xs ${isSelected ? "font-bold" : "font-medium"}`}>
                                         {t(option.labelKey)}
                                     </span>
                                 </button>
                             );
                         })}
                     </div>
-                    {error && (
-                        <p className="text-danger text-sm text-center font-medium">
-                            {error.message}
-                        </p>
-                    )}
+                    <FieldError message={error?.message} className="justify-center" />
                 </div>
             )}
         />
@@ -73,31 +89,26 @@ export const ReflectionComponent = ({ methods, errors }) => {
     const { control } = methods;
 
     return (
-        <div className="space-y-8">
-            <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
-                <ClipboardList className="min-w-6" />
-                <p className="text-sm leading-relaxed">
-                    <b>{`${t('common.activity')}: `}</b>
-                    {t('reflection.instruction')}
-                </p>
-            </div>
+        <div className="space-y-6">
+            <Callout label={t('common.activity')}>
+                {t('reflection.instruction')}
+            </Callout>
 
-            {QUESTIONS.map((q) => (
-                <div
+            {QUESTIONS.map((q, index) => (
+                <QuestionCard
                     key={q.name}
-                    className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm space-y-4"
+                    number={index + 1}
+                    title={t(q.titleKey)}
+                    description={t(q.descKey)}
+                    fields={[q.name]}
                 >
-                    <Instruction
-                        title={t(q.titleKey)}
-                        description={t(q.descKey)}
-                        icon={q.icon}
-                    />
                     <SmileyRating
                         name={q.name}
                         control={control}
                         errors={errors}
+                        label={t(q.titleKey)}
                     />
-                </div>
+                </QuestionCard>
             ))}
         </div>
     );

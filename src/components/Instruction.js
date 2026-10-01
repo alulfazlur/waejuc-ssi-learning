@@ -1,23 +1,31 @@
-import { MessageSquareQuote } from "lucide-react";
+"use client";
+import { Paperclip } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import Chip from "@components/Chip";
 
+// Prompt text for a follow-up question inside a QuestionCard.
 export default function Instruction({
     title = "",
     description = "",
-    icon: Icon = MessageSquareQuote
+    refs,
+    icon: Icon,
 }) {
+    const { t } = useTranslation();
+
     return (
-        <div className="mb-6">
+        <div className="mb-3">
             {(Icon || title) &&
-                <div className="flex items-center gap-4 mb-4">
-                    {Icon &&
-                        <Icon className="text-primary shrink-0" size={24} />
-                    }
-                    <h3 className="text-xl text-primary font-bold">{title}</h3>
+                <div className="mb-2 flex items-center gap-3">
+                    {Icon && <Icon className="shrink-0 text-secondary" size={20} aria-hidden="true" />}
+                    {title && <h3 className="text-base font-semibold">{title}</h3>}
                 </div>
             }
-            <p className="text-secondary text-[15px] dark:text-primary/80">
-                {description}
-            </p>
+            {description && (
+                <p className="text-[15px] leading-relaxed text-primary/90">{description}</p>
+            )}
+            {refs && (
+                <Chip icon={Paperclip} className="mt-2">{`${t('common.reference')} ${refs}`}</Chip>
+            )}
         </div>
     );
 }

@@ -12,9 +12,12 @@ export const AuthProvider = ({ children }) => {
     const [isSyncing, setIsSyncing] = useState(false);
     const supabase = createClient();
 
-    const refreshProgress = async (currentUser) => {
-        setLoading(true);
-        setIsSyncing(true);
+    // `silent` skips the full-screen loading state, e.g. after submitting a step.
+    const refreshProgress = async (currentUser, { silent = false } = {}) => {
+        if (!silent) {
+            setLoading(true);
+            setIsSyncing(true);
+        }
         try {
             const { data } = await supabase
                 .from("student_responses")

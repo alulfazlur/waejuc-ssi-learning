@@ -10,7 +10,16 @@
         "start_mission": "Mulai Misi",
         "example": "Contoh",
         "select_placeholder": "Pilih opsi...",
-        "reference": "Rujukan Materi:"
+        "reference": "Rujukan Materi:",
+        "close": "Tutup",
+        "loading": "Memuat...",
+        "opens_new_tab": "(membuka tab baru)",
+        "theme_light": "Ganti ke mode terang",
+        "theme_dark": "Ganti ke mode gelap",
+        "language": "Bahasa",
+        "actions": "Aksi",
+        "row": "Baris",
+        "delete_row": "Hapus baris"
     },
     "error": {
         "video_not_supported": "Browser Anda tidak mendukung tag video.",
@@ -19,14 +28,24 @@
     },
     "hero": {
         "title": "Ekspedisi Alam Virtual: Mengupas Tuntas Ekosistem Puger",
-        "description": "Di balik deburan ombak dan pesona sunset Pantai Puger, tersimpan rahasia kecil yang mengancam masa depan kita. Melalui eksplorasi video 360° dan teknologi Augmented Reality, mari kita menembus batas penglihatan untuk mengungkap bagaimana polusi mikroplastik menyusup ke dalam rantai makanan dan mempengaruhi kesehatan manusia. Keindahan ini adalah milik kita, begitupun tanggung jawab untuk menjaganya"
+        "description": "Di balik deburan ombak dan pesona sunset Pantai Puger, tersimpan rahasia kecil yang mengancam masa depan kita. Melalui eksplorasi video 360° dan teknologi Augmented Reality, mari kita menembus batas penglihatan untuk mengungkap bagaimana polusi mikroplastik menyusup ke dalam rantai makanan dan mempengaruhi kesehatan manusia. Keindahan ini adalah milik kita, begitupun tanggung jawab untuk menjaganya",
+        "tag": "Isu Sosio-Saintifik · Pantai Puger",
+        "cta_start": "Mulai investigasi",
+        "cta_about": "Tentang WAVES-SSI",
+        "scroll_down": "Gulir ke bawah"
     },
     "objectives": {
         "title": "Tujuan Pembelajaran",
         "goal_1": "Setelah mengeksplorasi kontaminasi lingkungan melalui Video 360 dan media AR microplastic, mahasiswa mampu menguraikan dampak sistemik mikroplastik terhadap kesehatan masyarakat dan ekosistem secara komprehensif dan tepat",
         "goal_2": "Melalui analisis interaktif pada Video 360 kondisi TPI Puger dan visualisasi AR microplastic, mahasiswa mampu menilai kompleksitas permasalahan dengan mengintegrasikan aspek ekologi, ekonomi, dan sosial ke dalam matriks hubungan sistem (causal-loop) secara holistik dan logis",
         "goal_3": "Berdasarkan pemahaman sistemik dari hasil observasi menggunakan Video 360 dan AR microplastic, mahasiswa mampu merancang proposal solusi strategis dan inovatif untuk mitigasi mikroplastik di wilayah Jember yang memenuhi criteria keseimbangan ekologi, ekonomi, dan sosial secara berkelanjutan",
-        "goal_4": "Setelah melalui seluruh rangkaian pengalaman belajar berbasis Video 360 dan AR, mahasiswa mampu merumuskan keputusan logis untuk mengatasi dilema penggunaan plastik dalam kehidupan sehari-hari secara konsisten dan bertanggung jawab"
+        "goal_4": "Setelah melalui seluruh rangkaian pengalaman belajar berbasis Video 360 dan AR, mahasiswa mampu merumuskan keputusan logis untuk mengatasi dilema penggunaan plastik dalam kehidupan sehari-hari secara konsisten dan bertanggung jawab",
+        "items": [
+            "Menganalisis dampak",
+            "Mengevaluasi kompleksitas",
+            "Mengusulkan solusi",
+            "Berpikir sistem"
+        ]
     },
     "mission": {
         "report_tag": "Laporan Penyelidikan · TPI Puger",
@@ -90,15 +109,26 @@
         "logout": "Keluar",
         "export_btn": "Export ke PDF",
         "exporting": "Membuat PDF...",
-        "export_success":"PDF berhasil diunduh",
-        "export_error":"Gagal export PDF"
+        "export_success": "PDF berhasil diunduh",
+        "export_error": "Gagal export PDF",
+        "resources": "Sumber",
+        "account": "Mahasiswa",
+        "locked": "(terkunci)",
+        "completed": "(selesai)"
     },
     "signin": {
         "description": "Masukkan ID Peneliti Anda untuk mengakses basis data Proyek Puger.",
         "placeholder": "Masukkan ID Peneliti...",
         "label": "Pengidentifikasi Peneliti (ID)",
         "button": "Otorisasi Akses",
-        "error": "ID Peneliti atau Password salah!"
+        "error": "ID Peneliti atau Password salah!",
+        "title": "Masuk",
+        "password_label": "Password",
+        "password_placeholder": "Masukkan password Anda",
+        "show_password": "Tampilkan password",
+        "hide_password": "Sembunyikan password",
+        "tagline": "Investigasi mikroplastik di ekosistem Puger.",
+        "tagline_sub": "6 langkah · draft jawaban tersimpan otomatis"
     },
     "syllabus": {
         "initial": "Pemicu Ide Awal",
@@ -251,7 +281,8 @@
                 "(Kesehatan Manusia-AR): Rute masuk partikel (Entry) & Dampak Kesehatan Sistemik pada organ manusia.",
                 "(Dampak Makro): Konsekuensi jangka panjang terhadap Ekonomi Nelayan (penurunan kualitas tangkapan) dan kerusakan Ekosistem secara luas."
             ]
-        }
+        },
+        "zoom_marker": "Perbesar marker"
     },
     "decision": {
         "instruction": "Sebagai sebuah tim saintis, Diskusikan di dalam kelompok Anda. Berdebatlah secara ilmiah untuk memilih, mengevaluasi, dan menyepakati satu solusi mitigasi final yang paling rasional untuk diterapkan di kawasan Puger. Berdasarkan titik kritis dalam Causal Loop Diagram kelompok Anda, usulkan satu strategi spesifik (teknologi terapan, monitoring biologi, atau intervensi ekologi) untuk memutus masalah ini!",
@@ -284,7 +315,9 @@
                 "description": "Apakah solusi biologis Anda memiliki risiko sampingan terhadap ekosistem asli Puger? (Misal: kekhawatiran pelepasan GMO atau spesies asing)"
             },
             "name_placeholder": "Nama Anda",
-            "solution_placeholder": "Jelaskan solusi yang Anda usulkan..."
+            "solution_placeholder": "Jelaskan solusi yang Anda usulkan...",
+            "title": "Strategi Mitigasi",
+            "strategy": "Strategi"
         },
         "conclusion": {
             "title": "Kesimpulan Profesional",
@@ -339,5 +372,53 @@
         "recheck_answer": "Harap periksa kembali jawaban Anda!",
         "diagram_min_nodes": "Minimal harus ada 5 variabel di diagram",
         "diagram_min_edges": "Minimal harus ada 2 relasi antar variabel"
+    },
+    "lesson": {
+        "step_of": "Langkah {{step}} / {{total}}",
+        "answered": "Terisi",
+        "previous": "Sebelumnya",
+        "submit_next": "Kirim & lanjut",
+        "filled_count": "{{filled}} dari {{total}} jawaban terisi",
+        "more_options": "Opsi lainnya",
+        "open_navigation": "Buka navigasi langkah"
+    },
+    "autosave": {
+        "saving": "Menyimpan draft...",
+        "saved": "Draft tersimpan · {{time}}",
+        "unavailable": "Draft tidak bisa disimpan di perangkat ini",
+        "restored": "Draft dari {{time}} dipulihkan.",
+        "discard": "Buang draft"
+    },
+    "nav": {
+        "signin": "Masuk",
+        "continue": "Lanjutkan"
+    },
+    "about": {
+        "title": "Tentang WAVES-SSI",
+        "p1": "Web-based Augmented & Virtual Environmental SSI (WAVES-SSI) adalah sebuah ekosistem pembelajaran berbasis web yang dirancang untuk menjembatani kesenjangan antara teori sains di ruang kelas dengan realitas sosial-lingkungan yang kompleks di lapangan. Platform ini mengintegrasikan dua teknologi imersif utama, yaitu Video 360° dan Augmented Reality (AR) untuk mengeksplorasi isu sosio-saintifik (SSI) terkait penanganan sampah di Pantai Pancer dan TPI Puger.",
+        "p2": "Video 360° dan augmented reality (AR) membantu mahasiswa mengamati konteks yang sulit dihadirkan secara langsung di ruang kelas. Melalui aktivitas dan lembar kerja, mahasiswa diajak mengidentifikasi komponen suatu sistem, menelusuri hubungan sebab–akibat, menyusun representasi hubungan, serta mempertimbangkan dampak dari berbagai pilihan tindakan.",
+        "p3": "WAVES-SSI dirancang untuk mendukung Education for Sustainable Development (ESD) dalam pendidikan calon guru biologi. Pengalaman belajar di dalamnya diharapkan membantu mahasiswa mengembangkan keterampilan berpikir sistem dan kesadaran keberlanjutan yang dapat mereka bawa ke dalam praktik mengajar atau dalam kehidupan di masyarakat.",
+        "team_title": "Tim Peneliti WAEJUC",
+        "logo_alt": "Logo konsorsium WAEJUC: Universitas Negeri Malang, Universitas Jember, dan Curtin University",
+        "members": [
+            {
+                "role": "Ketua peneliti",
+                "name": "Prof. Sri Rahayu, Ph.D.",
+                "affiliation": "Universitas Negeri Malang, Indonesia"
+            },
+            {
+                "role": "Anggota",
+                "name": "Dr. Hikmah Buroidah",
+                "affiliation": "Universitas Jember, Indonesia"
+            },
+            {
+                "role": "Anggota",
+                "name": "Prof. Dr. Mauro Mocerino",
+                "affiliation": "Curtin University, Australia"
+            }
+        ]
+    },
+    "footer": {
+        "copyright": "© 2026 WAVES-SSI · Tim Peneliti WAEJUC"
     }
 }

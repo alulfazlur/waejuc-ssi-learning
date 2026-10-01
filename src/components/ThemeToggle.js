@@ -1,62 +1,36 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-export default function ThemeToggle({ colorClass = "text-foreground", backgroundClass = "bg-primary" }) {
+export default function ThemeToggle({ className = "" }) {
     const { theme, setTheme } = useTheme();
+    const { t } = useTranslation();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setMounted(true);
-        }, 0);
+        const timer = setTimeout(() => setMounted(true), 0);
         return () => clearTimeout(timer);
     }, []);
 
+    const base = `flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${className}`;
+
     if (!mounted) {
-        return (
-            <button
-                className={`p-2 rounded-xl ${backgroundClass} flex items-center justify-center`}
-                aria-hidden="true"
-            >
-                <div className="w-5 h-5" />
-            </button>
-        );
+        return <span className={base} aria-hidden="true" />;
     }
+
+    const isDark = theme === "dark";
 
     return (
         <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className={`w-9.5 h-9.5 relative p-2 rounded-xl ${backgroundClass} transition-colors cursor-pointer overflow-hidden flex items-center justify-center`}
-            aria-label="Toggle Theme"
+            type="button"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className={`${base} cursor-pointer hover:bg-current/10`}
+            aria-label={isDark ? t('common.theme_light') : t('common.theme_dark')}
+            title={isDark ? t('common.theme_light') : t('common.theme_dark')}
         >
-            <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
-                    <motion.span
-                        key="moon"
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 10, opacity: 0 }}
-                        transition={{ duration: 0.1 }}
-                        className="flex items-center"
-                    >
-                        <Moon size={20} className={colorClass} />
-                    </motion.span>
-                ) : (
-                    <motion.span
-                        key="sun"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -10, opacity: 0 }}
-                        transition={{ duration: 0.1 }}
-                        className="flex items-center"
-                    >
-                        <Sun size={20} className={colorClass} />
-                    </motion.span>
-                )}
-            </AnimatePresence>
+            {isDark ? <Moon size={20} aria-hidden="true" /> : <Sun size={20} aria-hidden="true" />}
         </button>
     );
 }
