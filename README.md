@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WAVES-SSI
 
-## Getting Started
+**Web-based Augmented & Virtual Environmental SSI**
 
-First, run the development server:
+🌊 Kunjungi website: **[waejuc.buroidah.education](https://waejuc.buroidah.education/)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tentang website ini
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+WAVES-SSI adalah website pembelajaran untuk mahasiswa calon guru biologi. Website ini mengajak mahasiswa menyelidiki masalah sampah plastik dan mikroplastik di Pantai Pancer dan Tempat Pelelangan Ikan (TPI) Puger, Jember. Masalah ini tidak hanya menyangkut sains, tetapi juga kehidupan nelayan, pedagang, dan masyarakat sekitar.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Mahasiswa mengamati kondisi lapangan melalui video 360° dan Augmented Reality (AR), lalu mengerjakan enam tahap investigasi bersama kelompoknya:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Pemicu Ide Awal**: menonton video dan mendengarkan pendapat warga setempat
+2. **Analisis Data Kualitatif**: memetakan bagaimana mikroplastik berpindah di lingkungan
+3. **Analisis Data Kuantitatif**: membaca data pengukuran dan memperkirakan paparan
+4. **Membangun Penjelasan**: menjelaskan dampaknya bagi tubuh manusia dan ekosistem
+5. **Pengambilan Keputusan**: merancang solusi yang adil bagi lingkungan dan warga
+6. **Refleksi Pembelajaran**: menilai pengalaman belajar mereka sendiri
 
-## Learn More
+Website ini mendukung Pendidikan untuk Pembangunan Berkelanjutan (*Education for Sustainable Development*). Tujuannya agar mahasiswa terbiasa berpikir secara menyeluruh dan peduli pada keberlanjutan, bekal yang bisa mereka bawa ke ruang kelas dan ke masyarakat.
 
-To learn more about Next.js, take a look at the following resources:
+## Pembuat
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Website ini dikembangkan oleh **Dr. Hikmah Buroidah**, dosen Pendidikan Biologi, Universitas Jember (UNEJ), sebagai bagian dari **Tim Peneliti WAEJUC** (*Western Australia–East Java Universities Consortium*):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Prof. Sri Rahayu, Ph.D.: Universitas Negeri Malang (ketua peneliti)
+- Dr. Hikmah Buroidah: Universitas Jember
+- Prof. Dr. Mauro Mocerino: Curtin University, Australia
