@@ -187,7 +187,7 @@ Semua step memakai `Callout` untuk tugas dan `QuestionCard` per pertanyaan. Nomo
 - Placeholder password hardcoded dipindah ke i18n.
 
 ## 10. Testing
-- **Vitest** ditambahkan sebagai devDependency dengan script `npm test`, khusus untuk `draftStorage.js` dan `cleanDiagram.js`:
+- Test memakai runner bawaan Node (`npm test` → `node --test src`), tanpa dependensi baru. Menambahkan Vitest ternyata mengubah ~2.800 baris `package-lock.json`, terlalu berisiko untuk aplikasi yang sedang dipakai. Cakupan:  `draftStorage.js` dan `cleanDiagram.js`:
   - simpan lalu muat dengan kunci per user dan per slug
   - JSON rusak menghasilkan `null`
   - quota atau `setItem` melempar error menghasilkan `{ ok: false }`
