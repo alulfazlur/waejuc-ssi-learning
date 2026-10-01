@@ -153,7 +153,7 @@ Urutan: Hero → **Tentang WAVES-SSI** → Tujuan pembelajaran → Footer.
   - Judul "Tentang WAVES-SSI". Paragraf pertama sebagai lead (18px), lalu dua paragraf berikutnya. Teks dari pengguna dipakai dengan tiga koreksi: typo "adalah adalah" menjadi "adalah", "ChemSystem" menjadi "WAVES-SSI", dan "calon guru kimia" menjadi "calon guru biologi".
   - Sub-judul "Tim Peneliti WAEJUC": grid 2 kolom di desktop. Kiri: `WAEJUC_Logo_Tiga_Universitas.jpeg` (1800×1030) lewat `next/image` dalam bingkai kartu radius 20px, dengan alt "Logo WAEJUC: Universitas Negeri Malang, Universitas Jember, dan Curtin University". Kanan: tiga kartu anggota (peran mono kecil, nama Exo, institusi muted):
     - Ketua peneliti: Prof. Sri Rahayu, Ph.D., Universitas Negeri Malang, Indonesia
-    - Anggota: Hikmah Buroidah, M.Pd., Universitas Jember, Indonesia
+    - Anggota: Hikmah Buroidah, S.Pd., M.Pd., Universitas Jember, Indonesia
     - Anggota: Prof. Dr. Mauro Mocerino, Curtin University, Australia
   - Di HP grid menjadi satu kolom: logo di atas, kartu di bawah.
   - Semua teks masuk `about.*` di `id.json`. Versi `en.json` adalah terjemahan saya, perlu dicek.
