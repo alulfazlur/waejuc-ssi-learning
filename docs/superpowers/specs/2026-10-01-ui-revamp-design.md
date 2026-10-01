@@ -1,12 +1,12 @@
 # Revamp UI WAVES-SSI: Desain
 
-Tanggal: 2026-10-01 · Branch: `revamp-ui` (dari `feature`) · Status: menunggu review
+Tanggal: 2026-10-01 · Branch: `revamp-ui` (dari `origin/master`) · Status: disetujui
 
 ## 1. Tujuan dan batasan
 
 **Tujuan:** tampilan seluruh aplikasi menjadi lebih modern, konsisten, dan nyaman dipakai, termasuk di HP. Ditambah autosave draft jawaban dan section "Tentang WAVES-SSI" di homepage.
 
-**Pengguna:** mahasiswa calon guru kimia. Aplikasi **sedang aktif dipakai** dan sudah ada jawaban nyata di Supabase.
+**Pengguna:** mahasiswa calon guru biologi. Aplikasi **sedang aktif dipakai** dan sudah ada jawaban nyata di Supabase.
 
 **Batasan (tidak boleh berubah):**
 - Nama field form, struktur tabel `student_responses`, aturan upsert (`student_id, level_slug`), dan perhitungan `maxStep = jumlah baris + 1`.
@@ -148,9 +148,9 @@ Dipecah menjadi komponen di `src/features/lessons/shell/`:
 Urutan: Hero → **Tentang WAVES-SSI** → Tujuan pembelajaran → Footer.
 
 - **Navbar:** brand WAVES-SSI, ThemeToggle, LanguageToggle, dan tombol "Masuk" (ke `/signin`). Mahasiswa yang sudah login melihat "Lanjutkan" (ke `/learning/mission`).
-- **Hero:** media tetap sama, yaitu `hero-poster.webp` lewat `next/image` dan `<video>` yang tetap di-comment seperti sekarang. File video tidak dihapus. Overlay diganti dari `bg-black/40` menjadi gradasi navy dari kiri. Teks rata kiri dengan max 640px. Isi teks tetap `hero.title` dan `hero.description`. Tombol baru "Mulai investigasi" (ke `/signin`, atau ke mission kalau sudah login) dan "Tentang WAVES-SSI" (scroll ke section about). Panah scroll tetap ada.
+- **Hero:** foto `hero-poster.webp` tetap ditampilkan lewat `next/image` (priority) sebagai lapisan dasar, jadi hero tidak pernah kosong. Video diaktifkan lagi memakai versi kompresi baru `public/videos/hero-bg-720.mp4` (H.264 720p 24fps tanpa audio, 2,7 MB; aslinya 76 MB VP9 1080p yang tidak bisa diputar di Safari). Video dipasang di atas foto dan baru di-fade-in setelah event `canplay`. `src` hanya diisi di client setelah mount, dan **dilewati** jika `prefers-reduced-motion`, `navigator.connection.saveData`, atau `effectiveType` `slow-2g`/`2g`/`3g`; dalam kondisi itu yang tampil cukup foto. File video asli tidak dihapus. Overlay diganti dari `bg-black/40` menjadi gradasi navy dari kiri. Teks rata kiri dengan max 640px. Isi teks tetap `hero.title` dan `hero.description`. Tombol baru "Mulai investigasi" (ke `/signin`, atau ke mission kalau sudah login) dan "Tentang WAVES-SSI" (scroll ke section about). Panah scroll tetap ada.
 - **Tentang WAVES-SSI (baru):** `src/features/home/components/about.js`, `id="about"`.
-  - Judul "Tentang WAVES-SSI". Paragraf pertama sebagai lead (18px), lalu dua paragraf berikutnya. Teks dari pengguna dipakai apa adanya, kecuali typo "adalah adalah" menjadi "adalah". Lihat juga pertanyaan terbuka §12.
+  - Judul "Tentang WAVES-SSI". Paragraf pertama sebagai lead (18px), lalu dua paragraf berikutnya. Teks dari pengguna dipakai dengan tiga koreksi: typo "adalah adalah" menjadi "adalah", "ChemSystem" menjadi "WAVES-SSI", dan "calon guru kimia" menjadi "calon guru biologi".
   - Sub-judul "Tim Peneliti WAEJUC": grid 2 kolom di desktop. Kiri: `WAEJUC_Logo_Tiga_Universitas.jpeg` (1800×1030) lewat `next/image` dalam bingkai kartu radius 20px, dengan alt "Logo WAEJUC: Universitas Negeri Malang, Universitas Jember, dan Curtin University". Kanan: tiga kartu anggota (peran mono kecil, nama Exo, institusi muted):
     - Ketua peneliti: Prof. Sri Rahayu, Ph.D., Universitas Negeri Malang, Indonesia
     - Anggota: Dr. Hikmah Buroidah, Universitas Jember, Indonesia
@@ -209,9 +209,11 @@ Diuji di preview deploy dengan akun uji yang sudah punya jawaban di beberapa ste
 10. Keyboard: navigasi Tab di seluruh shell dan form, ring terlihat, drawer bisa ditutup dengan Esc.
 11. Bahasa EN: tidak ada kunci terjemahan yang tampil mentah.
 
-## 12. Pertanyaan terbuka (perlu jawaban saat review spec)
-1. Paragraf ketiga teks "Tentang" menyebut **"ChemSystem dirancang untuk…"**. Apakah maksudnya WAVES-SSI, atau ChemSystem memang nama lain yang ingin disebut? Default spec: ditulis apa adanya.
-2. Video hero saat ini **tidak diputar** (kode `<video>` di-comment, yang tampil hanya foto poster). Spec mempertahankan kondisi ini. Apakah video seharusnya diaktifkan?
+## 12. Keputusan dari review
+1. "ChemSystem" di teks Tentang diganti "WAVES-SSI".
+2. Sasaran: calon guru **biologi**; kata "kimia" dari teks yang diberikan diganti "biologi".
+3. Video hero diaktifkan dengan versi terkompresi dan aturan pemuatan di §8.1.
+4. Branch dibuat dari `origin/master` (isi kodenya sama dengan `feature`).
 
 ## 13. Di luar cakupan
 Perubahan database, sinkronisasi draft antarperangkat, perubahan isi pertanyaan, desain ulang ekspor PDF, route guard untuk step terkunci, dan migrasi ke TypeScript.
