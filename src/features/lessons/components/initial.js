@@ -1,10 +1,12 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Play, Pause, Microscope, ClipboardList, MessageSquare } from "lucide-react";
+import { Play, Pause, PlayCircle, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import Callout from "@components/Callout";
+import Card from "@components/Card";
 import Instruction from "@components/Instruction";
+import QuestionCard from "@components/QuestionCard";
 import RichEditor from "@/components/RichTextEditor";
 import Table from "./initial_table";
 
@@ -15,7 +17,7 @@ function formatTime(secs) {
     return `${m}:${s}`;
 }
 
-function StakeholderCard({ audio, label }) {
+function StakeholderCard({ audio, label, listenLabel, stopLabel }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -79,48 +81,69 @@ function StakeholderCard({ audio, label }) {
 
     const progress = duration ? (currentTime / duration) * 100 : 0;
 
+    const seekBy = (delta) => {
+        const a = getAudio();
+        const next = Math.max(0, Math.min(duration || 0, a.currentTime + delta));
+        a.currentTime = next;
+        setCurrentTime(next);
+    };
+
+    const onSeekKey = (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); seekBy(5); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); seekBy(-5); }
+    };
+
     return (
-        <div className="p-5 rounded-2xl bg-tertiary dark:bg-secondary border border-border flex flex-col justify-between gap-4">
-            <div>
-                <h3 className="font-bold text-lg mb-2 text-primary">{label}</h3>
-                {/* <p className="text-sm italic opacity-80">&quot;{summary}&quot;</p> */}
-            </div>
+        <Card className="flex flex-col justify-between gap-4 p-4">
+            <h3 className="text-base font-semibold">{label}</h3>
 
-            <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                    <button
-                        type="button"
-                        onClick={toggle}
-                        className={`cursor-pointer p-2 rounded-full shrink-0 transition-all
-                            ${isPlaying
-                                ? "bg-primary text-background scale-105"
-                                : "bg-primary/10 text-primary hover:bg-primary/20"
-                            }`}
-                    >
-                        {isPlaying
-                            ? <Pause size={12} fill="currentColor" />
-                            : <Play size={12} fill="currentColor" />
-                        }
-                    </button>
+            <div className="flex items-center gap-3">
+                <button
+                    type="button"
+                    onClick={toggle}
+                    aria-label={`${isPlaying ? stopLabel : listenLabel}: ${label}`}
+                    aria-pressed={isPlaying}
+                    className={`flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors
+                        ${isPlaying
+                            ? "bg-primary text-background"
+                            : "bg-surface-subtle text-primary hover:bg-tertiary/60 dark:hover:bg-border"
+                        }`}
+                >
+                    {isPlaying
+                        ? <Pause size={14} fill="currentColor" aria-hidden="true" />
+                        : <Play size={14} fill="currentColor" className="ml-0.5" aria-hidden="true" />
+                    }
+                </button>
 
-                    <div
-                        className="flex-1 h-1.5 bg-primary/10 rounded-full cursor-pointer relative overflow-hidden"
-                        onClick={seek}
-                    >
-                        <div
-                            className="absolute inset-y-0 left-0 bg-primary rounded-full transition-none"
-                            style={{ width: `${progress}%` }}
-                        />
+                <div
+                    role="slider"
+                    tabIndex={0}
+                    aria-label={label}
+                    aria-valuemin={0}
+                    aria-valuemax={Math.round(duration || 0)}
+                    aria-valuenow={Math.round(currentTime)}
+                    aria-valuetext={`${formatTime(currentTime)} / ${formatTime(duration)}`}
+                    onClick={seek}
+                    onKeyDown={onSeekKey}
+                    className="relative flex h-6 flex-1 cursor-pointer items-center"
+                >
+                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-subtle">
+                        <div className="h-full rounded-full bg-secondary" style={{ width: `${progress}%` }} />
                     </div>
-
-                    <span className="text-[10px] font-mono text-secondary shrink-0 tabular-nums">
-                        {formatTime(currentTime)}<span className="opacity-40"> / </span>{formatTime(duration)}
-                    </span>
                 </div>
+
+                <span className="shrink-0 font-mono text-xs tabular-nums text-muted">
+                    {formatTime(currentTime)}<span className="opacity-50"> / </span>{formatTime(duration)}
+                </span>
             </div>
-        </div>
+        </Card>
     );
 }
+
+const VIDEOS = [
+    { label: "Video 1", href: "https://www.youtube.com/watch?v=nrze0IfAmkw" },
+    { label: "Video 2", href: "https://www.youtube.com/watch?v=Gr-4f81zgzc&feature=youtu.be" },
+];
 
 export const InitialComponent = (props) => {
     const { t } = useTranslation();
@@ -134,128 +157,108 @@ export const InitialComponent = (props) => {
     ];
 
     return (
-        <div className="space-y-8">
-            <section className="space-y-6 border-b border-b-tertiary pb-8">
-                <div className="flex gap-3 text-secondary dark:text-primary p-4 bg-secondary/5 dark:bg-tertiary/10 rounded-2xl border border-secondary/10">
-                    <ClipboardList className="min-w-6" />
-                    <p className="text-md leading-relaxed font-bold">
-                        {t('initial.instruction')}
-                    </p>
-                </div>
+        <div className="space-y-6">
+            <Callout>
+                <span className="font-semibold">{t('initial.instruction')}</span>
+            </Callout>
 
-                <div className="flex gap-2">
-                    <motion.a
-                        href="https://www.youtube.com/watch?v=nrze0IfAmkw"
+            <div className="grid gap-3 sm:grid-cols-2">
+                {VIDEOS.map((video) => (
+                    <a
+                        key={video.href}
+                        href={video.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
-                        whileHover={{ y: -3, scale: 1.02 }}
+                        className="group flex min-h-16 items-center gap-3 rounded-2xl bg-card p-3 shadow-card transition-colors hover:bg-surface-subtle"
                     >
-                        Video 1
-                    </motion.a>
-                    <motion.a
-                        href="https://www.youtube.com/watch?v=Gr-4f81zgzc&feature=youtu.be"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primarya font-bold p-4 bg-tertiary dark:bg-secondary rounded-xl"
-                        whileHover={{ y: -3, scale: 1.02 }}
-                    >
-                        Video 2
-                    </motion.a>
-                </div>
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-background">
+                            <PlayCircle size={22} aria-hidden="true" />
+                        </span>
+                        <span className="flex-1">
+                            <span className="block font-semibold">{video.label}</span>
+                            <span className="text-sm text-muted">YouTube</span>
+                        </span>
+                        <ExternalLink size={16} className="text-muted" aria-hidden="true" />
+                        <span className="sr-only">{t('common.opens_new_tab')}</span>
+                    </a>
+                ))}
+            </div>
 
-                <div className="grid md:grid-cols-3 gap-4">
-                    {stakeholders.map((s) => (
-                        <StakeholderCard
-                            key={s.id}
-                            id={s.id}
-                            audio={s.audio}
-                            label={t(`initial.stakeholders.list.${s.id}.label`)}
-                            summary={t(`initial.stakeholders.list.${s.id}.summary`)}
-                            listenLabel={t('initial.stakeholders.listen_btn')}
-                            stopLabel={t('initial.stakeholders.stop_btn', { defaultValue: "Stop" })}
-                        />
-                    ))}
-                </div>
+            <div className="grid gap-3 md:grid-cols-3">
+                {stakeholders.map((s) => (
+                    <StakeholderCard
+                        key={s.id}
+                        audio={s.audio}
+                        label={t(`initial.stakeholders.list.${s.id}.label`)}
+                        listenLabel={t('initial.stakeholders.listen_btn')}
+                        stopLabel={t('initial.stakeholders.stop_btn', { defaultValue: "Stop" })}
+                    />
+                ))}
+            </div>
 
-                <p className="text-md leading-relaxed text-secondary dark:text-primary">
-                    {t('initial.description')}
-                </p>
-            </section>
+            <p className="text-[15px] leading-relaxed text-primary/90">
+                {t('initial.description')}
+            </p>
 
-
-            <section className="bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                <Instruction
-                    title={t('initial.issue_title')}
-                    description={t('initial.issue_description')}
-                    icon={MessageSquare}
-                />
+            <QuestionCard
+                number={1}
+                title={t('initial.issue_title')}
+                description={t('initial.issue_description')}
+                fields={["initial_main_issue_analysis"]}
+            >
                 <RichEditor
                     name="initial_main_issue_analysis"
                     errors={errors}
                     control={control}
+                    ariaLabel={t('initial.issue_title')}
                 />
-            </section>
+            </QuestionCard>
 
-            <section className="bg-tertiary dark:bg-secondary rounded-2xl border border-border dark:border-primary/20 p-6">
-                <div className="flex items-center gap-3 mb-6">
-                    <Microscope className="text-primary" size={28} />
-                    <div>
-                        <h2 className="text-2xl font-bold">{t('initial.plastic_identification')}</h2>
-                    </div>
-                </div>
-
-                <div className="mb-6">
-                    <Instruction
-                        description={t('initial.source_question')}
-                        icon={null}
-                    />
+            <QuestionCard
+                number={2}
+                title={t('initial.plastic_identification')}
+                fields={["initial_source_analysis", "initial_awareness_analysis"]}
+            >
+                <div>
+                    <Instruction description={t('initial.source_question')} />
                     <RichEditor
                         name="initial_source_analysis"
                         errors={errors}
                         control={control}
+                        ariaLabel={t('initial.source_question')}
                     />
                 </div>
                 <div>
-                    <Instruction
-                        description={t('initial.awareness_question')}
-                        icon={null}
-                    />
+                    <Instruction description={t('initial.awareness_question')} />
                     <RichEditor
                         name="initial_awareness_analysis"
                         errors={errors}
                         control={control}
+                        ariaLabel={t('initial.awareness_question')}
                     />
                 </div>
-            </section>
+            </QuestionCard>
 
-            <section className="space-y-4 bg-background dark:bg-primary/5 rounded-2xl border border-border p-6 shadow-sm">
-                <Instruction
-                    title={t('initial.component_ecosystem.title')}
-                    description={t('initial.component_ecosystem.description')}
-                />
+            <QuestionCard
+                number={3}
+                title={t('initial.component_ecosystem.title')}
+                description={t('initial.component_ecosystem.description')}
+                fields={["initial_component_ecosystem", "initial_component_ecosystem_analysis"]}
+            >
                 <Table control={control} register={register} errors={errors} />
-                <div className="mt-6">
+                <div>
                     <Instruction
-                        description={(
-                            <>
-                                {t('initial.component_ecosystem.question')}
-                                <br />
-                                <b className="text-sm">
-                                    {`${t('common.reference')} 4,5,12`}
-                                </b>
-                            </>
-                        )}
-                        icon={null}
+                        description={t('initial.component_ecosystem.question')}
+                        refs="4, 5, 12"
                     />
                     <RichEditor
                         name="initial_component_ecosystem_analysis"
                         errors={errors}
                         control={control}
+                        ariaLabel={t('initial.component_ecosystem.question')}
                     />
                 </div>
-            </section>
-
+            </QuestionCard>
         </div>
     );
 };

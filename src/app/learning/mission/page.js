@@ -18,11 +18,11 @@ function StatCard({ label, value, sub, delay }) {
     return (
         <motion.div
             {...fadeUp(delay)}
-            className="bg-primary/5 dark:bg-background/5 rounded-xl p-4 border border-secondary/10"
+            className="rounded-2xl bg-card p-4 shadow-card"
         >
-            <p className="text-[10px] uppercase tracking-widest text-secondary dark:text-primary/50 mb-1 font-mono">{label}</p>
-            <p className="text-lg font-semibold text-primary dark:text-primary leading-none mb-1">{value}</p>
-            <p className="text-[11px] text-secondary dark:text-primary/50">{sub}</p>
+            <p className="mb-1.5 font-mono text-[11px] uppercase tracking-widest text-muted">{label}</p>
+            <p className="mb-1 font-heading text-lg font-semibold leading-none">{value}</p>
+            <p className="text-xs text-muted">{sub}</p>
         </motion.div>
     );
 }
@@ -30,18 +30,18 @@ function StatCard({ label, value, sub, delay }) {
 function ChainItem({ icon: Icon, color, bg, title, sub, delay, isLast }) {
     return (
         <motion.div {...fadeUp(delay)} className="flex flex-col">
-            <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary/5 transition-colors">
-                <div className={`w-8 h-8 rounded-full ${bg} flex items-center justify-center shrink-0`}>
-                    <Icon size={14} className={color} />
+            <div className="flex items-center gap-3 rounded-xl px-3 py-2.5">
+                <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${bg}`}>
+                    <Icon size={16} className={color} aria-hidden="true" />
                 </div>
                 <div>
-                    <p className="text-[16px] font-medium text-primary">{title}</p>
-                    <p className="text-sm text-secondary dark:text-tertiary">{sub}</p>
+                    <p className="text-base font-medium">{title}</p>
+                    <p className="text-sm text-muted">{sub}</p>
                 </div>
             </div>
             {!isLast && (
-                <div className="pl-7 py-0.5">
-                    <div className="w-px h-4 bg-secondary/20 ml-3" />
+                <div className="py-0.5 pl-7">
+                    <div className="ml-0.5 h-4 w-px bg-border" />
                 </div>
             )}
         </motion.div>
@@ -93,8 +93,8 @@ export default function MissionInfoPage() {
     const CHAIN = [
         {
             icon: Users,
-            color: "text-blue-400",
-            bg: "bg-blue-500/10",
+            color: "text-secondary",
+            bg: "bg-secondary/15",
             title: t('mission.chain_items.0.title'),
             sub: t('mission.chain_items.0.sub'),
         },
@@ -107,15 +107,15 @@ export default function MissionInfoPage() {
         },
         {
             icon: MapPin,
-            color: "text-red-400",
-            bg: "bg-red-500/10",
+            color: "text-quaternary",
+            bg: "bg-quaternary/15",
             title: t('mission.chain_items.2.title'),
             sub: t('mission.chain_items.2.sub'),
         },
         {
             icon: AlertTriangle,
-            color: "text-purple-400",
-            bg: "bg-purple-500/10",
+            color: "text-secondary",
+            bg: "bg-secondary/15",
             title: t('mission.chain_items.3.title'),
             sub: t('mission.chain_items.3.sub'),
         },
@@ -123,43 +123,38 @@ export default function MissionInfoPage() {
 
     useEffect(() => {
         const targetSlug = Object.keys(responses).length > 0
-            ? Object.keys(responses)[responses.length - 1]
+            ? Object.keys(responses).at(-1)
             : SYLLABUS[0].id;
         router.prefetch(`/learning/${targetSlug}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responses]);
 
     return (
-        <div className="pt-28 min-h-screen bg-background text-primary flex flex-col items-center justify-center px-6 py-20 overflow-hidden relative">
-
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 border border-primary rounded-full animate-ping [animation-duration:4s]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-95 h-95 border border-primary/40 rounded-full" />
-            </div>
+        <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-4 py-12 text-primary sm:px-6 sm:py-16">
 
             <div className="max-w-2xl w-full relative z-10">
 
                 <motion.div
                     {...fadeUp(0)}
-                    className="flex items-center gap-2 mb-8 text-secondary dark:text-primary border-b border-primary/10 pb-4 font-mono text-xs tracking-widest uppercase"
+                    className="mb-8 flex items-center gap-2 border-b border-border pb-4 font-mono text-xs uppercase tracking-widest text-secondary"
                 >
-                    <Anchor size={14} />
+                    <Anchor size={14} aria-hidden="true" />
                     <span>{t('mission.report_tag')}</span>
                 </motion.div>
 
                 <motion.div {...fadeUp(0.08)} className="mb-6">
                     <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-3">
                         {t('mission.title')}{" "}
-                        <span className="text-secondary dark:text-primary/60 italic font-normal">
+                        <span className="font-normal italic text-secondary">
                             {t('mission.subtitle')}
                         </span>
                     </h1>
-                    <p className="text-secondary dark:text-primary leading-relaxed text-base">
+                    <p className="text-base leading-relaxed text-primary/90">
                         {t('mission.description')}
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-3 gap-3 mb-8">
+                <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
                     {STATS.map((s, i) => (
                         <StatCard key={s.label} {...s} delay={0.14 + i * 0.06} />
                     ))}
@@ -167,19 +162,19 @@ export default function MissionInfoPage() {
 
                 <motion.div
                     {...fadeUp(0.32)}
-                    className="border-l-2 border-primary/30 pl-5 py-1 mb-8 space-y-3"
+                    className="mb-8 space-y-3 border-l-[3px] border-secondary py-1 pl-5"
                 >
-                    <p className="text-sm text-secondary dark:text-tertiary leading-relaxed">
+                    <p className="text-[15px] leading-relaxed text-primary/90">
                         <Trans i18nKey="mission.context.p1">
-                            <strong className="text-primary font-medium">
+                            <strong className="font-semibold text-primary">
                                 {t('mission.context.p1_bold')}
                             </strong>
                         </Trans>
                     </p>
 
-                    <p className="text-sm text-secondary dark:text-tertiary leading-relaxed">
+                    <p className="text-[15px] leading-relaxed text-primary/90">
                         <Trans i18nKey="mission.context.p2">
-                            <strong className="text-primary font-medium">
+                            <strong className="font-semibold text-primary">
                                 {t('mission.context.p2_bold')}
                             </strong>
                         </Trans>
@@ -187,7 +182,7 @@ export default function MissionInfoPage() {
                 </motion.div>
 
                 <motion.div {...fadeUp(0.38)} className="mb-8">
-                    <p className="text-[16px] text-primary font-medium mb-3">
+                    <p className="mb-3 text-base font-semibold">
                         {t('mission.chain_title')}
                     </p>
                     <div className="flex flex-col">
@@ -204,10 +199,10 @@ export default function MissionInfoPage() {
 
                 <motion.div
                     {...fadeUp(0.58)}
-                    className="bg-primary border border-primary/20 rounded-2xl p-5 flex gap-4 items-start mb-10"
+                    className="mb-10 flex items-start gap-4 rounded-[20px] bg-primary p-5 sm:p-6"
                 >
-                    <div className="bg-background p-2.5 rounded-full shrink-0">
-                        <Fish size={20} className="text-primary" />
+                    <div className="shrink-0 rounded-xl bg-background p-2.5">
+                        <Fish size={20} className="text-primary" aria-hidden="true" />
                     </div>
                     <div>
                         <h3 className="font-semibold text-background mb-1 text-lg">{t('mission.goal.title')}</h3>
@@ -225,12 +220,9 @@ export default function MissionInfoPage() {
                 </motion.div>
 
                 <motion.div {...fadeUp(0.64)} className="flex justify-center">
-                    <Button onClick={startInvestigation} size="lg" className="group">
+                    <Button onClick={startInvestigation} size="lg">
                         {t('mission.cta')}
-                        <ArrowRight
-                            size={16}
-                            className="group-hover:translate-x-1 transition-transform"
-                        />
+                        <ArrowRight size={18} aria-hidden="true" />
                     </Button>
                 </motion.div>
 

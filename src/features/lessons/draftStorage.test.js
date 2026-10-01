@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { draftKey, saveDraft, loadDraft, clearDraft, isSameContent } from "./draftStorage.js";
+import { draftKey, saveDraft, loadDraft, clearDraft, isSameContent, normalizeDraftContent } from "./draftStorage.js";
 
 const memoryStorage = () => {
     const map = new Map();
@@ -110,4 +110,17 @@ test("isSameContent ignores React Flow runtime fields in diagrams", () => {
 test("isSameContent treats null baseline as different from any draft", () => {
     assert.equal(isSameContent(null, { a: 1 }), false);
     assert.equal(isSameContent(null, null), true);
+});
+
+test("normalizeDraftContent cleans diagrams and leaves other values alone", () => {
+    const out = normalizeDraftContent({
+        text: "<p>x</p>",
+        rows: [{ a: 1 }],
+        diagram: { nodes: [{ id: "n", position: { x: 0, y: 0 }, data: {}, selected: true }], edges: [] },
+    });
+    assert.deepEqual(out, {
+        text: "<p>x</p>",
+        rows: [{ a: 1 }],
+        diagram: { nodes: [{ id: "n", position: { x: 0, y: 0 }, data: {} }], edges: [] },
+    });
 });

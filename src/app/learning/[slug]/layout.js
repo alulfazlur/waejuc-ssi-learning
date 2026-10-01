@@ -1,69 +1,35 @@
 "use client";
-import { useState, use, useEffect } from "react";
+import { useState, use, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-    Menu, BookOpen, Check, Lock, Pencil, LogOut,
-    FileText, ExternalLink, TrendingUp, FileDown, Loader2,
-} from "lucide-react";
-import { ThemeProvider, useTheme } from "next-themes";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { ThemeProvider } from "next-themes";
 import { useTranslation } from "react-i18next";
-import { toast } from "sonner";
 
 import { useAuth } from "@context/AuthContext";
 import { SYLLABUS } from "@constants/syllabus";
-import { exportResponsesToPDF } from "@lib/exportPDF";
 
-import ThemeToggle from '@components/ThemeToggle';
-import LanguageToggle from '@components/LanguageToggle';
 import HeaderLesson from "@components/HeaderLesson";
+import Drawer from "@components/Drawer";
+import Sidebar, { getProgress } from "@features/lessons/shell/Sidebar";
+import { DesktopTopBar, MobileTopBar } from "@features/lessons/shell/TopBars";
+import { LessonShellContext } from "@features/lessons/shell/LessonShellContext";
 
-const MATERIAL_URL = "https://drive.google.com/drive/folders/1WQWxrB1EAxhhXoZL-qx5zgb7o6eQBvTn?usp=sharing";
+// Steps with wide tables get more room; text-heavy steps stay at reading width.
+const WIDE_STEPS = new Set(["initial", "decision"]);
 
 export default function LearningLayout({ params: paramsPromise, children }) {
-    const { theme } = useTheme();
     const { t } = useTranslation();
-
     const params = use(paramsPromise);
-    const router = useRouter();
     const currentSlug = params.slug;
 
-    const { maxStep, isSyncing, loading, setLoading, logout, user, responses } = useAuth();
+    const { maxStep, isSyncing, loading, setLoading } = useAuth();
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isExporting, setIsExporting] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [saveStatus, setSaveStatus] = useState(null);
+    const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+    const shellValue = useMemo(() => ({ setSaveStatus }), []);
 
-    const currentIndex = SYLLABUS.findIndex(s => s.id === currentSlug);
-    const currentSyllabus = SYLLABUS[currentIndex] || {};
-
-    const colorClass = theme === "dark" ? "text-primary" : "text-background";
-
-    // ===== Progress calculation =====
-    const totalCount = SYLLABUS.length;
-    const completedCount = SYLLABUS.filter(s => maxStep > s.step).length;
-    const progressPercent = Math.min(100, Math.round((completedCount / totalCount) * 100));
-    const isAllCompleted = progressPercent === 100;
-
-    const handleLogout = async () => {
-        await logout();
-        router.push("/");
-    };
-
-    const handleExport = async () => {
-        if (isExporting) return;
-        setIsExporting(true);
-        try {
-            await exportResponsesToPDF({ user, responses, t });
-            toast.success(t('sidebar.export_success'));
-        } catch (err) {
-            // eslint-disable-next-line no-console
-            console.error('Export PDF failed:', err);
-            toast.error(t('sidebar.export_error'));
-        } finally {
-            setIsExporting(false);
-        }
-    };
+    const currentSyllabus = SYLLABUS.find(s => s.id === currentSlug);
+    const { percent } = getProgress(maxStep);
 
     useEffect(() => {
         setLoading(false);
@@ -72,242 +38,68 @@ export default function LearningLayout({ params: paramsPromise, children }) {
 
     return (
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-            <div className="flex min-h-screen bg-background text-foreground">
-                <AnimatePresence>
-                    {(isSyncing || loading) && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-60 flex items-center justify-center bg-background/80 backdrop-blur-md"
-                        >
-                            <div className="flex flex-col items-center gap-4">
-                                <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-                                <p className="text-sm font-mono animate-pulse text-primary">
-                                    {loading ? "Loading..." : t('common.load_init')}
-                                </p>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <aside className={`fixed inset-y-0 left-0 z-40 w-72
-                    bg-tertiary dark:bg-secondary border-r border-border dark:border-primary/20
-                    transition-transform duration-300 lg:translate-x-0 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-                    flex flex-col
-                    `}>
-
-                    {/* Top: theme + language */}
-                    <div className="flex justify-between items-center p-6 pb-4 shrink-0">
-                        <ThemeToggle colorClass={colorClass} />
-                        <LanguageToggle />
-                    </div>
-
-                    {/* Progress Overview */}
-                    <div className="px-6 pb-3 shrink-0">
-                        <div className="rounded-2xl bg-background/40 dark:bg-primary/10 border border-secondary/15 dark:border-primary/15 p-4 backdrop-blur-sm">
-                            <div className="flex items-center justify-between mb-3">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <TrendingUp size={14} />
-                                    <span className="text-[11px] font-bold uppercase tracking-widest">
-                                        {t('sidebar.progress_overview')}
-                                    </span>
+            <LessonShellContext.Provider value={shellValue}>
+                <div className="min-h-screen bg-background text-foreground">
+                    <AnimatePresence>
+                        {(isSyncing || loading) && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 z-60 flex items-center justify-center bg-background/80 backdrop-blur-md"
+                            >
+                                <div className="flex flex-col items-center gap-4" role="status">
+                                    <div className="h-12 w-12 animate-spin rounded-full border-4 border-secondary border-t-transparent" aria-hidden="true" />
+                                    <p className="font-mono text-sm text-secondary">
+                                        {loading ? t('common.loading') : t('common.load_init')}
+                                    </p>
                                 </div>
-                                <span className="text-[11px] font-mono text-primary tabular-nums">
-                                    {completedCount}/{totalCount}
-                                </span>
-                            </div>
-
-                            <div className="flex items-end justify-between mb-3">
-                                <div className="flex items-baseline gap-1 text-primary">
-                                    <span className="text-3xl font-bold tabular-nums leading-none">
-                                        {progressPercent}
-                                    </span>
-                                    <span className="text-base font-semibold opacity-60">%</span>
-                                </div>
-                                {isAllCompleted && (
-                                    <motion.span
-                                        initial={{ scale: 0, rotate: -180 }}
-                                        animate={{ scale: 1, rotate: 0 }}
-                                        transition={{ type: "spring", stiffness: 200, damping: 12 }}
-                                        className="text-base"
-                                        aria-label="completed"
-                                    >
-                                        🎉
-                                    </motion.span>
-                                )}
-                            </div>
-
-                            <div className="h-2 bg-secondary/15 dark:bg-primary/15 rounded-full overflow-hidden">
-                                <motion.div
-                                    key={progressPercent}
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${progressPercent}%` }}
-                                    transition={{ duration: 0.8, ease: "easeOut" }}
-                                    className="h-full bg-linear-to-r from-secondary to-primary dark:from-tertiary dark:to-primary rounded-full"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Material Link */}
-                    <div className="px-6 pb-3 shrink-0 flex flex-col gap-3">
-                        <motion.a
-                            href={MATERIAL_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="flex items-center justify-between gap-3 p-3 rounded-xl
-                                bg-primary text-background
-                                shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30
-                                font-bold text-sm
-                                transition-shadow"
-                        >
-                            <span className="flex items-center gap-2">
-                                <FileText size={16} />
-                                {t('sidebar.material_btn')}
-                            </span>
-                            <ExternalLink size={14} className="opacity-70" />
-                        </motion.a>
-                        <motion.button
-                            onClick={handleExport}
-                            disabled={isExporting}
-                            whileHover={!isExporting ? { y: -2 } : {}}
-                            whileTap={!isExporting ? { scale: 0.98 } : {}}
-                            className={`w-full cursor-pointer flex items-center justify-between gap-3 p-3 rounded-xl
-                                        bg-linear-to-r from-quaternary to-secondary dark:to-primary text-background
-                                        shadow-md shadow-quaternary/20 hover:shadow-lg hover:shadow-quaternary/30
-                                        font-bold text-sm
-                                        transition-shadow
-                                        disabled:opacity-60 disabled:cursor-not-allowed`}
-                        >
-                            <span className="flex items-center gap-2">
-                                {isExporting ? (
-                                    <Loader2 size={16} className="animate-spin" />
-                                ) : (
-                                    <FileDown size={16} />
-                                )}
-                                {isExporting
-                                    ? t('sidebar.exporting')
-                                    : t('sidebar.export_btn')}
-                            </span>
-                            {!isExporting && (
-                                <span className="text-[10px] font-mono opacity-70 px-1.5 py-0.5 rounded bg-background/15">
-                                    PDF
-                                </span>
-                            )}
-                        </motion.button>
-                    </div>
-
-                    {/* Syllabus list - scrollable */}
-                    <div className="px-6 pt-2 flex-1 overflow-y-auto">
-                        <h3 className="text-sm font-bold tracking-wide text-secondary dark:text-primary mb-6 flex items-center gap-2">
-                            <BookOpen size={18} />
-                            {t('sidebar.progress_title')}
-                        </h3>
-
-                        <div className="relative space-y-0">
-                            <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-border dark:bg-slate-800 z-0" />
-
-                            {SYLLABUS.map((item) => {
-                                const isCompleted = maxStep > item.step;
-                                const isActive = currentSlug === item.id;
-                                const isLocked = item.step > maxStep;
-
-                                return (
-                                    <div key={item.id} className="relative z-10">
-                                        <Link
-                                            href={isLocked ? "#" : `/learning/${item.id}`}
-                                            className={`flex items-center gap-4 p-3 rounded-2xl transition-all mb-4 group ${isActive
-                                                ? "bg-primary text-background shadow-lg shadow-primary/20"
-                                                : isLocked ? "cursor-not-allowed" : "hover:bg-primary/10"
-                                                }`}
-                                        >
-                                            <div className={`
-                                                shrink-0 w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500
-                                                ${isActive ? "bg-background border-background shadow-md text-primary" :
-                                                    isCompleted ? "bg-primary border-primary text-background" :
-                                                        "bg-secondary border-border text-background"}
-                                            `}>
-                                                {isCompleted ? (
-                                                    <Check size={18} strokeWidth={3} />
-                                                ) : isLocked ? (
-                                                    <Lock size={14} />
-                                                ) : (
-                                                    <Pencil size={18} />
-                                                )}
-                                            </div>
-
-                                            <div className="flex flex-col">
-                                                <span className="font-bold text-sm leading-tight">
-                                                    {t(`syllabus.${item.id}`)}
-                                                </span>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-
-                    {/* Logout */}
-                    <div className="p-6 pt-3 shrink-0 border-t border-secondary/15 dark:border-primary/10">
-                        <button
-                            onClick={handleLogout}
-                            className="flex w-full cursor-pointer items-center justify-center gap-2 p-3 rounded-xl
-                                hover:bg-red-500/10 hover:text-red-500
-                                dark:hover:bg-red-500/10 dark:hover:text-red-400
-                                transition-all font-bold text-sm tracking-wider"
-                        >
-                            <LogOut size={18} />
-                            {t('sidebar.logout')}
-                        </button>
-                    </div>
-                </aside>
-
-                <main className="flex-1 lg:pl-72 relative">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={currentSlug}
-                            initial={{ opacity: 0, x: -100 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 100 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                            <div className="max-w-7xl mx-auto pt-12 px-6">
-                                {currentIndex >= 0 && (
-                                    <HeaderLesson
-                                        step={currentSyllabus.step}
-                                        id={currentSyllabus?.id}
-                                        t={t}
-                                    />
-                                )}
-                                {children}
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        )}
                     </AnimatePresence>
-                </main>
 
+                    <aside className="fixed inset-y-0 left-0 z-40 hidden w-68 border-r border-border lg:block">
+                        <Sidebar currentSlug={currentSlug} />
+                    </aside>
 
-                <button
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="fixed bottom-25 right-6 lg:hidden bg-secondary text-white p-4 rounded-full shadow-2xl z-50"
-                >
-                    <Menu />
-                </button>
-                <AnimatePresence>
-                    {isSidebarOpen && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsSidebarOpen(false)}
-                            className="fixed inset-0 z-30 lg:hidden backdrop-blur-sm"
+                    <Drawer open={isDrawerOpen} onClose={closeDrawer} label={t('sidebar.progress_title')}>
+                        <Sidebar currentSlug={currentSlug} onNavigate={closeDrawer} onClose={closeDrawer} />
+                    </Drawer>
+
+                    <div className="lg:pl-68">
+                        <DesktopTopBar step={currentSyllabus?.step} saveStatus={saveStatus} />
+                        <MobileTopBar
+                            step={currentSyllabus?.step}
+                            slug={currentSlug}
+                            percent={percent}
+                            onOpenNav={() => setIsDrawerOpen(true)}
                         />
-                    )}
-                </AnimatePresence>
-            </div>
+
+                        <main>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={currentSlug}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <div className={`mx-auto px-4 pb-6 pt-8 sm:px-6 lg:pt-10 ${WIDE_STEPS.has(currentSlug) ? "max-w-5xl" : "max-w-3xl"}`}>
+                                        {currentSyllabus && (
+                                            <HeaderLesson
+                                                step={currentSyllabus.step}
+                                                id={currentSyllabus.id}
+                                                t={t}
+                                            />
+                                        )}
+                                        {children}
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </main>
+                    </div>
+                </div>
+            </LessonShellContext.Provider>
         </ThemeProvider>
     );
 }

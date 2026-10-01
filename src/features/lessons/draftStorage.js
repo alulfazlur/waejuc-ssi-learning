@@ -63,11 +63,12 @@ export function clearDraft(userId, slug, { storage } = {}) {
 const isDiagram = (v) =>
     v && typeof v === "object" && !Array.isArray(v) && Array.isArray(v.nodes);
 
-const normalize = (content) => {
+// Drops React Flow runtime fields from every diagram value in a step's content.
+export const normalizeDraftContent = (content) => {
     if (!content || typeof content !== "object") return content;
     return Object.fromEntries(
         Object.entries(content).map(([k, v]) => [k, isDiagram(v) ? cleanDiagram(v) : v])
     );
 };
 
-export const isSameContent = (a, b) => isEqual(normalize(a), normalize(b));
+export const isSameContent = (a, b) => isEqual(normalizeDraftContent(a), normalizeDraftContent(b));
