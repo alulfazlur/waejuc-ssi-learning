@@ -23,6 +23,6 @@ Website ini mendukung Pendidikan untuk Pembangunan Berkelanjutan (*Education for
 
 Website ini dikembangkan oleh **Hikmah Buroidah, S.Pd., M.Pd.**, dosen Pendidikan Biologi, Universitas Jember (UNEJ), sebagai bagian dari **Tim Peneliti WAEJUC** (*Western Australia–East Java Universities Consortium*):
 
-- Prof. Sri Rahayu, Ph.D.: Universitas Negeri Malang (ketua peneliti)
-- Hikmah Buroidah, S.Pd., M.Pd.: Universitas Jember
+- Hikmah Buroidah, S.Pd., M.Pd.: Universitas Jember (ketua peneliti)
+- Prof. Sri Rahayu, Ph.D.: Universitas Negeri Malang
 - Prof. Dr. Mauro Mocerino: Curtin University, Australia

@@ -399,24 +399,25 @@
         "p2": "360° video and augmented reality (AR) help students observe contexts that are hard to bring directly into the classroom. Through activities and worksheets, students identify the components of a system, trace cause-and-effect relationships, build representations of those relationships, and weigh the impact of different courses of action.",
         "p3": "WAVES-SSI is designed to support Education for Sustainable Development (ESD) in the education of pre-service biology teachers. The learning experience is intended to help students develop systems thinking skills and sustainability awareness that they can carry into their teaching practice and their lives in the community.",
         "team_title": "WAEJUC Research Team",
-        "logo_alt": "WAEJUC consortium logo: Universitas Negeri Malang, Universitas Jember, and Curtin University",
         "members": [
             {
                 "role": "Principal investigator",
-                "name": "Prof. Sri Rahayu, Ph.D.",
-                "affiliation": "Universitas Negeri Malang, Indonesia"
+                "name": "Hikmah Buroidah, S.Pd., M.Pd.",
+                "affiliation": "Universitas Jember, Indonesia"
             },
             {
                 "role": "Member",
-                "name": "Hikmah Buroidah, S.Pd., M.Pd.",
-                "affiliation": "Universitas Jember, Indonesia"
+                "name": "Prof. Sri Rahayu, Ph.D.",
+                "affiliation": "Universitas Negeri Malang, Indonesia"
             },
             {
                 "role": "Member",
                 "name": "Prof. Dr. Mauro Mocerino",
                 "affiliation": "Curtin University, Australia"
             }
-        ]
+        ],
+        "logo_of": "{{name}} logo",
+        "consortium_label": "Research consortium"
     },
     "footer": {
         "copyright": "© 2026 WAVES-SSI · WAEJUC Research Team"
