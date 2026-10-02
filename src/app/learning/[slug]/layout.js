@@ -13,9 +13,6 @@ import Sidebar, { getProgress } from "@features/lessons/shell/Sidebar";
 import { DesktopTopBar, MobileTopBar } from "@features/lessons/shell/TopBars";
 import { LessonShellContext } from "@features/lessons/shell/LessonShellContext";
 
-// Steps with wide tables get more room; text-heavy steps stay at reading width.
-const WIDE_STEPS = new Set(["initial", "decision"]);
-
 export default function LearningLayout({ params: paramsPromise, children }) {
     const { t } = useTranslation();
     const params = use(paramsPromise);
@@ -84,7 +81,7 @@ export default function LearningLayout({ params: paramsPromise, children }) {
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <div className={`mx-auto px-4 pb-6 pt-8 sm:px-6 lg:pt-10 ${WIDE_STEPS.has(currentSlug) ? "max-w-5xl" : "max-w-3xl"}`}>
+                                    <div className="mx-auto max-w-4xl px-4 pb-6 pt-8 sm:px-6 lg:pt-10">
                                         {currentSyllabus && (
                                             <HeaderLesson
                                                 step={currentSyllabus.step}
