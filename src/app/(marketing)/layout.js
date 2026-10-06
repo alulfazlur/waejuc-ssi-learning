@@ -52,7 +52,7 @@ export default function MarketingLayout({ children }) {
                             <LanguageToggle />
                             <Link
                                 href={user ? "/learning/mission" : "/signin"}
-                                className={`ml-1 inline-flex min-h-10 items-center rounded-xl px-4 text-sm font-semibold transition-colors
+                                className={`ml-1 hidden min-h-10 items-center rounded-xl px-4 text-sm font-semibold transition-colors sm:inline-flex
                                     ${isScrolled ? "bg-primary text-background hover:bg-primary/90" : "bg-white text-[#083a4f] hover:bg-white/90"}`}
                             >
                                 {user ? t('nav.continue') : t('nav.signin')}
