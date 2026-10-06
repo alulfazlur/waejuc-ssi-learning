@@ -16,9 +16,9 @@
   --color-ring: var(--ring);
   --color-surface-subtle: var(--surface-subtle);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-exo), var(--font-inter), ui-sans-serif, sans-serif;
-  --font-mono: var(--font-roboto-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sora), var(--font-dm-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
 
   --shadow-card: var(--card-shadow);
 
